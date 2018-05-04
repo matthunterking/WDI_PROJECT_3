@@ -34,9 +34,9 @@ describe('POST /jobs', () => {
       .then(() => done());
   });
 
-  it('should return a 401 reposnse without token', done => {
+  it('should return a 401 response without token', done => {
     api
-      .post('/api/wines')
+      .post('/api/jobs')
       .send(jobData)
       .end((err, res) => {
         expect(res.status).to.eq(401);
@@ -44,7 +44,7 @@ describe('POST /jobs', () => {
       });
   });
 
-  it('should return a 201 reponse with a token', done => {
+  it('should return a 201 response with a token', done => {
     api
       .post('/api/jobs')
       .set('Authorization', `Bearer ${token}`)
