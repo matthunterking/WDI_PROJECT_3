@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const router = require('./config/router');
 const { port, dbURI } = require('./config/environment');
-// const router = require('./config/router');
+
 mongoose.connect(dbURI);
 
 app.use(bodyParser.json());
