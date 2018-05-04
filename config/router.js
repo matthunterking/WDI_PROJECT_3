@@ -27,8 +27,12 @@ router.route('/users/:id')
 // router.post('/register', auth.register);
 // router.post('/login', auth.login);  /* <-- Not Needed as we are using the home screen as the login page */
 
-// router.post('/jobs/:id/comments', secureRoute, jobs.commentCreate);
-// router.delete('/jobs/:id/comments/:commentId', secureRoute, jobs.commentDelete);
+
+router.post('/jobs/:id/messages', jobs.messageCreate);
+router.delete('/jobs/:id/messages/:messageId', jobs.messageDelete);
+
+router.post('/jobs/:id/applicants', jobs.applicantCreate);
+router.delete('/jobs/:id/applicants/:applicantId', jobs.applicantDelete);
 
 // router.post('/github', oauth.github);  /* <-- Use when needed with OAuth  */
 // router.post('/facebook', oauth.facebook);  /* <-- Use when needed with OAuth  */
