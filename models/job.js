@@ -49,13 +49,13 @@ applicantSchema.set('toJSON', {
   }
 });
 
-//the actual job schema
+//the actual job schema - removed required from start and end for testing
 const jobSchema = new mongoose.Schema({
   category: { type: String, required: true },
   description: { type: String, required: true },
   duration: { type: String, required: true },
-  startdate: { type: Date, required: true },
-  enddate: { type: Date, required: true },
+  startdate: { type: Date },
+  enddate: { type: Date },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   applicants: [ applicantSchema ],
   messages: [ messageSchema ]
