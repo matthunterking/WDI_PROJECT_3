@@ -11,5 +11,8 @@ import 'satellizer';
 import Router from './config/router';
 // import Auth from './config/auth';
 
+import JobsIndexCtrl from './controllers/jobs/index';
+
 angular.module('neighbourgood', ['ui.router', 'satellizer'])
-  .config(Router);
+  .config(Router)
+  .controller('JobsIndexCtrl', JobsIndexCtrl);
