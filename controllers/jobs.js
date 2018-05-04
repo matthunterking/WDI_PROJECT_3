@@ -11,7 +11,7 @@ function jobsIndex(req, res, next) {
 function jobsShow(req, res, next) {
   Job
     .findById(req.params.id)
-    .populate('jobs.createdBy')
+    .populate('jobs.applicants job.messages')
     .exec()
     .then(job => {
       if(!job) return res.sendStatus(404);
