@@ -1,10 +1,9 @@
 const express = require('express');
 const app = express();
-const router = require('./config/router');
-
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+const router = require('./config/router');
 const { port, dbURI } = require('./config/environment');
 // const router = require('./config/router');
 mongoose.connect(dbURI);
