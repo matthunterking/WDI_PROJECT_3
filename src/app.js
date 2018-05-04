@@ -1,9 +1,15 @@
-// import angular from 'angular';
+import angular from 'angular';
 
-// Styles in use
+// Styles
 import './scss/style.scss';
-import 'bulma';
+
+//3rd party dependencies
+import '@uirouter/angularjs';
+import 'satellizer';
 
 // Our modules
-// import Router from './config/router';
+import Router from './config/router';
 // import Auth from './config/auth';
+
+angular.module('neighbourgood', ['ui.router', 'satellizer'])
+  .config(Router);

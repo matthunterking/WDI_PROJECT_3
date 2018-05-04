@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="neighbourgood">
 <head>
   <meta charset="utf-8">
-  <title>WDI32 Group Project</title>
+  <title>NeighbourGood</title>
 </head>
 <body>
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <p>NeighbourGood</p>
+      </a>
 
-  <h1>WDI32 Group Project</h1>
-
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  </nav>
+  <section class='section' ng-if="!main.isHome">
+    <div class="container" ui-view>
+      <ui-view></ui-view>
+    </div>
+  </section
 </body>
 </html>
