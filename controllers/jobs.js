@@ -54,14 +54,77 @@ function jobsDelete(req, res, next) {
     .catch(next);
 }
 
-//jobs comment creation
+//jobs message creation
+function jobsMessageCreate(req, res, next) {
+  req.body.createdBy = req.currentUser;
+  Job.findById(req.params.id)
+    .populate('createdBy messages.createdBy')
+    .exec()
+    .then(job => {
+      job.messages.push(req.body);
+      return job.save();
+    })
+    .then(job => {
+      res.json(job);
+    })
+    .catch(next);
+}
 
-//jobs comment deletion
+//jobs message deletion
+function jobsMessageDelete(req, res, next) {
+  Job.findById(req.params.id)
+    .populate('createdBy messages.createdBy')
+    .exec()
+    .then(job => {
+      const message = job.messages.id(req.params.messageId);
+      message.remove();
+      return job.save();
+    })
+    .then(job => res.json(job))
+    .catch(next);
+}
+
+
+//jobs applicant creation
+function jobsApplicantCreate(req, res, next) {
+  req.body.who = req.currentUser;
+  Job.findById(req.params.id)
+    .populate('createdBy messages.createdBy applicants.who')
+    .exec()
+    .then(job => {
+      job.applicants.push(req.body);
+      return job.save();
+    })
+    .then(job => {
+      res.json(job);
+    })
+    .catch(next);
+}
+
+
+//jobs applicant deletion
+function jobsApplicantDelete(req, res, next) {
+  Job.findById(req.params.id)
+    .populate('createdBy messages.createdBy applicants.who')
+    .exec()
+    .then(job => {
+      const applicant = job.applicants.id(req.params.applicantId);
+      applicant.remove();
+      return job.save();
+    })
+    .then(job => res.json(job))
+    .catch(next);
+}
+
 
 module.exports = {
   index: jobsIndex,
   show: jobsShow,
   create: jobsCreate,
   update: jobsUpdate,
-  delete: jobsDelete
+  delete: jobsDelete,
+  messageCreate: jobsMessageCreate,
+  messageDelete: jobsMessageDelete,
+  applicantCreate: jobsApplicantCreate,
+  applicantDelete: jobsApplicantDelete
 };
