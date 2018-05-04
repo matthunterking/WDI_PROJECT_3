@@ -9,7 +9,12 @@ import 'satellizer';
 
 // Our modules
 import Router from './config/router';
-// import Auth from './config/auth';
+import Auth from './config/auth';
+
+// Jobs Model
+import Job from './models/job';
 
 angular.module('neighbourgood', ['ui.router', 'satellizer'])
-  .config(Router);
+  .config(Router)
+  .config(Auth)
+  .service('Job', Job);
