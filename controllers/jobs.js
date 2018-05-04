@@ -39,3 +39,27 @@ function jobsUpdate(req, res, next) {
     .then(job => res.json(job))
     .catch(next);
 }
+
+function jobsDelete(req, res, next) {
+  Job
+    .findById(req.params.id)
+    .exec()
+    .then(job => {
+      if(!job) return res.sendStatus(404);
+      return job.remove();
+    })
+    .then(() => res.sendStatus(204))
+    .catch(next);
+}
+
+//jobs comment creation
+
+//jobs comment deletion
+
+module.exports = {
+  index: jobsIndex,
+  show: jobsShow,
+  create: jobsCreate,
+  update: jobsUpdate,
+  delete: jobsDelete
+};
