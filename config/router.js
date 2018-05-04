@@ -15,6 +15,7 @@ router.route('/jobs/:id')
 router.post('/register', auth.register);
 // router.post('/login', auth.login);  /* <-- Not Needed as we are using the home screen as the login page */
 
+
 // router.post('/github', oauth.github);  /* <-- Use when needed with OAuth  */
 // router.post('/facebook', oauth.facebook);  /* <-- Use when needed with OAuth  */
 

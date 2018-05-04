@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../../models/user');
 
 const userData = {
-  firstName: 'test',
+  firstname: 'test',
   surname: 'test',
   email: 'test@test.com',
   password: 'test',
