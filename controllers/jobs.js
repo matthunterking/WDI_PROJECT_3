@@ -22,6 +22,7 @@ function jobsShow(req, res, next) {
 }
 
 function jobsCreate(req, res, next) {
+  console.log(req.body);
   Job
     .create(req.body)
     .then(job => res.status(201).json(job))

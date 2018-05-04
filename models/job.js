@@ -51,9 +51,9 @@ applicantSchema.set('toJSON', {
 
 //the actual job schema - removed required from start and end for testing
 const jobSchema = new mongoose.Schema({
-  category: { type: String, required: true },
-  description: { type: String, required: true },
-  duration: { type: String, required: true },
+  category: { type: String },
+  description: { type: String },
+  duration: { type: String},
   startdate: { type: Date },
   enddate: { type: Date },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
