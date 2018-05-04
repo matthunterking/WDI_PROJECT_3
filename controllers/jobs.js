@@ -3,6 +3,7 @@ const Job = require('../models/job');
 function jobsIndex(req, res, next) {
   Job
     .find()
+    .populate('jobs.applicants job.messages')
     .exec()
     .then(jobs => res.json(jobs))
     .catch(next);
