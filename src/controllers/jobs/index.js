@@ -1,4 +1,4 @@
-JobsIndexCtrl.$inject = ['Wine'];
+JobsIndexCtrl.$inject = ['Job'];
 
 function JobsIndexCtrl(Job) {
   this.all = [];
