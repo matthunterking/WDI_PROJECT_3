@@ -23,8 +23,11 @@ import UsersEditCtrl from './controllers/users/edit';
 import Job from './models/job';
 import User from './models/user';
 
+import JobsIndexCtrl from './controllers/jobs/index';
+
 angular.module('neighbourgood', ['ui.router', 'satellizer'])
   .config(Router)
+  .controller('JobsIndexCtrl', JobsIndexCtrl)
   .config(Auth)
   // .controller('MainCtrl', MainCtrl)
   .controller('LoginCtrl', LoginCtrl)
