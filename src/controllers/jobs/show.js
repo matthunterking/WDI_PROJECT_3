@@ -1,7 +1,7 @@
 JobsShowCtrl.$inject = ['Job', '$state'];
 
 function JobsShowCtrl(Job, $state) {
-  this.wine = {};
+  this.job = {};
   this.data = {};
 
   Job
@@ -20,18 +20,14 @@ function JobsShowCtrl(Job, $state) {
       .then(res => this.job = res.data);
   }
 
-  function handleComentDelete() {
-    Job
-      .commentDelete(comment) {
-        Job9
-          .commentDelete($state.params.id, comment._id)
-          .then(res => this.job = res.data);
-      }
+  function handleCommentDelete(comment) {
+    Job.commentDelete($state.params.id, comment._id)
+      .then(res => this.job = res.data);
   }
 
   this.handleDelete = handleDelete;
   this.handleComentCreate = handleComentCreate;
-  this.handleComentDelete = handleComentDelete;
+  this.handleComentDelete = handleCommentDelete;
 }
 
 export default JobsShowCtrl;
