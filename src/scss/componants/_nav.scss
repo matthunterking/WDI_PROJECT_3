@@ -1,0 +1,16 @@
+.logo {
+  font-family: $titlefont;
+  color: $orange;
+  margin: 15px;
+}
+
+.navbar {
+  background-color: $darkblue;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.navbar-burger {
+  color: $orange;
+  margin-top: 10px;
+}

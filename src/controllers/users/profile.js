@@ -1,15 +1,14 @@
-UsersShowCtrl.$inject = ['User', '$state'];
+UsersProfileCtrl.$inject = ['User', '$state', '$auth'];
 
 
-function UsersShowCtrl(User, $state) {
+function UsersProfileCtrl(User, $state, $auth) {
   this.user = {};
 
-  //find a specific user
-  User.findById($state.params.id)
+  User.findById($auth.getPayload().sub)
     .then(res => this.user = res.data);
 
 
-  //delete a specific user
+  //delete your account
   function handleDelete() {
     User.removeById($state.params.id)
       .then(() => $state.go('home'));
@@ -17,6 +16,9 @@ function UsersShowCtrl(User, $state) {
 
   this.handleDelete = handleDelete;
 
+
 }
 
-export default UsersShowCtrl;
+
+
+export default UsersProfileCtrl;

@@ -1,11 +1,15 @@
-<h1>neighbourGOOD</h1>
-<img src="https://png.pngtree.com/element_origin_min_pic/16/11/29/70fc7a73b827babebcc944314f2b9958.jpg" alt="">
+<div class="animation-home">
+  <img class="sun" src="http://www.freepngimg.com/download/sun/3-2-sun-png-clipart.png" alt="">
+  <img class="cloud" src="http://etc.usf.edu/clippix/pix/single-small-cloud-illustration_medium.png" alt="">
+  <img class="house" src="https://www.crazyielts.com/wp-content/uploads/2018/03/home-2003068_1280-823x450.png" alt="">
+  <img class="car" src="https://i.pinimg.com/originals/85/6f/47/856f47792b0a8701f5c8dc38ce671e01.png" alt="">
+</div>
 
-<form ng-submit="">
+<form name='login.form' ng-submit="login.handleLogin()">
   <div class="field">
-    <label class="label">Username</label>
+    <label class="email">Email</label>
     <div class="control has-icons-left has-icons-right">
-      <input class="input" type="text" placeholder="Username">
+      <input class="input" type="email" placeholder="Email" ng-model='login.data.email'>
       <span class="icon is-small is-left">
         <i class="fas fa-user"></i>
       </span>
@@ -17,9 +21,9 @@
   </div>
 
   <div class="field">
-    <label class="label">Email</label>
+    <label class="label">Password</label>
     <div class="control has-icons-left has-icons-right">
-      <input class="input" type="password" placeholder="password">
+      <input class="input" type="password" placeholder="password" ng-model='login.data.password'>
       <span class="icon is-small is-left">
         <i class="fas fa-envelope"></i>
       </span>
@@ -27,7 +31,13 @@
         <i class="fas fa-exclamation-triangle"></i>
       </span>
     </div>
-    <p class="help"></p>
-    <button class="button is-primary">Submit</button>
-  </form>
-</div>
+    <div class="field is-grouped is-grouped-centered">
+      <p class="help">
+        <button class="button submit">Submit</button>
+      </p>
+      <p class="help">
+        <a ui-sref="register" class="button register">Sign Up</a>
+    </p>
+  </div>
+  </div>
+</form>

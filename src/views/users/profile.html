@@ -1,0 +1,21 @@
+<h1>Welcome, {{usersProfile.user.firstname}}!<h1>
+
+
+<div class= 'box'>
+
+
+
+      <h4 class='subtitle is-4'><em>Your email: {{usersProfile.user.email}}</em></h4>
+      <h4 class='subtitle is-4'>Your jobs:</h4>
+
+
+      <ul ng-repeat='job in usersProfile.user.jobs'>
+                <a ui-sref='usersProfile({ id: job._id })'><li>{{job.category}}</li></a>
+
+
+
+      </ul>
+
+</div>
+
+    <button ng-click='usersProfile.handleDelete()' class='button is-danger' ng-if='main.isAuthenticated()'>Delete your account</button>
