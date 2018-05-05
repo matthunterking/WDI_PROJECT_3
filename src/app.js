@@ -18,16 +18,15 @@ import RegisterCtrl from './controllers/auth/register';
 import UsersIndexCtrl from './controllers/users/index';
 import UsersShowCtrl from './controllers/users/show';
 import UsersEditCtrl from './controllers/users/edit';
+import UsersProfileCtrl from './controllers/users/profile';
+import JobsIndexCtrl from './controllers/jobs/index';
 
 // Jobs and Users Models
 import Job from './models/job';
 import User from './models/user';
 
-import JobsIndexCtrl from './controllers/jobs/index';
-
 angular.module('neighbourgood', ['ui.router', 'satellizer'])
   .config(Router)
-  .controller('JobsIndexCtrl', JobsIndexCtrl)
   .config(Auth)
   .controller('MainCtrl', MainCtrl)
   .controller('LoginCtrl', LoginCtrl)
@@ -35,5 +34,7 @@ angular.module('neighbourgood', ['ui.router', 'satellizer'])
   .controller('UsersIndexCtrl', UsersIndexCtrl)
   .controller('UsersShowCtrl', UsersShowCtrl)
   .controller('UsersEditCtrl', UsersEditCtrl)
+  .controller('UsersProfileCtrl', UsersProfileCtrl)
+  .controller('JobsIndexCtrl', JobsIndexCtrl)
   .service('Job', Job)
   .service('User', User);

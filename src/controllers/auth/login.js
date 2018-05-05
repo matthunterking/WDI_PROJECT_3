@@ -1,14 +1,19 @@
-LoginCtrl.$inject = ['$auth', '$state'];
+LoginCtrl.$inject = ['User', '$auth', '$state'];
 
-function LoginCtrl($auth, $state) {
+function LoginCtrl(User, $auth, $state) {
   this.data = {};
+  this.userId = '';
 
   function handleLogin() {
 
-    if(this.form.$invalid) return false;
+    // if(this.form.$invalid) return false;
 
     $auth.login(this.data)
-      .then(() => $state.go('jobsIndex'));
+      .then(() => $state.go('jobsIndex'))
+      .then(() => {
+        User.findById($auth.getPayload().sub)
+          .then(res => this.userId = res.data);
+      });
   }
 
 

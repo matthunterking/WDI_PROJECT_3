@@ -1,0 +1,19 @@
+
+  <div class= 'box'>
+
+
+        <h4>{{usersShow.user.firstname}}</h4>
+        <h4 class='subtitle is-4'><em>{{usersShow.user.email}}</em></h4>
+        <h4 class='subtitle is-4'>{{usersShow.user.firstname}}'s jobs:</h4>
+
+
+        <ul ng-repeat='job in usersShow.user.jobs'>
+                  <a ui-sref='usersShow({ id: job._id })'><li>{{job.category}}</li></a>
+
+
+
+        </ul>
+
+  </div>
+
+      <button ng-click='usersShow.handleDelete()' class='button is-danger' ng-if='main.isAuthenticated()'>Delete this user</button
