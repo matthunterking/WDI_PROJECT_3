@@ -1,12 +1,11 @@
-UsersIndexCtrl.$inject = ['$http'];
+UsersIndexCtrl.$inject = ['User'];
 
 
-function UsersIndexCtrl($http) {
+function UsersIndexCtrl(User) {
   this.all = [];
 
-  $http.get('/api/users')
+  User.find()
     .then(res => this.all = res.data);
-
 }
 
 export default UsersIndexCtrl;

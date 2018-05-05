@@ -1,15 +1,17 @@
-UsersShowCtrl.$inject = ['$http', '$state'];
+UsersShowCtrl.$inject = ['User', '$state'];
 
-function UsersShowCtrl($http, $state) {
+
+function UsersShowCtrl(User, $state) {
   this.user = {};
 
-$http.get(`/api/users/${$state.params.id}`
+  User.findById($state.params.id)
     .then(res => this.user = res.data);
 
   function handleDelete() {
-    $http.delete(`/api/users/${$state.params.id}`);
+    User.removeById($state.params.id)
       .then(() => $state.go('usersIndex'));
   }
+
 
   this.handleDelete = handleDelete;
 
