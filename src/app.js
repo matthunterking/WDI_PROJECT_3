@@ -12,7 +12,7 @@ import Router from './config/router';
 import Auth from './config/auth';
 
 //our controllers
-// import MainCtrl from './controller/main';
+import MainCtrl from './controllers/main';
 import LoginCtrl from './controllers/auth/login';
 import RegisterCtrl from './controllers/auth/register';
 import UsersIndexCtrl from './controllers/users/index';
@@ -29,7 +29,7 @@ angular.module('neighbourgood', ['ui.router', 'satellizer'])
   .config(Router)
   .controller('JobsIndexCtrl', JobsIndexCtrl)
   .config(Auth)
-  // .controller('MainCtrl', MainCtrl)
+  .controller('MainCtrl', MainCtrl)
   .controller('LoginCtrl', LoginCtrl)
   .controller('RegisterCtrl', RegisterCtrl)
   .controller('UsersIndexCtrl', UsersIndexCtrl)

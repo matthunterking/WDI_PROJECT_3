@@ -5,22 +5,53 @@
   <title>NeighbourGood</title>
 </head>
 <body>
-  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+  <nav ng-controller="MainCtrl as main" class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <!-- navbar-brand -->
     <div class="navbar-brand">
-        <p>NeighbourGood</p>
+      <a class="navbar-item" ui-sref="home">
+        <img src="https://stewkley.org.uk/wp-content/uploads/2016/05/Neighbourhood-Plan-1200-x-400.gif" width="112" height="28">
       </a>
 
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" ng-click="main.toggleNav()" ng-class="{ 'is-active': main.navBarIsOpen }">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
     </div>
+    <!-- end navbar-brand -->
+    <!-- navbar-menu -->
+    <div class="navbar-menu" ng-class="{ 'is-active': main.navBarIsOpen }">
+      <div class="navbar-end">
+        <a class="navbar-item" ui-sref="jobsIndex">All Jobs Available</a>
+
+        <a class="navbar-item" ui-sref="usersIndex">Users</a>
+        <a class="navbar-item" ng-click="main.logout()" ng-if="main.isAuthenticated()">Logout</a>
+
+        <a class="navbar-item" ui-sref="register" ng-if="!main.isAuthenticated()">Register</a>
+        <a class="navbar-item" ui-sref="login" ng-if="!main.isAuthenticated()">Login</a>
+      </div>
+    </div>
+    <!-- end navbar-menu -->
   </nav>
+
   <section class='section' ng-if="!main.isHome">
     <div class="container" ui-view>
       <ui-view></ui-view>
     </div>
-  </section
+  </section>
 </body>
 </html>
+
+<!--
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+      <p>NeighbourGood</p>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav> -->
