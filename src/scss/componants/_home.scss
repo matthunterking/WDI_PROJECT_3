@@ -2,21 +2,50 @@
   width: 30%;
   position: absolute;
   left: 70%;
+  animation-name: rotate;
+  animation-duration: 180s;
+  animation-iteration-count: infinite;
 }
 
 .cloud {
   width: 16%;
   position: absolute;
   top: 2%;
-  animation: mov
+  animation-name: moveLeft;
+  animation-duration: 120s;
+  animation-iteration-count: infinite;
 }
 
 .house {
   margin-top: 80px;
 }
 
+.car {
+  width: 25%;
+  position: absolute;
+  right: -50%;
+  top: 49%;
+  animation-name: moveRight;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+}
+
 @keyframes moveLeft {
 0% { left:0%; }
-50%   { left:80%; }
+50%   { left:60%; }
 100% { left:0%; }
+}
+
+@keyframes moveRight {
+0% { right:-50%; }
+100% { right:200%; }
+}
+
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
 }
