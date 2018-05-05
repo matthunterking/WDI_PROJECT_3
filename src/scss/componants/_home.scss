@@ -1,0 +1,22 @@
+.sun {
+  width: 30%;
+  position: absolute;
+  left: 70%;
+}
+
+.cloud {
+  width: 16%;
+  position: absolute;
+  top: 2%;
+  animation: mov
+}
+
+.house {
+  margin-top: 80px;
+}
+
+@keyframes moveLeft {
+0% { left:0%; }
+50%   { left:80%; }
+100% { left:0%; }
+}
