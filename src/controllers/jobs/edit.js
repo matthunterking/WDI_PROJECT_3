@@ -10,7 +10,7 @@ function JobsEditCtrl(Job, $state) {
   function handleUpdate() {
     Job
       .updateById($state.params.id, this.data)
-      .then(() => $state.go('jobsShow', $state.params))
+      .then(() => $state.go('jobsShow', $state.params));
   }
 
   this.handleUpdate = handleUpdate;
