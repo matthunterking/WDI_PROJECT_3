@@ -1,6 +1,11 @@
+.animation-home {
+  width: 90%;
+  margin: 0 auto;
+}
+
 .sun {
   width: 30%;
-  position: absolute;
+  position: relative;
   left: 70%;
   animation-name: rotate;
   animation-duration: 180s;
@@ -9,22 +14,23 @@
 
 .cloud {
   width: 16%;
-  position: absolute;
-  top: 2%;
+  position: relative;
+  left: -30%;
+  top: -45px;
   animation-name: moveLeft;
   animation-duration: 120s;
   animation-iteration-count: infinite;
 }
 
 .house {
-  margin-top: 80px;
+
 }
 
 .car {
   width: 25%;
-  position: absolute;
-  right: -50%;
-  top: 49%;
+  position: relative;
+  right: -120%;
+  top: -85px;
   animation-name: moveRight;
   animation-duration: 15s;
   animation-delay: 20s;
@@ -32,13 +38,13 @@
 }
 
 @keyframes moveLeft {
-0% { left:0%; }
-50%   { left:60%; }
-100% { left:0%; }
+0% { left:-30%; }
+50%   { left:25%; }
+100% { left:-30%; }
 }
 
 @keyframes moveRight {
-0% { right:-50%; }
+0% { right:-120%; }
 100% { right:200%; }
 }
 

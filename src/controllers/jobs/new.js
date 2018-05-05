@@ -4,6 +4,7 @@ function JobsNewCtrl(Job, $state) {
   this.data = {};
 
   function handleCreate() {
+    console.log('in create');
     Job
       .create(this.data)
       .then(() => $state.go('jobsIndex'));

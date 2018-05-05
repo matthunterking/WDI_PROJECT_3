@@ -4,10 +4,10 @@ function RegisterCtrl($auth, $state) {
   this.data = {};
   function handleRegister() {
 
-    if(this.form.$invalid) return false;
+    // if(this.form.$invalid) return false;
 
     $auth.signup(this.data)
-      .then(()=> $state.go('login'));
+      .then(()=> $state.go('jobsIndex'));
   }
 
 

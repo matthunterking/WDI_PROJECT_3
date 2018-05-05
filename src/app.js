@@ -20,6 +20,7 @@ import UsersShowCtrl from './controllers/users/show';
 import UsersEditCtrl from './controllers/users/edit';
 import UsersProfileCtrl from './controllers/users/profile';
 import JobsIndexCtrl from './controllers/jobs/index';
+import JobsNewCtrl from './controllers/jobs/new';
 
 // Jobs and Users Models
 import Job from './models/job';
@@ -36,5 +37,6 @@ angular.module('neighbourgood', ['ui.router', 'satellizer'])
   .controller('UsersEditCtrl', UsersEditCtrl)
   .controller('UsersProfileCtrl', UsersProfileCtrl)
   .controller('JobsIndexCtrl', JobsIndexCtrl)
+  .controller('JobsNewCtrl', JobsNewCtrl)
   .service('Job', Job)
   .service('User', User);
