@@ -1,0 +1,20 @@
+
+<h1 class='title is-1'>The Users</h1>
+<div class='columns is-multiline'>
+
+  <div ng-repeat='user in usersIndex.all' class='column is-half-tablet is-one-third-desktop'>
+
+  <a ui-sref='usersShow({ id: user._id })'>
+    <div class= 'box'>
+
+          <img src='{{user.image}}' />
+          <h4>{{user.firstname}} {{user.lastname}}</h4>
+          <h4 class='subtitle is-4'><em>{{user.email}}</em></h4>
+          <p>{{user.bio}}</p>
+
+
+    </div>
+
+</a>
+  </div>
+</div>
