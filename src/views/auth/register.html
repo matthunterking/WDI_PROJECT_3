@@ -1,0 +1,55 @@
+<p class="is-size-2 title">Join NeighbourGood</p>
+<form ng-submit="register.handleRegister()">
+
+  <div class="field">
+    <label class="label">First Name</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="" ng-model="register.data.firstname">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Surname</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="" ng-model="register.data.surname">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Email</label>
+    <div class="control">
+      <input class="input" type="email" placeholder="" ng-model="register.data.email">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Password</label>
+    <div class="control">
+      <input class="input" type="password" placeholder="" ng-model="register.data.password">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Confirm Password</label>
+    <div class="control">
+      <input class="input" type="password" placeholder="" ng-model="register.data.confirmPassword">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Bio<small> (optional)</small></label>
+    <div class="control">
+      <textarea class="textarea" ng-model="register.data.bio" placeholder="Please include a few lines about yourself so other users can get to know you"></textarea>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Profile Picture<small> (optional)</small></label>
+    <div class="control">
+      <input class="input" type="text" placeholder="" ng-model="register.data.image">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Location<small> (optional)</small></label>
+    <div class="control">
+      <input class="input" type="text" placeholder="" ng-model="register.data.location">
+    </div>
+  </div>
+  <p class="help">
+    <button class="button submit">Submit</button>
+  </p>
+</form>
