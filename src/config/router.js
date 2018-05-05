@@ -12,7 +12,8 @@ function Router($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'views/home.html'
+      templateUrl: 'views/home.html',
+      controller: 'LoginCtrl as login'
     })
 
     .state('jobsIndex', {
@@ -24,7 +25,6 @@ function Router($stateProvider, $urlRouterProvider) {
     .state('login', {
       url: '/login',
       templateUrl: 'views/auth/login.html',
-      controller: 'LoginCtrl as login'
     })
     .state('register', {
       url: '/register',
