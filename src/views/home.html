@@ -1,13 +1,13 @@
-<div class="animation home">
+<div class="animation-home">
   <img class="sun" src="http://www.freepngimg.com/download/sun/3-2-sun-png-clipart.png" alt="">
   <img class="cloud" src="http://etc.usf.edu/clippix/pix/single-small-cloud-illustration_medium.png" alt="">
   <img class="house" src="https://www.crazyielts.com/wp-content/uploads/2018/03/home-2003068_1280-823x450.png" alt="">
   <img class="car" src="https://i.pinimg.com/originals/85/6f/47/856f47792b0a8701f5c8dc38ce671e01.png" alt="">
 </div>
 
-<form ng-submit="">
+<form ng-submit="login.handleLogin()">
   <div class="field">
-    <label class="label">Username</label>
+    <label class="label">Email</label>
     <div class="control has-icons-left has-icons-right">
       <input class="input" type="text" placeholder="Username">
       <span class="icon is-small is-left">
@@ -21,7 +21,7 @@
   </div>
 
   <div class="field">
-    <label class="label">Email</label>
+    <label class="label">Password</label>
     <div class="control has-icons-left has-icons-right">
       <input class="input" type="password" placeholder="password">
       <span class="icon is-small is-left">
@@ -32,6 +32,9 @@
       </span>
     </div>
     <p class="help"></p>
-    <button class="button is-primary">Submit</button>
-  </form>
-</div>
+    <button class="button submit">Submit</button>
+  </div>
+</form>
+<a href="/register">
+  <button class="button register">Sign Up</button>
+</a>
