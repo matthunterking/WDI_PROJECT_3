@@ -10,7 +10,7 @@ function RegisterCtrl($auth, $state) {
       .then(()=> $state.go('jobsIndex'));
   }
 
-
+//need to decided if we go home or to jobsIndex
 
   function isDanger(field) {
     return (this.form[field].$touched || this.form.$submitted) && (this.form[field].$error.required || this.form[field].$error.email);

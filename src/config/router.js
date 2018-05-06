@@ -2,7 +2,7 @@ secureState.$inject = ['$q', '$auth', '$state'];
 function secureState($q, $auth, $state) {
   return new $q(resolve => {
     if($auth.isAuthenticated()) return resolve();
-    $state.go('login');
+    $state.go('home');
   });
 }
 
@@ -15,7 +15,6 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/home.html',
       controller: 'LoginCtrl as login'
     })
-
     .state('jobsIndex', {
       url: '/jobs',
       templateUrl: 'views/jobs/index.html',

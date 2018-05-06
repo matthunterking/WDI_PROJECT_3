@@ -25,14 +25,14 @@
       <div class="navbar-end">
         <a class="navbar-item" ui-sref="jobsIndex">All Jobs Available</a>
 
-        <a class="navbar-item" ui-sref="usersIndex">Users</a>
-
-        <a class="navbar-item" ng-click="main.logout()" ng-if="main.isAuthenticated()">Logout</a>
+        <a class="navbar-item" ui-sref="usersIndex" ng-if="main.isAuthenticated()">Users</a>
 
         <a class="navbar-item" ng-controller="LoginCtrl as login" ui-sref="usersProfile({ id: login.userId })" ng-if="main.isAuthenticated()">Profile</a>
 
+        <a class="navbar-item" ng-click="main.logout()" ng-if="main.isAuthenticated()">Logout</a>
+
         <a class="navbar-item" ui-sref="register" ng-if="!main.isAuthenticated()">Register</a>
-        <a class="navbar-item" ui-sref="login" ng-if="!main.isAuthenticated()">Login</a>
+        <a class="navbar-item" ui-sref="home" ng-if="!main.isAuthenticated()">Login</a>
       </div>
     </div>
     <!-- end navbar-menu -->
