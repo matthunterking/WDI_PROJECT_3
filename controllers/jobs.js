@@ -3,7 +3,7 @@ const Job = require('../models/job');
 function jobsIndex(req, res, next) {
   Job
     .find()
-    .populate('jobs.applicants job.messages')
+    .populate('createdBy')
     .exec()
     .then(jobs => res.json(jobs))
     .catch(next);
@@ -12,7 +12,8 @@ function jobsIndex(req, res, next) {
 function jobsShow(req, res, next) {
   Job
     .findById(req.params.id)
-    .populate('jobs.applicants job.messages')
+    .populate('createdBy')
+    .populate('messages.createdBy applicants.who')
     .exec()
     .then(job => {
       if(!job) return res.sendStatus(404);
@@ -25,6 +26,7 @@ function jobsCreate(req, res, next) {
   console.log(req.body);
   Job
     .create(req.body)
+    .populate('createdBy')
     .then(job => res.status(201).json(job))
     .catch(next);
 }
@@ -58,7 +60,7 @@ function jobsDelete(req, res, next) {
 function jobsMessageCreate(req, res, next) {
   req.body.createdBy = req.currentUser;
   Job.findById(req.params.id)
-    .populate('createdBy messages.createdBy')
+    .populate('createdBy messages.createdBy applicants.who')
     .exec()
     .then(job => {
       job.messages.push(req.body);
@@ -73,7 +75,7 @@ function jobsMessageCreate(req, res, next) {
 //jobs message deletion
 function jobsMessageDelete(req, res, next) {
   Job.findById(req.params.id)
-    .populate('createdBy messages.createdBy')
+    .populate('createdBy messages.createdBy applicants.who')
     .exec()
     .then(job => {
       const message = job.messages.id(req.params.messageId);
