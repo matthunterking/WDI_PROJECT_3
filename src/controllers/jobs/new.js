@@ -1,6 +1,6 @@
-JobsNewCtrl.$inject = ['Job', '$state'];
+JobsNewCtrl.$inject = ['Job', '$state', '$http'];
 
-function JobsNewCtrl(Job, $state) {
+function JobsNewCtrl(Job, $state, $http) {
   this.data = {};
 
   function handleCreate() {

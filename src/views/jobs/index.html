@@ -1,6 +1,6 @@
 <h1>Available Jobs</h1>
 
-<img src="https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/pass/GoogleMapTA.jpg" alt="">
+<div class="map" g-map listings="jobsIndex.all">GOOGLE MAP</div>
 
 <div class="columns is-inline">
   <div ng-repeat="job in jobsIndex.all" class="column ">
@@ -23,24 +23,3 @@
     </div>
   </div>
 </div>
-
-
-
-<!--
-<h1>Jobs Index</h1>
-<div class="columns is-multiline">
-<div ng-repeat="job in jobsIndex.all" class="column is-half-tablet is-one-third-desktop">
-
-<a ui-sref="jobsShow({ id: job._id })">
-<div class="card">
-<div class="card-content">
-<div class="media">
-<div class="media-content">
-<p class="title is-4">{{ job.title }}</p>
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div> -->

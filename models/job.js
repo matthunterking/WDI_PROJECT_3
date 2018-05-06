@@ -56,6 +56,8 @@ const jobSchema = new mongoose.Schema({
   duration: { type: String},
   startdate: { type: Date },
   enddate: { type: Date },
+  postcode: { type: String },
+  location: { type: Object },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   applicants: [ applicantSchema ],
   messages: [ messageSchema ]

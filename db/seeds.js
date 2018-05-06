@@ -61,6 +61,7 @@ User
           duration: 'ongoing',
           startdate: 'Wed Oct 18 2017 12:41:34 GMT+0000 (UTC)',
           enddate: 'Wed Oct 18 2018 12:41:34 GMT+0000 (UTC)',
+          location: { lat: 51.517, lng: -0.078 },
           createdBy: users[0],
           applicants: [{
             who: users[1],
@@ -76,6 +77,7 @@ User
           duration: 'once',
           startdate: 'Wed Oct 18 2017 12:41:34 GMT+0000 (UTC)',
           enddate: 'Wed Oct 18 2018 12:41:34 GMT+0000 (UTC)',
+          location: { lat: 51.517, lng: -0.079 },
           createdBy: users[0],
           applicants: [{
             who: users[2],
@@ -84,52 +86,8 @@ User
             status: 'accepted'
           }],
           messages: [{content: 'I fix stuff good!', createdBy: users[2]}, {content: 'I fix stuff better!', createdBy: users[3]}]
-        },
-
-        {category: 'cooking',
-          description: 'Always happy to take people\'s leftovers',
-          duration: 'ongoing',
-          startdate: 'Wed Oct 18 2017 12:41:34 GMT+0000 (UTC)',
-          enddate: 'Wed Oct 18 2018 12:41:34 GMT+0000 (UTC)',
-          createdBy: users[1],
-          applicants: [{
-            who: users[2],
-            status: 'pending'},
-          {who: users[3],
-            status: 'accepted'
-          }],
-          messages: [{content: 'My steak tartare is divine!', createdBy: users[2]}, {content: 'I make great fish pie!', createdBy: users[3]}]
-        },
-
-        {category: 'gardening',
-          description: 'My garden is so overgrown that my hound has got lost in it, would appreciate someone coming over to help me prune the shrubbery.',
-          duration: 'once',
-          startdate: 'Wed Oct 18 2017 12:41:34 GMT+0000 (UTC)',
-          enddate: 'Wed Oct 18 2018 12:41:34 GMT+0000 (UTC)',
-          createdBy: users[2],
-          applicants: [{
-            who: users[3],
-            status: 'pending'},
-          {who: users[0],
-            status: 'accepted'
-          }],
-          messages: [{content: 'I have a big shovel.', createdBy: users[3]}, {content: 'I can talk to plants!', createdBy: users[0]}]
-        },
-
-        {category: 'pet-sitting',
-          description: 'I will be out of town for a week and need someone to feed my guinea pigs.',
-          duration: 'once',
-          startdate: 'Wed Oct 18 2017 12:41:34 GMT+0000 (UTC)',
-          enddate: 'Wed Oct 25 2018 12:41:34 GMT+0000 (UTC)',
-          createdBy: users[3],
-          applicants: [{
-            who: users[0],
-            status: 'pending'},
-          {who: users[1],
-            status: 'accepted'
-          }],
-          messages: [{content: 'I love pigs.', createdBy: users[0]}, {content: 'I love guineas!', createdBy: users[1]}]
         }
+
       ]);
   })
 

@@ -59,7 +59,8 @@ function jobsDelete(req, res, next) {
 //jobs message creation
 function jobsMessageCreate(req, res, next) {
   req.body.createdBy = req.currentUser;
-  Job.findById(req.params.id)
+  Job
+    .findById(req.params.id)
     .populate('createdBy messages.createdBy applicants.who')
     .exec()
     .then(job => {
@@ -74,7 +75,8 @@ function jobsMessageCreate(req, res, next) {
 
 //jobs message deletion
 function jobsMessageDelete(req, res, next) {
-  Job.findById(req.params.id)
+  Job
+    .findById(req.params.id)
     .populate('createdBy messages.createdBy applicants.who')
     .exec()
     .then(job => {
@@ -89,7 +91,8 @@ function jobsMessageDelete(req, res, next) {
 //jobs applicant creation
 function jobsApplicantCreate(req, res, next) {
   req.body.who = req.currentUser;
-  Job.findById(req.params.id)
+  Job
+    .findById(req.params.id)
     .populate('createdBy messages.createdBy applicants.who')
     .exec()
     .then(job => {
@@ -104,7 +107,8 @@ function jobsApplicantCreate(req, res, next) {
 
 //jobs applicant deletion
 function jobsApplicantDelete(req, res, next) {
-  Job.findById(req.params.id)
+  Job
+    .findById(req.params.id)
     .populate('createdBy messages.createdBy applicants.who')
     .exec()
     .then(job => {

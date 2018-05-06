@@ -1,0 +1,51 @@
+<p class="is-size-2 title">Post a Job</p>
+<form ng-submit="jobsNew.handleCreate()" name="jobsNew.form">
+  <div class="field">
+    <label class="label">Category</label>
+    <div class="select">
+      <select ng-model="jobsNew.data.category">
+        <option>Shopping</option>
+        <option>Gardening</option>
+        <option>DIY</option>
+        <option>Social</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Description</label>
+    <div class="control">
+      <textarea class="textarea" ng-model="jobsNew.data.description" placeholder="Please include a short description of the job"></textarea>
+    </div>
+  <div class="field">
+    <label class="label">Location</label>
+    <div class="control">
+      <input class="textarea" ng-model="jobsNew.data.postcode"></input>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Duration</label>
+    <div class="select">
+      <select ng-model="jobsNew.data.duration">
+        <option>1-2 hours</option>
+        <option>Half a day</option>
+        <option>Full day</option>
+        <option>1-3 days</option>
+        <option>More then 3 days</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Start Date</label>
+    <div class="control">
+      <input class="input" type="date" placeholder="" ng-model="jobsNew.data.startdate">
+    </div>
+  <div class="field">
+    <label class="label">End Date</label>
+    <div class="control">
+      <input class="input" type="date" placeholder="" ng-model="jobsNew.data.enddate">
+    </div>
+  </div>
+  <p class="help">
+    <button class="button submit">Submit</button>
+  </p>
+</form>
