@@ -1,6 +1,6 @@
 <p class="is-size-2 title">Join NeighbourGood</p>
 
-<div class='' ng-if="register.form.$submitted && !main.isAuthenticated()">
+<div class='' ng-if="register.form.$submitted && !register.isAuthenticated()">
 Sorry, you made a mistake while registering.
 </div>
 
@@ -37,6 +37,7 @@ Sorry, you made a mistake while registering.
       <div ng-messages="register.form.email.$error" ng-if="register.form.email.$dirty || register.form.$submitted">
         <div class='' ng-message="required">Please provide an email address</div>
         <div class= '' ng-message="email">This must be an email address</div>
+        <div class= '' ng-message="unique">Sorry, this email address has already been registered</div>
       </div>
       <!-- end in case of error -->
     </div>
