@@ -1,7 +1,7 @@
 <p class="title is-2">{{ jobsShow.job.category }} with {{ jobsShow.job.createdBy.firstname }}</p>
 <div class="columns is-mobile">
   <div class="column is-one-quarter">
-    <img src="https://i.ebayimg.com/images/g/WK8AAOSwxg5XyBUD/s-l300.jpg" alt="">
+    <img src="https://i.ebayimg.com/images/g/WK8AAOSwxg5XyBUD/s-l300.jpg" alt="" />
   </div>
   <div class="column is-three-quarters">
     <p class="title is-4">{{ jobsShow.job.description }}</p>
@@ -12,12 +12,34 @@
   </div>
 </div>
 
-<div class="columns is-mobile">
-    <div class="column is-three-quarters">
-      MAP
-    </div>
-    <div class="column is-one-quarter">
-      DETAILS
-    </div>
 
+<p class="column title is-4">Posted by</p>
+
+<div class="columns is-mobile">
+  <div class="column is-one-quarter">
+    <img src="{{ jobsShow.job.createdBy.image }}" alt="" />
+  </div>
+  <div class="column is-three-quarters">
+    <p class="title is-2">{{ jobsShow.job.createdBy.firstname }} {{ jobsShow.job.createdBy.surname }}</p>
+    <p class="title is-4">{{ jobsShow.job.createdBy.bio }}</p>
+  </div>
+</div>
+
+<div g-map center="jobsShow.job.location" class="map column"></div>
+
+<div class="columns is-mobile">
+  <div class="comments">
+    <div class="media" ng-repeat="message in jobsShow.job.messages">
+      <div class="column is-one-quarter">
+        <img src="{{ message.createdBy.image }}" alt="" />
+      </div>
+      <div class="column is-half">
+        <p class="title is-4">{{ message.createdBy.firstname }} {{ message.createdBy.surname }}</p>
+        <p class="title is-4">{{ message.content }}</p>
+        <p class="title is-6">About {{ message.createdBy.firstname }}:</p>
+        <p class="title is-6">{{ message.createdBy.bio }}</p>
+      </div>
+      <button ng-click="jobsShow.handleMessageDelete(message)" class="button is-danger">Delete</button>
+    </div>
+  </div>
 </div>
