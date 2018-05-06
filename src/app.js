@@ -29,6 +29,7 @@ import User from './models/user';
 
 //directives
 import gMap from './directives/gMap';
+import gAutocomplete from './directives/gAutocomplete';
 
 angular.module('neighbourgood', ['ui.router', 'satellizer', 'ngMessages'])
   .config(Router)
@@ -44,4 +45,5 @@ angular.module('neighbourgood', ['ui.router', 'satellizer', 'ngMessages'])
   .controller('JobsNewCtrl', JobsNewCtrl)
   .service('Job', Job)
   .service('User', User)
-  .directive('gMap', gMap);
+  .directive('gMap', gMap)
+  .directive('gAutocomplete', gAutocomplete);

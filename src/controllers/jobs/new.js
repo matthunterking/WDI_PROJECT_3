@@ -1,6 +1,6 @@
-JobsNewCtrl.$inject = ['Job', '$state', '$http'];
+JobsNewCtrl.$inject = ['Job', '$state'];
 
-function JobsNewCtrl(Job, $state, $http) {
+function JobsNewCtrl(Job, $state) {
   this.data = {};
 
   function handleCreate() {
@@ -9,7 +9,13 @@ function JobsNewCtrl(Job, $state, $http) {
       .then(() => $state.go('jobsIndex'));
   }
 
+  function updateLocation(location) {
+    console.log('updating location..', location);
+    this.data.location = location;
+  }
+
   this.handleCreate = handleCreate;
+  this.updateLocation = updateLocation;
 
 }
 

@@ -26,7 +26,6 @@ function jobsCreate(req, res, next) {
   console.log(req.body);
   Job
     .create(req.body)
-    .populate('createdBy')
     .then(job => res.status(201).json(job))
     .catch(next);
 }
