@@ -60,15 +60,13 @@ function jobsMessageCreate(req, res, next) {
   req.body.createdBy = req.currentUser;
   Job
     .findById(req.params.id)
-    .populate('createdBy messages.createdBy applicants.who')
+    // .populate('createdBy messages.createdBy applicants.who')
     .exec()
     .then(job => {
       job.messages.push(req.body);
       return job.save();
     })
-    .then(job => {
-      res.json(job);
-    })
+    .then(job => res.json(job))
     .catch(next);
 }
 

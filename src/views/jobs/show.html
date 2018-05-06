@@ -36,10 +36,19 @@
       <div class="column is-half">
         <p class="title is-4">{{ message.createdBy.firstname }} {{ message.createdBy.surname }}</p>
         <p class="title is-4">{{ message.content }}</p>
-        <p class="title is-6">About {{ message.createdBy.firstname }}:</p>
-        <p class="title is-6">{{ message.createdBy.bio }}</p>
+        <p class="title is-6">About {{ message.createdBy.firstname }}: {{ message.createdBy.bio }}</p>
       </div>
-      <button ng-click="jobsShow.handleMessageDelete(message)" class="button is-danger">Delete</button>
+      <div class="column is-one-quarter">
+        <button ng-click="jobsShow.handleMessageDelete(message)" class="button is-danger">Delete</button>
+      </div>
     </div>
   </div>
 </div>
+
+<form ng-submit="jobsShow.handleMessageCreate()">
+  <div class="field">
+    <label for="content">Comment</label>
+    <textarea class="textarea" ng-model="jobsShow.data.message" placeholder="Message"></textarea>
+  </div>
+  <button class="button">Submit</button>
+</form>

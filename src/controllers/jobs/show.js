@@ -14,20 +14,22 @@ function JobsShowCtrl(Job, $state) {
       .then(() => $state.go('jobsIndex'));
   }
 
-  function handleComentCreate() {
+  function handleMessageCreate() {
+    console.log(this.data);
     Job
-      .commentCreate($state.params.id, this.data)
+      .messageCreate($state.params.id, this.data)
       .then(res => this.job = res.data);
   }
 
-  function handleCommentDelete(comment) {
-    Job.commentDelete($state.params.id, comment._id)
+  function handleMessageDelete(comment) {
+    Job
+      .messageDelete($state.params.id, comment._id)
       .then(res => this.job = res.data);
   }
 
   this.handleDelete = handleDelete;
-  this.handleComentCreate = handleComentCreate;
-  this.handleComentDelete = handleCommentDelete;
+  this.handleMessageCreate = handleMessageCreate;
+  this.handleMessageDelete = handleMessageDelete;
 }
 
 export default JobsShowCtrl;
