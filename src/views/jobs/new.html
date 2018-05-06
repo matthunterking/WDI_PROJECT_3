@@ -16,10 +16,11 @@
     <div class="control">
       <textarea class="textarea" ng-model="jobsNew.data.description" placeholder="Please include a short description of the job"></textarea>
     </div>
+  </div>
   <div class="field">
     <label class="label">Location</label>
     <div class="control">
-      <input class="input" name="location" g-autocomplete handle-change="jobsNew.updateLocation(location)"></input>
+      <input class="input" name="location" g-autocomplete handle-change="jobsNew.updateLocation(location)" />
     </div>
   </div>
   <div class="field">
@@ -37,15 +38,16 @@
   <div class="field">
     <label class="label">Start Date</label>
     <div class="control">
-      <input class="input" type="date" placeholder="" ng-model="jobsNew.data.startdate">
+      <input class="input" type="date" placeholder="" ng-model="jobsNew.data.startdate" />
     </div>
+  </div>
   <div class="field">
     <label class="label">End Date</label>
     <div class="control">
-      <input class="input" type="date" placeholder="" ng-model="jobsNew.data.enddate">
+      <input class="input" type="date" placeholder="" ng-model="jobsNew.data.enddate" />
     </div>
   </div>
   <p class="help">
-    <button class="button submit">Submit</button>
+    <button class="button greenbutton">Submit</button>
   </p>
 </form>
