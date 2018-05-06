@@ -86,7 +86,6 @@ function jobsMessageDelete(req, res, next) {
     .catch(next);
 }
 
-
 //jobs applicant creation
 function jobsApplicantCreate(req, res, next) {
   req.body.who = req.currentUser;
@@ -103,7 +102,6 @@ function jobsApplicantCreate(req, res, next) {
     .catch(next);
 }
 
-
 //jobs applicant deletion
 function jobsApplicantDelete(req, res, next) {
   Job.findById(req.params.id)
@@ -117,7 +115,6 @@ function jobsApplicantDelete(req, res, next) {
     .then(job => res.json(job))
     .catch(next);
 }
-
 
 module.exports = {
   index: jobsIndex,
