@@ -9,13 +9,13 @@ function UsersShowCtrl(User, $state) {
     .then(res => this.user = res.data);
 
 
-  //delete a specific user
-  function handleDelete() {
-    User.removeById($state.params.id)
-      .then(() => $state.go('home'));
-  }
-
-  this.handleDelete = handleDelete;
+  // //delete a specific user
+  // function handleDelete() {
+  //   User.removeById($state.params.id)
+  //     .then(() => $state.go('home'));
+  // }
+  //
+  // this.handleDelete = handleDelete;
 
 }
 

@@ -6,13 +6,13 @@ function LoginCtrl(User, $auth, $state) {
 
   function handleLogin() {
 
-    // if(this.form.$invalid) return false;
+    if(this.form.$invalid) return false;
 
     $auth.login(this.data)
-      .then(() => $state.go('jobsIndex'))
       .then(() => {
         User.findById($auth.getPayload().sub)
-          .then(res => this.userId = res.data);
+          .then(res => this.userId = res.data)
+          .then(() => $state.go('jobsIndex'));
       });
   }
 
@@ -21,9 +21,7 @@ function LoginCtrl(User, $auth, $state) {
     return (this.form[field].$touched || this.form.$submitted) && (this.form[field].$error.required || this.form[field].$error.email);
   }
 
-
-
-
+  this.isAuthenticated = $auth.isAuthenticated;
   this.handleLogin = handleLogin;
   this.isDanger = isDanger;
 

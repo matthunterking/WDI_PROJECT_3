@@ -5,11 +5,22 @@
   <img class="car" src="https://i.pinimg.com/originals/85/6f/47/856f47792b0a8701f5c8dc38ce671e01.png" alt="">
 </div>
 
-<form name='login.form' ng-submit="login.handleLogin()">
+
+<section ng-if="login.isAuthenticated()">
+  <p>Thanks for using NeighbourGood!</p>
+</section>
+<section ng-if="!login.isAuthenticated()">
+<form name='login.form' ng-submit="login.handleLogin()" novalidate>
   <div class="field">
-    <label class="email">Email</label>
+    <label for="email" class="label">Email</label>
     <div class="control has-icons-left has-icons-right">
-      <input class="input" type="email" placeholder="Email" ng-model='login.data.email'>
+      <input class="input" type="email" placeholder="Email" name="email" ng-model='login.data.email' required ng-class = " {'is-danger': login.isDanger('email')}" />
+      <!-- in case of input error -->
+      <div ng-messages="login.form.email.$error" ng-if="login.form.email.$dirty || login.form.$submitted">
+      <div class='' ng-message="required">Please provide your email address</div>
+      <div class= '' ng-message="email">This must be an email address</div>
+    </div>
+    <!-- end of in case of error -->
       <span class="icon is-small is-left">
         <i class="fas fa-user"></i>
       </span>
@@ -21,9 +32,14 @@
   </div>
 
   <div class="field">
-    <label class="label">Password</label>
+    <label for="password" class="label">Password</label>
     <div class="control has-icons-left has-icons-right">
-      <input class="input" type="password" placeholder="password" ng-model='login.data.password'>
+      <input class="input" type="password" placeholder="password" name="password" ng-model='login.data.password' required ng-class = " {'is-danger': login.isDanger('password')}" />
+      <!-- in case of input error -->
+      <div ng-messages="login.form.password.$error" ng-if="login.form.password.$dirty || login.form.$submitted">
+      <div class='' ng-message="required">Please provide your password</div>
+     </div>
+    <!-- end of in case of error -->
       <span class="icon is-small is-left">
         <i class="fas fa-envelope"></i>
       </span>
@@ -41,3 +57,4 @@
   </div>
   </div>
 </form>
+</section>

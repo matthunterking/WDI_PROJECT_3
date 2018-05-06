@@ -10,7 +10,8 @@ function UsersProfileCtrl(User, $state, $auth) {
 
   //delete your account
   function handleDelete() {
-    User.removeById($state.params.id)
+    User.removeById($auth.getPayload().sub)
+      .then(() => $auth.logout())
       .then(() => $state.go('home'));
   }
 
@@ -18,7 +19,6 @@ function UsersProfileCtrl(User, $state, $auth) {
 
 
 }
-
 
 
 export default UsersProfileCtrl;
