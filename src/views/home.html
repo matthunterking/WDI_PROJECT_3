@@ -9,6 +9,9 @@
   <p>Thanks for using NeighbourGood!</p>
 </section>
 <section ng-if="!login.isAuthenticated()">
+<div class='' ng-if="login.form.$submitted && !login.isAuthenticated()">
+  Sorry, there is an error with either your email or password.
+</div>
   <form name='login.form' ng-submit="login.handleLogin()" novalidate>
     <div class="field">
       <label for="email" class="label">Email</label>
