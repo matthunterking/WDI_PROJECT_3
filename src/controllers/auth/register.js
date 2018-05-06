@@ -16,7 +16,6 @@ function RegisterCtrl($auth, $state) {
     return (this.form[field].$touched || this.form.$submitted) && (this.form[field].$error.required || this.form[field].$error.email);
   }
 
-
   this.handleRegister = handleRegister;
   this.isDanger = isDanger;
 }

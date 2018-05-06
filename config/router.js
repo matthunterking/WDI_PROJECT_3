@@ -13,7 +13,6 @@ router.route('/jobs/:id')
   .put(secureRoute, jobs.update)
   .delete(secureRoute, jobs.delete);
 
-
 router.route('/users')
   .get(users.index);
 

@@ -16,7 +16,6 @@ function LoginCtrl(User, $auth, $state) {
       });
   }
 
-
   function isDanger(field) {
     return (this.form[field].$touched || this.form.$submitted) && (this.form[field].$error.required || this.form[field].$error.email);
   }
