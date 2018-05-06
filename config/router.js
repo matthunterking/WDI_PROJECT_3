@@ -27,7 +27,6 @@ router.route('/users/:id')
 
 router.post('/login', auth.login);  /* <-- Not Needed as we are using the home screen as the login page */
 
-
 router.post('/jobs/:id/messages', jobs.messageCreate);
 router.delete('/jobs/:id/messages/:messageId', jobs.messageDelete);
 

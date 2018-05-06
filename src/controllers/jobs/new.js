@@ -1,22 +1,12 @@
-JobsNewCtrl.$inject = ['Job', '$state'];
+JobsNewCtrl.$inject = ['Job', '$state', '$http'];
 
-function JobsNewCtrl(Job, $state) {
+function JobsNewCtrl(Job, $state, $http) {
   this.data = {};
 
   function handleCreate() {
-    console.log(this.data.location);
-    postcodeConverter(this.data.location);
     Job
       .create(this.data)
       .then(() => $state.go('jobsIndex'));
-  }
-
-  function postcodeConverter(postcode) {
-    return postcode;
-    //receive a post code
-    //send a request to app
-    //create an object and save the lat and long
-    //save that object in the record
   }
 
   this.handleCreate = handleCreate;
