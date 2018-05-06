@@ -19,7 +19,7 @@ function Job($http) {
   function updateById(id, data) {
     return $http.put(`/api/jobs/${id}`, data);
   }
-
+  // 
   // function commentCreate(jobId, data) {
   //   return $http.post(`/api/jobs/${jobId}/comments`, data);           /* This will be added when comments are fucntional? */
   // }

@@ -13,7 +13,6 @@ router.route('/jobs/:id')
   .put(secureRoute, jobs.update)
   .delete(secureRoute, jobs.delete);
 
-
 router.route('/users')
   .get(users.index);
 
@@ -26,7 +25,6 @@ router.route('/users/:id')
   .delete(secureRoute, users.delete);
 
 router.post('/login', auth.login);  /* <-- Not Needed as we are using the home screen as the login page */
-
 
 router.post('/jobs/:id/messages', jobs.messageCreate);
 router.delete('/jobs/:id/messages/:messageId', jobs.messageDelete);
