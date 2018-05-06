@@ -1,5 +1,8 @@
 <p class="is-size-2 title">Join NeighbourGood</p>
 <form name='register.form' ng-submit="register.handleRegister()" novalidate>
+  <div class='' ng-if="register.form.$submitted && !main.isAuthenticated()">
+  Sorry, you made a mistake while registering.
+</div>
 
   <div class="field">
     <label class="label" for='firstname'>First Name</label>
