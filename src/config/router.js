@@ -25,6 +25,11 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/jobs/new.html',
       controller: 'JobsNewCtrl as jobsNew'
     })
+    .state('jobsShow', {
+      url: '/jobs/:id',
+      templateUrl: 'views/jobs/show.html',
+      controller: 'JobsShowCtrl as jobsShow'
+    })
     .state('login', {
       url: '/login',
       templateUrl: 'views/auth/login.html'

@@ -1,3 +1,23 @@
-<div class="media-content">
-  <p class="title is-4">{{ jobsShow.job.location }}</p>
+<p class="title is-2">{{ jobsShow.job.category }} with {{ jobsShow.job.createdBy.firstname }}</p>
+<div class="columns is-mobile">
+  <div class="column is-one-quarter">
+    <img src="https://i.ebayimg.com/images/g/WK8AAOSwxg5XyBUD/s-l300.jpg" alt="">
+  </div>
+  <div class="column is-three-quarters">
+    <p class="title is-4">{{ jobsShow.job.description }}</p>
+    <p class="title is-4">Duration: {{ jobsShow.job.duration }}</p>
+    <p class="title is-4">Start Date: {{ jobsShow.job.startDate }}</p>
+    <p class="title is-4">Start Date: {{ jobsShow.job.endDate }}</p>
+    <p class="title is-4">Posted {{ jobsShow.job.createdAtRelative }}</p>
+  </div>
+</div>
+
+<div class="columns is-mobile">
+    <div class="column is-three-quarters">
+      MAP
+    </div>
+    <div class="column is-one-quarter">
+      DETAILS
+    </div>
+
 </div>

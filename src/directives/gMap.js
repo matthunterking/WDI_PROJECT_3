@@ -28,7 +28,7 @@ function gMap() {
       const marker = new google.maps.Marker({
         map: map,
         position: map.getCenter(),
-        icon: 'https://cdn0.iconfinder.com/data/icons/minimal-set-four/32/minimal-28-128.png',
+        label: "😃",
         animation: google.maps.Animation.DROP
       });
 
