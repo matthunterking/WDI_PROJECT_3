@@ -79,6 +79,9 @@
       <input class="input" type="text" placeholder="" name='location' ng-model="register.data.location">
     </div>
   </div>
+  <div class='' ng-if="register.form.$submitted && !main.isAuthenticated()">
+  Sorry, you made a mistake while registering.
+</div>
   <p class="help">
     <button class="button submit">Submit</button>
   </p>
