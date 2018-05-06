@@ -25,7 +25,7 @@ User
     passwordConfirmation: 'password',
     bio: 'I enjoy reading, having tea, and matchmaking people. I love talking to people and don\'t get to do it enough!',
     image: 'https://www.biography.com/.image/t_share/MTE1ODA0OTcxNTQ2ODcxMzA5/jane-austen-9192819-1-402.jpg',
-    location: 'WC2R 0EZ'
+    location: 'E1 7QX'
   },{
     firstname: 'Emily',
     surname: 'Brontë',
@@ -43,7 +43,7 @@ User
     passwordConfirmation: 'password',
     bio: 'If you need a hand moving something, I\'m your man! Also good at pet-sitting. Unfortunately, I am bad at gardening and often need help mowing my lawn.' ,
     image: 'https://collectionimages.npg.org.uk/large/mw01926/Arthur-Conan-Doyle.jpg',
-    location: 'NW1 6XE'
+    location: 'E1 1BB'
   },{
     firstname: 'Charles',
     surname: 'Dickens',
@@ -52,7 +52,7 @@ User
     passwordConfirmation: 'password',
     bio: 'I love cooking. Don\'t have time to shop though - far too busy.',
     image: 'https://www.telegraph.co.uk/content/dam/news/china-watch/china-watch-migration/charles-dickens_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwZwVSIA7rSIkPn18jgFKEo0.jpg?imwidth=450',
-    location: 'SE1 1YY'
+    location: 'E1 6BX'
   }])
   .then(users => {
     console.log(`${users.length} users created`);

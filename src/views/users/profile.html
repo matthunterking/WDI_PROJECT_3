@@ -1,21 +1,19 @@
-<h1>Welcome, {{usersProfile.user.firstname}}!<h1>
+
 
 
 <div class= 'box'>
 
+  <p>Welcome, {{usersProfile.user.firstname}}!</p>
+  <p>Your email: {{usersProfile.user.email}}</p>
+  <p>Your bio: {{usersProfile.user.bio}}</p>
+  <p>Your location: {{usersProfile.user.location}}</p>
+  <p>Your jobs:</p>
 
+  <div ng-repeat='job in usersProfile.user.jobs'>
+    <a ui-sref='jobsShow({ id: job._id })'><p>{{job.category}}</p></a>
+    <p>job created {{job.createdAtRelative}}</p>
+  </div>
 
-      <h4 class='subtitle is-4'><em>Your email: {{usersProfile.user.email}}</em></h4>
-      <h4 class='subtitle is-4'>Your jobs:</h4>
-
-
-      <ul ng-repeat='job in usersProfile.user.jobs'>
-                <a ui-sref='usersProfile({ id: job._id })'><li>{{job.category}}</li></a>
-
-
-
-      </ul>
+  <button ng-click='usersProfile.handleDelete()' class='button is-danger'>Delete your account</button>
 
 </div>
-
-    <button ng-click='usersProfile.handleDelete()' class='button is-danger' ng-if='main.isAuthenticated()'>Delete your account</button>

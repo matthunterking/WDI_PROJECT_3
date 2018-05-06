@@ -1,52 +1,78 @@
 <p class="is-size-2 title">Join NeighbourGood</p>
-<form ng-submit="register.handleRegister()">
+<form name='register.form' ng-submit="register.handleRegister()" novalidate>
 
   <div class="field">
-    <label class="label">First Name</label>
+    <label class="label" for='firstname'>First Name</label>
     <div class="control">
-      <input class="input" type="text" placeholder="" ng-model="register.data.firstname">
+      <input class="input" type="text" placeholder="First Name" name="firstname" ng-model="register.data.firstname" required ng-class = " {'is-danger': register.isDanger('firstname')}"/>
+<!-- in case of input error -->
+      <div ng-messages="register.form.firstname.$error" ng-if="register.form.firstname.$dirty || register.form.$submitted">
+            <div class='' ng-message="required">Please provide your first name</div>
+          </div>
+<!-- end in case of error -->
     </div>
   </div>
   <div class="field">
-    <label class="label">Surname</label>
+    <label class="label" for="surname">Surname</label>
     <div class="control">
-      <input class="input" type="text" placeholder="" ng-model="register.data.surname">
+      <input class="input" type="text" placeholder="Surname" name='surname' ng-model="register.data.surname" required ng-class = " {'is-danger': register.isDanger('surname')}" />
+      <!-- in case of input error -->
+            <div ng-messages="register.form.surname.$error" ng-if="register.form.surname.$dirty || register.form.$submitted">
+                  <div class='' ng-message="required">Please provide your surname</div>
+                </div>
+      <!-- end in case of error -->
     </div>
   </div>
   <div class="field">
-    <label class="label">Email</label>
+    <label class="label" for="email">Email</label>
     <div class="control">
-      <input class="input" type="email" placeholder="" ng-model="register.data.email">
+    <input class="input" type="email" placeholder="Email" name='email' ng-model="register.data.email" required ng-class = " {'is-danger': register.isDanger('email')}" />
+      <!-- in case of input error -->
+      <div ng-messages="register.form.email.$error" ng-if="register.form.email.$dirty || register.form.$submitted">
+<div class='' ng-message="required">Please provide an email address</div>
+<div class= '' ng-message="email">This must be an email address</div>
+</div>
+      <!-- end in case of error -->
     </div>
   </div>
   <div class="field">
-    <label class="label">Password</label>
+    <label class="label" for="password">Password</label>
     <div class="control">
-      <input class="input" type="password" placeholder="" ng-model="register.data.password">
+    <input class="input" type="password" placeholder="Password" name='password' ng-model="register.data.password" required ng-class = " {'is-danger': register.isDanger('password')}" />
+      <!-- in case of input error -->
+            <div ng-messages="register.form.password.$error" name='password' ng-if="register.form.password.$dirty || register.form.$submitted">
+                  <div class='' ng-message="required">Please provide a password</div>
+                </div>
+      <!-- end in case of error -->
     </div>
   </div>
   <div class="field">
-    <label class="label">Confirm Password</label>
+    <label class="label" for="passwordConfirmation">Confirm Password</label>
     <div class="control">
-      <input class="input" type="password" placeholder="" ng-model="register.data.confirmPassword">
+      <input class="input" type="password" placeholder="Confirm Password" name='passwordConfirmation' ng-model="register.data.passwordConfirmation" required ng-class = " {'is-danger': register.isDanger('passwordConfirmation')}" />
+      <!-- in case of input error -->
+            <div ng-messages="register.form.passwordConfirmation.$error" ng-if="register.form.passwordConfirmation.$dirty || register.form.$submitted">
+                  <div class='' ng-message="required">Please confirm your password</div>
+                </div>
+      <!-- end in case of error -->
     </div>
   </div>
   <div class="field">
-    <label class="label">Bio<small> (optional)</small></label>
+    <label class="label" for="bio">Bio<small> (optional)</small></label>
     <div class="control">
-      <textarea class="textarea" ng-model="register.data.bio" placeholder="Please include a few lines about yourself so other users can get to know you"></textarea>
+      <textarea class="textarea" type='text' ng-model="register.data.bio" placeholder="Please include a few lines about yourself so other users can get to know you" name='bio' ng-model="register.data.bio" ></textarea>
     </div>
   </div>
   <div class="field">
-    <label class="label">Profile Picture<small> (optional)</small></label>
+    <label class="label" for="image">Profile Picture<small> (optional)</small></label>
     <div class="control">
-      <input class="input" type="text" placeholder="" ng-model="register.data.image">
+      <input class="input" type="text" placeholder="" name='image' ng-model="register.data.image">
     </div>
   </div>
   <div class="field">
-    <label class="label">Location<small> (optional)</small></label>
+    <label class="label" for="location">Location<small> (optional)</small></label>
     <div class="control">
-      <input class="input" type="text" placeholder="" ng-model="register.data.location">
+      <input class="input" type="text" placeholder="" name='location' ng-model="register.data.location">
     </div>
   </div>
   <p class="help">

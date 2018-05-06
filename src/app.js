@@ -1,4 +1,5 @@
 import angular from 'angular';
+import 'angular-messages';
 
 // Styles
 import './scss/style.scss';
@@ -25,7 +26,7 @@ import JobsIndexCtrl from './controllers/jobs/index';
 import Job from './models/job';
 import User from './models/user';
 
-angular.module('neighbourgood', ['ui.router', 'satellizer'])
+angular.module('neighbourgood', ['ui.router', 'satellizer', 'ngMessages'])
   .config(Router)
   .config(Auth)
   .controller('MainCtrl', MainCtrl)

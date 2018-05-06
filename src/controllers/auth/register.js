@@ -7,7 +7,7 @@ function RegisterCtrl($auth, $state) {
     if(this.form.$invalid) return false;
 
     $auth.signup(this.data)
-      .then(()=> $state.go('login'));
+      .then(()=> $state.go('home'));
   }
 
 
