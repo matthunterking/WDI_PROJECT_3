@@ -1,19 +1,19 @@
 <h1>Available Jobs</h1>
 
-<div class="map" g-map>GOOGLE MAP</div>
+<div class="map" g-map listings="jobsIndex.all">GOOGLE MAP</div>
 
 <div class="columns is-inline">
   <div ng-repeat="job in jobsIndex.all" class="column ">
     <div class="card">
-        <div class="card-content">
-          <div class="media">
-            <div class="media-content level is-mobile">
-              <p> job icon when created{ job.icon }</p>
-              <p class="level-item">{{ job.category }} for {{job.createdBy.firstname}}</p>
-                <div class="level-item">
-                  <p class="in-line">{{ job.description }}</p>
-                </div>
-              <a class="level-item" href="#">APPLY</a>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content level is-mobile">
+            <p> job icon when created{ job.icon }</p>
+            <p class="level-item">{{ job.category }} for {{job.createdBy.firstname}}</p>
+            <div class="level-item">
+              <p class="in-line">{{ job.description }}</p>
+            </div>
+            <a class="level-item" href="#">APPLY</a>
 
 <h1>Jobs Index</h1>
 <div class="columns is-multiline">

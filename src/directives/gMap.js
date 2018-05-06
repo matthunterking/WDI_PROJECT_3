@@ -4,7 +4,8 @@ function gMap() {
   return {
     retrict: 'A',
     scope: {
-      center: '='
+      center: '=',
+      listings: '='
     },
     link($scope, $element) {
 
@@ -30,28 +31,21 @@ function gMap() {
         animation: google.maps.Animation.DROP
       });
 
-      const locations = [
-        { lat: 51.515, lng: -0.078 },
-        { lat: 51.515, lng: -0.068 },
-        { lat: 51.515, lng: -0.078 },
-        { lat: 51.715, lng: -0.078 },
-        { lat: 51.915, lng: -0.078 },
-        { lat: 51.565, lng: -0.078 },
-        { lat: 51.555, lng: -0.078 },
-        { lat: 51.645, lng: -0.078 },
-        { lat: 51.345, lng: -0.078 }
-      ];
-
-      locations.map(function(location) {
-        return new google.maps.Marker({
-          position: location,
-          map: map
-        });
-      });
+      let listingMarkers = [];
 
       $scope.$watch('center', () => {
         map.setCenter($scope.center);
         marker.setPosition($scope.center);
+      });
+
+      $scope.$watch('listings', () => {
+        listingMarkers.forEach(marker => marker.setMap(null));
+        listingMarkers = $scope.listings.map((listing) => {
+          return new google.maps.Marker({
+            position: listing.location,
+            map: map
+          });
+        });
       });
 
     }
