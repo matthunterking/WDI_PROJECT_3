@@ -32,6 +32,16 @@
   </div>
 
   <div class="field">
+    <label class="label" for="location">Location</label>
+    <div class="control">
+      <input class="input" name="location" g-autocomplete handle-change="jobsEdit.updateLocation(location)" placeholder="Please enter the postcode or place name" required ng-class = " {'is-danger': jobsEdit.isDanger('location')}"/>
+    </div>
+    <div ng-messages="jobsEdit.form.location.$error" ng-if="jobsEdit.form.location.$dirty || jobsEdit.form.$submitted">
+      <div class='' ng-message="required">Please provide a location</div>
+    </div>
+  </div>
+
+  <div class="field">
     <label class="label" for="duration">Duration</label>
     <div class="select">
       <select ng-model="jobsEdit.data.duration" name="duration" required ng-class= " {'is-danger': jobsEdit.isDanger('duration')}" />
@@ -46,6 +56,7 @@
       </div>
     </div>
   </div>
+
   <div class="field">
     <label class="label" for="startdate">Start Date</label>
     <div class="control">
@@ -59,6 +70,7 @@
       <input class="input" type="date" placeholder="" ng-model="jobsEdit.data.enddate" name="enddate" required ng-class= " {'is-danger': jobsEdit.isDanger('enddate')}" />
     </div>
   </div>
+
   <p class="help">
     <button class="button submit">Submit</button>
   </p>

@@ -80,7 +80,7 @@
       </div>
     </div>
 
-    <form ng-submit="jobsShow.handleMessageCreate()" >
+    <form name="jobsShow.form" ng-submit="jobsShow.handleMessageCreate()" novalidate>
       <div class="field">
         <label for="content">Message</label>
         <textarea class="textarea" ng-model="jobsShow.data.content" placeholder="Message"></textarea>

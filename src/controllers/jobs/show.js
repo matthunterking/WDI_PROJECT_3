@@ -15,17 +15,21 @@ function JobsShowCtrl(Job, $state) {
   }
 
   function handleMessageCreate() {
+
+    if(this.form.$invalid) return false;
     console.log(this.data);
+
     Job
       .messageCreate($state.params.id, this.data)
       .then(res => this.job = res.data);
   }
 
-  function handleMessageDelete(comment) {
+  function handleMessageDelete(message) {
     Job
-      .messageDelete($state.params.id, comment._id)
+      .messageDelete($state.params.id, message._id)
       .then(res => this.job = res.data);
   }
+
 
   this.handleDelete = handleDelete;
   this.handleMessageCreate = handleMessageCreate;
