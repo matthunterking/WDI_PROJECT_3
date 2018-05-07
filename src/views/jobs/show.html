@@ -82,7 +82,7 @@
 
     <form name="jobsShow.form" ng-submit="jobsShow.handleMessageCreate()" novalidate>
       <div class="field">
-        <label for="content">Message</label>
+        <label for="content">Leave a message for {{ jobsShow.job.createdBy.firstname }}</label>
         <textarea class="textarea" ng-model="jobsShow.data.content" placeholder="Message"></textarea>
       </div>
       <button class="button">Submit</button>
