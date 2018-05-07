@@ -35,11 +35,11 @@
     </div>
   </nav>
 
-  <section class='section' ng-if="!main.isHome">
+  <section class='section' ng-controller="MainCtrl as main" ng-if="!main.isHome">
     <div class="container" ui-view>
       <ui-view></ui-view>
     </div>
   </section>
-  
+
 </body>
 </html>

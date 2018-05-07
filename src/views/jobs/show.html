@@ -1,54 +1,72 @@
-<p class="title is-2">{{ jobsShow.job.category }} with {{ jobsShow.job.createdBy.firstname }}</p>
-<div class="columns is-mobile">
-  <div class="column is-one-quarter">
-    <img src="https://i.ebayimg.com/images/g/WK8AAOSwxg5XyBUD/s-l300.jpg" alt="" />
+
+<!-- this section can only be seen when user is not logged in -->
+<section ng-if='!main.isAuthenticated()'>
+  <p>Thank you for your interest in NeighbourGood! If you'd like to help create a cooperative society, please <a ui-sref="home">log in</a> or <a ui-sref="register">register</a>.</p>
+</section>
+<!-- end of not-logged-in users section -->
+
+
+<!-- this section can only be seen when user is logged in -->
+<section ng-if='main.isAuthenticated()'>
+  <p class="title is-2">{{ jobsShow.job.category }} for {{ jobsShow.job.createdBy.firstname }}</p>
+  <div class="columns is-mobile">
+    <div class="column is-one-quarter">
+      <img src="https://i.ebayimg.com/images/g/WK8AAOSwxg5XyBUD/s-l300.jpg" alt="" />
+    </div>
+    <div class="column is-three-quarters">
+      <p class="title is-4">{{ jobsShow.job.description }}</p>
+      <p class="title is-4">Duration: {{ jobsShow.job.duration }}</p>
+      <p class="title is-4">Start Date: {{ jobsShow.job.startDate }}</p>
+      <p class="title is-4">Start Date: {{ jobsShow.job.endDate }}</p>
+      <p class="title is-4">Posted {{ jobsShow.job.createdAtRelative }}</p>
+      <p class="title is-4">Where {{ jobsShow.job.location }}</p>
+    </div>
   </div>
-  <div class="column is-three-quarters">
-    <p class="title is-4">{{ jobsShow.job.description }}</p>
-    <p class="title is-4">Duration: {{ jobsShow.job.duration }}</p>
-    <p class="title is-4">Start Date: {{ jobsShow.job.startDate }}</p>
-    <p class="title is-4">Start Date: {{ jobsShow.job.endDate }}</p>
-    <p class="title is-4">Posted {{ jobsShow.job.createdAtRelative }}</p>
+
+
+
+  <p class="column title is-4">Posted by</p>
+
+  <div class="columns is-mobile">
+    <div class="column is-one-quarter">
+      <img src="{{ jobsShow.job.createdBy.image }}" alt="" />
+    </div>
+    <div class="column is-three-quarters">
+        <a ui-sref='usersShow({ id: jobsShow.job.createdBy._id })'><p class="title is-2">{{ jobsShow.job.createdBy.firstname }} {{ jobsShow.job.createdBy.surname }}</p>
+      <p class="title is-4">{{ jobsShow.job.createdBy.bio }}</p></a>
+    </div>
   </div>
-</div>
+
+  <div g-map center="jobsShow.job.location" class="map column"></div>
 
 
-<p class="column title is-4">Posted by</p>
 
-<div class="columns is-mobile">
-  <div class="column is-one-quarter">
-    <img src="{{ jobsShow.job.createdBy.image }}" alt="" />
-  </div>
-  <div class="column is-three-quarters">
-    <p class="title is-2">{{ jobsShow.job.createdBy.firstname }} {{ jobsShow.job.createdBy.surname }}</p>
-    <p class="title is-4">{{ jobsShow.job.createdBy.bio }}</p>
-  </div>
-</div>
 
-<div g-map center="jobsShow.job.location" class="map column"></div>
+  <div class="columns is-mobile">
+    <div class="comments">
+      <div class="media" ng-repeat="message in jobsShow.job.messages">
+        <div class="column is-one-quarter">
+          <img src="{{ message.createdBy.image }}" alt="" />
+        </div>
+        <div class="column is-half">
+          <p class="title is-4">{{ message.content }}</p>
+          Message from: <a ui-sref='usersShow({ id: message.createdBy._id })'><p class="title is-6">{{ message.createdBy.firstname }} {{ message.createdBy.surname }}</p></a>
 
-<div class="columns is-mobile">
-  <div class="comments">
-    <div class="media" ng-repeat="message in jobsShow.job.messages">
-      <div class="column is-one-quarter">
-        <img src="{{ message.createdBy.image }}" alt="" />
-      </div>
-      <div class="column is-half">
-        <p class="title is-4">{{ message.createdBy.firstname }} {{ message.createdBy.surname }}</p>
-        <p class="title is-4">{{ message.content }}</p>
-        <p class="title is-6">About {{ message.createdBy.firstname }}: {{ message.createdBy.bio }}</p>
-      </div>
-      <div class="column is-one-quarter">
-        <button ng-click="jobsShow.handleMessageDelete(message)" class="button is-danger">Delete</button>
+        </div>
+        <div class="column is-one-quarter">
+          <button ng-click="jobsShow.handleMessageDelete(message)" class="button is-danger">Delete</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<form ng-submit="jobsShow.handleMessageCreate()">
-  <div class="field">
-    <label for="content">Message</label>
-    <textarea class="textarea" ng-model="jobsShow.data.content" placeholder="Message"></textarea>
-  </div>
-  <button class="button">Submit</button>
-</form>
+  <form ng-submit="jobsShow.handleMessageCreate()" >
+    <div class="field">
+      <label for="content">Message</label>
+      <textarea class="textarea" ng-model="jobsShow.data.content" placeholder="Message"></textarea>
+    </div>
+    <button class="button">Submit</button>
+  </form>
+</section>
+
+<!-- end of logged-in-users section -->
