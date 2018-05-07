@@ -19,7 +19,7 @@
       <p class="title is-4">Start Date: {{ jobsShow.job.startDate }}</p>
       <p class="title is-4">Start Date: {{ jobsShow.job.endDate }}</p>
       <p class="title is-4">Posted {{ jobsShow.job.createdAtRelative }}</p>
-      <p class="title is-4">Where {{ jobsShow.job.location }}</p>
+
     </div>
   </div>
 
@@ -53,8 +53,8 @@
           Message from: <a ui-sref='usersShow({ id: message.createdBy._id })'><p class="title is-6">{{ message.createdBy.firstname }} {{ message.createdBy.surname }}</p></a>
 
         </div>
-        <div class="column is-one-quarter">
-          <button ng-click="jobsShow.handleMessageDelete(message)" class="button is-danger">Delete</button>
+        <div class="column is-one-quarter"  ng-controller="UsersProfileCtrl as usersProfile">
+          <button ng-click="jobsShow.handleMessageDelete(message)" class="button is-danger" ng-if="message.createdBy._id === usersProfile.user._id">Delete</button>
         </div>
       </div>
     </div>
