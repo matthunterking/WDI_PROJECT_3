@@ -11,6 +11,8 @@
 
   <!-- this section can only be seen by the job poster -->
   <section ng-controller="UsersProfileCtrl as usersProfile">
+    <!-- <p>Createdby: {{jobsShow.job.createdBy._id}}</p>
+    <p>Loggedin: {{usersProfile.user._id}}</p> -->
     <section ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
       Hello, {{usersProfile.user.firstname}}! This job was posted by you.
     </section>
@@ -51,10 +53,10 @@
     <!-- this section can only be seen by the job poster -->
     <section ng-controller="UsersProfileCtrl as usersProfile">
       <div ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
-        <a ui-sref='jobsEdit({ id: jobsShow.job._id })' class='button is-danger'>Edit this job</a>
+        <a ui-sref='jobsEdit({ id: jobsShow.job._id })' class='button'>Edit this job</a>
         <button ng-click='jobsShow.handleDelete()' class='button is-danger'>Delete this job</button>
+      </div>
       </section>
-    </section>
     <!-- end of section-seen-only-by-job-poster -->
 
 
