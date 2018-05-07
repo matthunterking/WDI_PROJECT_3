@@ -11,7 +11,7 @@ function UsersEditCtrl(User, $state) {
     if(this.form.$invalid) return false;
 
     User.updateById($state.params.id, this.data)
-      .then(() => $state.go('usersShow', $state.params));
+      .then(() => $state.go('usersProfile', $state.params));
   }
 
   function isDanger(field) {
