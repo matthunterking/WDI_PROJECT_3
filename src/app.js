@@ -23,6 +23,7 @@ import UsersProfileCtrl from './controllers/users/profile';
 import JobsIndexCtrl from './controllers/jobs/index';
 import JobsNewCtrl from './controllers/jobs/new';
 import JobsShowCtrl from './controllers/jobs/show';
+import JobsEditCtrl from './controllers/jobs/show';
 
 // Jobs and Users Models
 import Job from './models/job';
@@ -45,6 +46,7 @@ angular.module('neighbourgood', ['ui.router', 'satellizer', 'ngMessages'])
   .controller('JobsIndexCtrl', JobsIndexCtrl)
   .controller('JobsNewCtrl', JobsNewCtrl)
   .controller('JobsShowCtrl', JobsShowCtrl)
+  .controller('JobsEditCtrl', JobsEditCtrl)
   .service('Job', Job)
   .service('User', User)
   .directive('gMap', gMap)

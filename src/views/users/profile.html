@@ -11,6 +11,7 @@
     <p>job created {{job.createdAtRelative}}</p>
   </div>
 
+<a ui-sref='usersEdit({ id: usersProfile.user._id })' class="button is-danger">Edit your account</a>
   <button ng-click='usersProfile.handleDelete()' class='button is-danger'>Delete your account</button>
 
 </div>
