@@ -53,7 +53,7 @@ applicantSchema.set('toJSON', {
 const jobSchema = new mongoose.Schema({
   category: { type: String },
   description: { type: String },
-  duration: { type: String},
+  duration: { type: String },
   startdate: { type: Date },
   enddate: { type: Date },
   postcode: { type: String },

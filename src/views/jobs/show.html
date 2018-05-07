@@ -27,8 +27,8 @@
     <div class="column is-three-quarters">
       <p class="title is-4">{{ jobsShow.job.description }}</p>
       <p class="title is-4">Duration: {{ jobsShow.job.duration }}</p>
-      <p class="title is-4">Start Date: {{ jobsShow.job.startDate }}</p>
-      <p class="title is-4">Start Date: {{ jobsShow.job.endDate }}</p>
+      <p class="title is-4">Start Date: {{ jobsShow.job.startdate | date : format : timezone }}</p>
+      <p class="title is-4">End Date: {{ jobsShow.job.enddate | date : format : timezone }}</p>
       <p class="title is-4">Posted {{ jobsShow.job.createdAtRelative }}</p>
 
     </div>
