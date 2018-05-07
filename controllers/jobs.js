@@ -23,9 +23,10 @@ function jobsShow(req, res, next) {
 }
 
 function jobsCreate(req, res, next) {
-  console.log(req.body);
+  req.body.createdBy = req.currentUser;
   Job
     .create(req.body)
+    .populate('createdBy')
     .then(job => res.status(201).json(job))
     .catch(next);
 }
@@ -60,7 +61,7 @@ function jobsMessageCreate(req, res, next) {
   req.body.createdBy = req.currentUser;
   Job
     .findById(req.params.id)
-    // .populate('createdBy messages.createdBy applicants.who')
+    .populate('createdBy messages.createdBy applicants.who')
     .exec()
     .then(job => {
       job.messages.push(req.body);
@@ -78,6 +79,9 @@ function jobsMessageDelete(req, res, next) {
     .exec()
     .then(job => {
       const message = job.messages.id(req.params.messageId);
+      if(!message.createdBy.equals(req.currentUser._id)) {
+        return res.status(401).json({message: 'Unauthorized'});
+      }
       message.remove();
       return job.save();
     })
@@ -110,6 +114,9 @@ function jobsApplicantDelete(req, res, next) {
     .exec()
     .then(job => {
       const applicant = job.applicants.id(req.params.applicantId);
+      if(!applicant.createdBy.equals(req.currentUser._id)) {
+        return res.status(401).json({message: 'Unauthorized'});
+      }
       applicant.remove();
       return job.save();
     })
