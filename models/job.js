@@ -3,7 +3,11 @@ const moment = require('moment');
 
 // so users can leave messages on the job
 const messageSchema = new mongoose.Schema({
+<<<<<<< HEAD
   message: { type: String },
+=======
+  content: { type: String, required: true },
+>>>>>>> development
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' }
 }, {
   timestamps: true
@@ -53,7 +57,7 @@ applicantSchema.set('toJSON', {
 const jobSchema = new mongoose.Schema({
   category: { type: String },
   description: { type: String },
-  duration: { type: String},
+  duration: { type: String },
   startdate: { type: Date },
   enddate: { type: Date },
   postcode: { type: String },

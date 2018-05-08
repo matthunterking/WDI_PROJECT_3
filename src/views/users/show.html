@@ -1,8 +1,11 @@
 <div class= 'box'>
 
-  <p>{{usersShow.user.firstname}}</p>
-  <p>{{usersShow.user.email}}</p>
+  <img src='{{usersShow.user.image}}'/>
+
+  <p>{{usersShow.user.firstname}} {{usersShow.user.surname}}</p>
   <p>{{usersShow.user.location}}</p>
+  <p>{{usersShow.user.bio}}</p>
+
   <p>{{usersShow.user.firstname}}'s jobs:</p>
 
   <div ng-repeat='job in usersShow.user.jobs'>

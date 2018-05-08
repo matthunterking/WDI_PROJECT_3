@@ -1,54 +1,93 @@
-<p class="title is-2">{{ jobsShow.job.category }} with {{ jobsShow.job.createdBy.firstname }}</p>
-<div class="columns is-mobile">
-  <div class="column is-one-quarter">
-    <img src="https://i.ebayimg.com/images/g/WK8AAOSwxg5XyBUD/s-l300.jpg" alt="" />
-  </div>
-  <div class="column is-three-quarters">
-    <p class="title is-4">{{ jobsShow.job.description }}</p>
-    <p class="title is-4">Duration: {{ jobsShow.job.duration }}</p>
-    <p class="title is-4">Start Date: {{ jobsShow.job.startDate }}</p>
-    <p class="title is-4">Start Date: {{ jobsShow.job.endDate }}</p>
-    <p class="title is-4">Posted {{ jobsShow.job.createdAtRelative }}</p>
-  </div>
-</div>
+
+<!-- this section can only be seen when user is not logged in -->
+<section ng-if='!main.isAuthenticated()'>
+  <p>Thank you for your interest in NeighbourGood! If you'd like to help create a cooperative society, please <a ui-sref="home">log in</a> or <a ui-sref="register">register</a>.</p>
+</section>
+<!-- end of not-logged-in users section -->
 
 
-<p class="column title is-4">Posted by</p>
+<!-- this section can only be seen when user is logged in -->
+<section ng-if='main.isAuthenticated()'>
 
-<div class="columns is-mobile">
-  <div class="column is-one-quarter">
-    <img src="{{ jobsShow.job.createdBy.image }}" alt="" />
+  <!-- this section can only be seen by the job poster -->
+  <section ng-controller="UsersProfileCtrl as usersProfile">
+    <!-- <p>Createdby: {{jobsShow.job.createdBy._id}}</p>
+    <p>Loggedin: {{usersProfile.user._id}}</p> -->
+    <section ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
+      Hello, {{usersProfile.user.firstname}}! This job was posted by you.
+    </section>
+  </section>
+  <!-- end of job-poster-only section -->
+
+  <p class="title is-2">{{ jobsShow.job.category }} for {{ jobsShow.job.createdBy.firstname }}</p>
+  <div class="columns is-mobile">
+    <div class="column is-one-quarter">
+      <img src="https://i.ebayimg.com/images/g/WK8AAOSwxg5XyBUD/s-l300.jpg" alt="" />
+    </div>
+    <div class="column is-three-quarters">
+      <p class="title is-4">{{ jobsShow.job.description }}</p>
+      <p class="title is-4">Duration: {{ jobsShow.job.duration }}</p>
+      <p class="title is-4">Start Date: {{ jobsShow.job.startdate | date : format : timezone }}</p>
+      <p class="title is-4">End Date: {{ jobsShow.job.enddate | date : format : timezone }}</p>
+      <p class="title is-4">Posted {{ jobsShow.job.createdAtRelative }}</p>
+
+    </div>
   </div>
-  <div class="column is-three-quarters">
-    <p class="title is-2">{{ jobsShow.job.createdBy.firstname }} {{ jobsShow.job.createdBy.surname }}</p>
-    <p class="title is-4">{{ jobsShow.job.createdBy.bio }}</p>
-  </div>
-</div>
 
 <div g-map-show-view center="jobsShow.job.location" class="map column"></div>
 
-<div class="columns is-mobile">
-  <div class="comments">
-    <div class="media" ng-repeat="message in jobsShow.job.messages">
-      <div class="column is-one-quarter">
-        <img src="{{ message.createdBy.image }}" alt="" />
-      </div>
-      <div class="column is-half">
-        <p class="title is-4">{{ message.createdBy.firstname }} {{ message.createdBy.surname }}</p>
-        <p class="title is-4">{{ message.content }}</p>
-        <p class="title is-6">About {{ message.createdBy.firstname }}: {{ message.createdBy.bio }}</p>
-      </div>
-      <div class="column is-one-quarter">
-        <button ng-click="jobsShow.handleMessageDelete(message)" class="button is-danger">Delete</button>
+
+  <p class="column title is-4">Posted by</p>
+
+  <div class="columns is-mobile">
+    <div class="column is-one-quarter">
+      <img src="{{ jobsShow.job.createdBy.image }}" alt="" />
+    </div>
+    <div class="column is-three-quarters">
+      <a ui-sref='usersShow({ id: jobsShow.job.createdBy._id })'><p class="title is-2">{{ jobsShow.job.createdBy.firstname }} {{ jobsShow.job.createdBy.surname }}</p>
+        <p class="title is-4">{{ jobsShow.job.createdBy.bio }}</p></a>
       </div>
     </div>
-  </div>
-</div>
 
-<form ng-submit="jobsShow.handleMessageCreate()">
-  <div class="field">
-    <label for="content">Comment</label>
-    <textarea class="textarea" ng-model="jobsShow.data.message" placeholder="Message"></textarea>
-  </div>
-  <button class="button">Submit</button>
-</form>
+    <div g-map center="jobsShow.job.location" class="map column"></div>
+
+    <!-- this section can only be seen by the job poster -->
+    <section ng-controller="UsersProfileCtrl as usersProfile">
+      <div ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
+        <a ui-sref='jobsEdit({ id: jobsShow.job._id })' class='button'>Edit this job</a>
+        <button ng-click='jobsShow.handleDelete()' class='button is-danger'>Delete this job</button>
+      </div>
+      </section>
+    <!-- end of section-seen-only-by-job-poster -->
+
+
+    <hr />
+
+    <div class="columns is-mobile">
+      <div class="comments">
+        <div class="media" ng-repeat="message in jobsShow.job.messages">
+          <div class="column is-one-quarter">
+            <img src="{{ message.createdBy.image }}" alt="" />
+          </div>
+          <div class="column is-half">
+            <p class="title is-4">{{ message.content }}</p>
+            Message from: <a ui-sref='usersShow({ id: message.createdBy._id })'><p class="title is-6">{{ message.createdBy.firstname }} {{ message.createdBy.surname }}</p></a>
+
+          </div>
+          <div class="column is-one-quarter"  ng-controller="UsersProfileCtrl as usersProfile">
+            <button ng-click="jobsShow.handleMessageDelete(message)" class="button is-danger" ng-if="message.createdBy._id === usersProfile.user._id">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form name="jobsShow.form" ng-submit="jobsShow.handleMessageCreate()" novalidate>
+      <div class="field">
+        <label for="content">Leave a message for {{ jobsShow.job.createdBy.firstname }}</label>
+        <textarea class="textarea" ng-model="jobsShow.data.content" placeholder="Message"></textarea>
+      </div>
+      <button class="button">Submit</button>
+    </form>
+  </section>
+
+  <!-- end of logged-in-users section -->

@@ -1,0 +1,92 @@
+<p class="is-size-2 title">Edit your profile</p>
+
+<div class='' ng-if="usersEdit.form.$submitted">
+Sorry, you made a mistake while editing your profile.
+</div>
+
+
+<form name='usersEdit.form' ng-submit="usersEdit.handleUpdate()" novalidate>
+
+  <div class="field">
+    <label class="label" for='firstname'>First Name</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="First Name" name="firstname" ng-model="usersEdit.data.firstname" required ng-class = " {'is-danger': usersEdit.isDanger('firstname')}"/>
+      <!-- in case of input error -->
+      <div ng-messages="usersEdit.form.firstname.$error" ng-if="usersEdit.form.firstname.$dirty || usersEdit.form.$submitted">
+        <div class='' ng-message="required">Please provide your first name</div>
+      </div>
+      <!-- end in case of error -->
+    </div>
+  </div>
+  <div class="field">
+    <label class="label" for="surname">Surname</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Surname" name='surname' ng-model="usersEdit.data.surname" required ng-class = " {'is-danger': usersEdit.isDanger('surname')}" />
+      <!-- in case of input error -->
+      <div ng-messages="usersEdit.form.surname.$error" ng-if="usersEdit.form.surname.$dirty || usersEdit.form.$submitted">
+        <div class='' ng-message="required">Please provide your surname</div>
+      </div>
+      <!-- end in case of error -->
+    </div>
+  </div>
+  <div class="field">
+    <label class="label" for="email">Email</label>
+    <div class="control">
+      <input class="input" type="email" placeholder="Email" name='email' ng-model="usersEdit.data.email" required ng-class = " {'is-danger': usersEdit.isDanger('email')}" />
+      <!-- in case of input error -->
+      <div ng-messages="usersEdit.form.email.$error" ng-if="usersEdit.form.email.$dirty || usersEdit.form.$submitted">
+        <div class='' ng-message="required">Please provide an email address</div>
+        <div class= '' ng-message="email">This must be an email address</div>
+        <div class= '' ng-message="unique">Sorry, this email address has already been registered</div>
+      </div>
+      <!-- end in case of error -->
+    </div>
+  </div>
+  <div class="field">
+    <label class="label" for="password">Password</label>
+    <div class="control">
+      <input class="input" type="password" placeholder="Password" name='password' ng-model="usersEdit.data.password" required ng-class = " {'is-danger': usersEdit.isDanger('password')}" />
+      <!-- in case of input error -->
+      <div ng-messages="usersEdit.form.password.$error" name='password' ng-if="usersEdit.form.password.$dirty || usersEdit.form.$submitted">
+        <div class='' ng-message="required">Please provide a password</div>
+      </div>
+      <!-- end in case of error -->
+    </div>
+  </div>
+  <div class="field">
+    <label class="label" for="passwordConfirmation">Confirm Password</label>
+    <div class="control">
+      <input class="input" type="password" placeholder="Confirm Password" name='passwordConfirmation' ng-model="usersEdit.data.passwordConfirmation" required ng-class = " {'is-danger': usersEdit.isDanger('passwordConfirmation')}" />
+      <!-- in case of input error -->
+      <div ng-messages="usersEdit.form.passwordConfirmation.$error" ng-if="usersEdit.form.passwordConfirmation.$dirty || usersEdit.form.$submitted">
+        <div class='' ng-message="required">Please confirm your password</div>
+      </div>
+      <!-- end in case of error -->
+
+    </div>
+  </div>
+  <div class="field">
+    <label class="label" for="bio">Bio<small> (optional)</small></label>
+    <div class="control">
+      <textarea class="textarea" type='text' ng-model="usersEdit.data.bio" placeholder="Please include a few lines about yourself so other users can get to know you" name='bio' ng-model="usersEdit.data.bio" ></textarea>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label" for="image">Profile Picture<small> (optional)</small></label>
+    <div class="control">
+      <input class="input" type="text" placeholder="" name='image' ng-model="usersEdit.data.image">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label" for="location">Location<small> (optional)</small></label>
+    <div class="control">
+      <input class="input" type="text" placeholder="" name='location' ng-model="usersEdit.data.location">
+    </div>
+  </div>
+  <div class='' ng-if="usersEdit.form.$submitted && !main.isAuthenticated()">
+  Sorry, you made a mistake while registering.
+</div>
+  <p class="help">
+    <button class="button submit">Submit</button>
+  </p>
+</form>

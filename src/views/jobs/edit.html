@@ -1,46 +1,77 @@
-<p class="is-size-2 title">Edit a Job</p>
-<form ng-submit="jobsEdit.handleUpdate()" name="jobsEdit.form">
+<p class="is-size-2 title">Edit this job</p>
+
+<div class='' ng-if="jobsEdit.form.$submitted">
+  Sorry, you made a mistake while editing this job.
+</div>
+
+<form name="jobsEdit.form" ng-submit="jobsEdit.handleUpdate()" novalidate>
+
   <div class="field">
-    <label class="label">Category</label>
+    <label class="label" for="category">Category</label>
     <div class="select">
-      <select ng-model="jobs.data.category">
-        <option>Shopping</option>
-        <option>Gardening</option>
-        <option>DIY</option>
-        <option>Social</option>
-      </select>
+      <select ng-model="jobsEdit.data.category" name="category" required ng-class = " {'is-danger': jobsEdit.isDanger('category')}"/>
+      <option>Shopping</option>
+      <option>Gardening</option>
+      <option>DIY</option>
+      <option>Social</option>
+    </select>
+    <div ng-messages="jobsEdit.form.category.$error" ng-if="jobsEdit.form.title.$dirty || jobsEdit.form.$submitted">
+      <div class='' ng-message="required">Please choose a category</div>
     </div>
   </div>
+
+
   <div class="field">
-    <label class="label">Description</label>
+    <label class="label" for="description">Description</label>
     <div class="control">
-      <textarea class="textarea" ng-model="jobs.data.description" placeholder="Please include a short description of the job"></textarea>
+      <textarea class="textarea" ng-model="jobsEdit.data.description" name="description" placeholder="Please include a short description of the job" required ng-class = " {'is-danger': jobsEdit.isDanger('description')}"/></textarea>
+    </div>
+    <div ng-messages="jobsEdit.form.description.$error" ng-if="jobsEdit.form.description.$dirty || jobsEdit.form.$submitted">
+      <div class='' ng-message="required">Please provide a description</div>
     </div>
   </div>
+
   <div class="field">
-    <label class="label">Duration</label>
+    <label class="label" for="location">Location</label>
+    <div class="control">
+      <input class="input" name="location" g-autocomplete handle-change="jobsEdit.updateLocation(location)" placeholder="Please enter the postcode or place name" required ng-class = " {'is-danger': jobsEdit.isDanger('location')}"/>
+    </div>
+    <div ng-messages="jobsEdit.form.location.$error" ng-if="jobsEdit.form.location.$dirty || jobsEdit.form.$submitted">
+      <div class='' ng-message="required">Please provide a location</div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label" for="duration">Duration</label>
     <div class="select">
-      <select ng-model="jobsNew.data.duration">
+      <select ng-model="jobsEdit.data.duration" name="duration" required ng-class= " {'is-danger': jobsEdit.isDanger('duration')}" />
         <option>1-2 hours</option>
         <option>Half a day</option>
         <option>Full day</option>
         <option>1-3 days</option>
         <option>More then 3 days</option>
       </select>
+      <div ng-messages="jobsEdit.form.duration.$error" ng-if="jobsEdit.form.duration.$dirty || jobsEdit.form.$submitted">
+        <div class='' ng-message="required">Please choose a duration</div>
+      </div>
     </div>
   </div>
+
   <div class="field">
-    <label class="label">Start Date</label>
+    <label class="label" for="startdate">Start Date</label>
     <div class="control">
-      <input class="input" type="date" placeholder="" ng-model="jobsNew.data.startdate">
-    </div>
-  <div class="field">
-    <label class="label">End Date</label>
-    <div class="control">
-      <input class="input" type="date" placeholder="" ng-model="jobsNew.data.enddate">
+      <input class="input" type="date" placeholder="" ng-model="jobsEdit.data.startdate" name="startdate" required ng-class= " {'is-danger': jobsEdit.isDanger('startdate')}" />
     </div>
   </div>
+
+  <div class="field">
+    <label class="label" for="enddate">End Date</label>
+    <div class="control">
+      <input class="input" type="date" placeholder="" ng-model="jobsEdit.data.enddate" name="enddate" required ng-class= " {'is-danger': jobsEdit.isDanger('enddate')}" />
+    </div>
+  </div>
+
   <p class="help">
     <button class="button submit">Submit</button>
   </p>
-</form>
+  </form>
