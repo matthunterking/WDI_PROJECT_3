@@ -11,8 +11,6 @@
 
   <!-- this section can only be seen by the job poster -->
   <section ng-controller="UsersProfileCtrl as usersProfile">
-    <!-- <p>Createdby: {{jobsShow.job.createdBy._id}}</p>
-    <p>Loggedin: {{usersProfile.user._id}}</p> -->
     <section ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
       Hello, {{usersProfile.user.firstname}}! This job was posted by you.
     </section>
@@ -59,7 +57,40 @@
 
 
     <hr />
+<!-- applicant panel -->
+<p class='title is-4'>Applicants For This Job</p>
+<div class="columns is-mobile">
+  <div class="">
+    <div class="media" ng-repeat="applicant in jobsShow.job.applicants">
+      <div class="column is-one-quarter">
+        <img src="{{ applicant.who.image }}" alt="" />
+      </div>
+      <div class="column is-half">
+        <p class="title is-6">Applicant is: <a ui-sref='usersShow({ id: applicant.who._id })'>{{ applicant.who.firstname }} {{ applicant.who.surname }}</a></p>
+        <p class="title is-6">Status: {{applicant.status}}</p>
+        <!-- only seen by job poster -->
+        <section ng-controller="UsersProfileCtrl as usersProfile">
+          <section ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
+            <button type="button" name="button" ng-click='jobsShow.handleApplicantAccept(applicant)'>Choose this applicant</button>
+            <button type="button" name="button" ng-click='jobsShow.handleApplicantReject(applicant)'>Reject this applicant</button>
+          </section>
+        </section>
+        <!-- end of job-poster-only -->
+      </div>
 
+      <div class="column is-one-quarter"  ng-controller="UsersProfileCtrl as usersProfile">
+        <button ng-click="jobsShow.handleApplicantDelete(applicant)" class="button is-danger" ng-if="applicant.who._id === usersProfile.user._id">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+<form name="jobsShow.form"  novalidate>
+
+<!-- end applicant panel -->
+<hr />
+
+<!-- messages panel -->
+<p class='title is-4'>Messages About This Job</p>
     <div class="columns is-mobile">
       <div class="comments">
         <div class="media" ng-repeat="message in jobsShow.job.messages">
@@ -78,13 +109,18 @@
       </div>
     </div>
 
-    <form name="jobsShow.form" ng-submit="jobsShow.handleMessageCreate()" novalidate>
+    <form name="jobsShow.form"  novalidate>
       <div class="field">
         <label for="content">Leave a message for {{ jobsShow.job.createdBy.firstname }}</label>
         <textarea class="textarea" ng-model="jobsShow.data.content" placeholder="Message"></textarea>
       </div>
-      <button class="button">Submit</button>
+      <button class="button" ng-click="jobsShow.handleMessageCreate()">Submit message only</button>
+      <button class="button" ng-click="jobsShow.handleApplicantCreate()">Submit message AND apply for this job</button>
+      </form>
     </form>
+
+    <!-- end messages panel -->
+
   </section>
 
   <!-- end of logged-in-users section -->

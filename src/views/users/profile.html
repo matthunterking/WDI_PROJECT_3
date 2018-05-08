@@ -1,18 +1,33 @@
 <div class= 'box'>
 <img src='{{usersProfile.user.image}}' />
-  <p>Welcome, {{usersProfile.user.firstname}}!</p>
+  <p>Welcome, {{usersProfile.user.firstname}}! </p>
   <p>Your name: {{usersProfile.user.firstname}} {{usersProfile.user.surname}}</p>
   <p>Your email: {{usersProfile.user.email}}</p>
   <p>Your bio: {{usersProfile.user.bio}}</p>
   <p>Your location: {{usersProfile.user.location}}</p>
-  <p>Your jobs:</p>
+  <hr />
 
+  <p>Jobs you have created:</p>
   <div ng-repeat='job in usersProfile.user.jobs'>
-    <a ui-sref='jobsShow({ id: job._id })'><p>{{job.category}}</p></a>
-    <p>job created {{job.createdAtRelative}}</p>
+    <p><a ui-sref='jobsShow({ id: job._id })'>{{job.category}}</a></p>
+    <p>Job created {{job.createdAtRelative}}</p>
+    <p>Number of applicants: {{job.applicants.length}}</p>
+  </div>
+  <hr/>
+
+  <p>Jobs you have applied for:</p>
+  <div ng-controller='JobsIndexCtrl as jobsIndex'>
+  <div ng-repeat='job in jobsIndex.all'>
+      <div ng-repeat='applicant in job.applicants'>
+        <div ng-if="applicant.who === usersProfile.user._id">
+          <p><a ui-sref='jobsShow({ id: job._id })'>{{job.category}}</a></p>
+          <p>Status: {{applicant.status}}</p>
+        </div>
+      </div>
+  </div>
   </div>
 
 <a ui-sref='usersEdit({ id: usersProfile.user._id })' class="button">Edit your account</a>
-  <button ng-click='usersProfile.handleDelete()' class='button is-danger'>Delete your account</button>
+<button ng-click='usersProfile.handleDelete()' class='button is-danger'>Delete your account</button>
 
 </div>

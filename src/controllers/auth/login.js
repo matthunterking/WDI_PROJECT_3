@@ -20,9 +20,15 @@ function LoginCtrl(User, $auth, $state) {
     return (this.form[field].$touched || this.form.$submitted) && (this.form[field].$error.required || this.form[field].$error.email);
   }
 
+  function authenticate(provider) {
+    $auth.authenticate(provider)
+      .then(() => $state.go('jobsIndex'));
+  }
+
   this.isAuthenticated = $auth.isAuthenticated;
   this.handleLogin = handleLogin;
   this.isDanger = isDanger;
+  this.authenticate = authenticate;
 
 }
 
