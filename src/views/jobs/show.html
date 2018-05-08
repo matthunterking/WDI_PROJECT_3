@@ -61,7 +61,35 @@
 
 
     <hr />
+<!-- applicant panel -->
+<p class='title is-4'>Applicants For This Job</p>
+<div class="columns is-mobile">
+  <div class="">
+    <div class="media" ng-repeat="applicant in jobsShow.job.applicants">
+      <div class="column is-one-quarter">
+        <img src="{{ applicant.who.image }}" alt="" />
+      </div>
+      <div class="column is-half">
+        Applicant is: <a ui-sref='usersShow({ id: applicant.who._id })'><p class="title is-6">{{ applicant.who.firstname }} {{ applicant.who.surname }}</p></a>
+        Status is: <p class="title is-6">{{ applicant.status }}</p>
+      </div>
 
+      <div class="column is-one-quarter"  ng-controller="UsersProfileCtrl as usersProfile">
+        <button ng-click="jobsShow.handleApplicantDelete(applicant)" class="button is-danger" ng-if="applicant.who._id === usersProfile.user._id">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form name="jobsShow.form" ng-submit="jobsShow.handleApplicantCreate()" novalidate>
+  <button class="button">Apply for this job</button>
+</form>
+
+<!-- end applicant panel -->
+<hr />
+
+<!-- messages panel -->
+<p class='title is-4'>Messages About This Job</p>
     <div class="columns is-mobile">
       <div class="comments">
         <div class="media" ng-repeat="message in jobsShow.job.messages">
@@ -80,13 +108,16 @@
       </div>
     </div>
 
-    <form name="jobsShow.form" ng-submit="jobsShow.handleMessageCreate()" novalidate>
+    <form name="jobsShow.form"  novalidate>
       <div class="field">
         <label for="content">Leave a message for {{ jobsShow.job.createdBy.firstname }}</label>
         <textarea class="textarea" ng-model="jobsShow.data.content" placeholder="Message"></textarea>
       </div>
-      <button class="button">Submit</button>
+      <button class="button" ng-click="jobsShow.handleMessageCreate()">Submit Message</button>
     </form>
+
+    <!-- end messages panel -->
+
   </section>
 
   <!-- end of logged-in-users section -->

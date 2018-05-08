@@ -24,8 +24,16 @@ function Job($http) {
     return $http.post(`/api/jobs/${jobId}/messages`, data);
   }
 
-  function messageDelete(jobId, commentId) {
-    return $http.delete(`/api/jobs/${jobId}/messages/${commentId}`);
+  function messageDelete(jobId, messageId) {
+    return $http.delete(`/api/jobs/${jobId}/messages/${messageId}`);
+  }
+
+  function applicantCreate(jobId, data) {
+    return $http.post(`/api/jobs/${jobId}/applicants`, data);
+  }
+
+  function applicantDelete(jobId, applicantId) {
+    return $http.delete(`/api/jobs/${jobId}/applicants/${applicantId}`);
   }
 
   this.find = find;
@@ -35,6 +43,8 @@ function Job($http) {
   this.updateById = updateById;
   this.messageCreate = messageCreate;
   this.messageDelete = messageDelete;
+  this.applicantCreate = applicantCreate;
+  this.applicantDelete = applicantDelete;
 }
 
 export default Job;

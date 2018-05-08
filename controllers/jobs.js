@@ -12,8 +12,7 @@ function jobsIndex(req, res, next) {
 function jobsShow(req, res, next) {
   Job
     .findById(req.params.id)
-    .populate('createdBy')
-    .populate('messages.createdBy applicants.who')
+    .populate('createdBy messages.createdBy applicants.who')
     .exec()
     .then(job => {
       if(!job) return res.sendStatus(404);
@@ -60,7 +59,7 @@ function jobsMessageCreate(req, res, next) {
   req.body.createdBy = req.currentUser;
   Job
     .findById(req.params.id)
-    .populate('createdBy messages.createdBy')
+    .populate('createdBy messages.createdBy applicants.who')
     .exec()
     .then(job => {
       job.messages.push(req.body);
@@ -113,9 +112,6 @@ function jobsApplicantDelete(req, res, next) {
     .exec()
     .then(job => {
       const applicant = job.applicants.id(req.params.applicantId);
-      if(!applicant.createdBy.equals(req.currentUser._id)) {
-        return res.status(401).json({message: 'Unauthorized'});
-      }
       applicant.remove();
       return job.save();
     })

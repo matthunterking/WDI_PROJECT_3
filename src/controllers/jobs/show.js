@@ -3,6 +3,7 @@ JobsShowCtrl.$inject = ['Job', '$state'];
 function JobsShowCtrl(Job, $state) {
   this.job = {};
   this.data = {};
+  this.applicant = [];
 
   Job
     .findById($state.params.id)
@@ -30,10 +31,27 @@ function JobsShowCtrl(Job, $state) {
       .then(res => this.job = res.data);
   }
 
+  function handleApplicantCreate() {
+
+    if(this.form.$invalid) return false;
+
+    Job
+      .applicantCreate($state.params.id, this.data)
+      .then(res => this.job = res.data);
+  }
+
+  function handleApplicantDelete(applicant) {
+    Job
+      .applicantDelete($state.params.id, applicant._id)
+      .then(res => this.job = res.data);
+  }
+
 
   this.handleDelete = handleDelete;
   this.handleMessageCreate = handleMessageCreate;
   this.handleMessageDelete = handleMessageDelete;
+  this.handleApplicantCreate = handleApplicantCreate;
+  this.handleApplicantDelete = handleApplicantDelete;
 }
 
 export default JobsShowCtrl;
