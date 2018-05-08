@@ -5,7 +5,7 @@ function gMapShowView() {
     retrict: 'A',
     scope: {
       center: '=',
-      userLocation: '='
+      distance: '=?'
     },
     link($scope, $element) {
 
@@ -14,25 +14,27 @@ function gMapShowView() {
         zoom: 16
       });
 
-      if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          const userLocation = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-          console.log('userLocation--->',userLocation,'job location ---->',$scope.center);
-          const service = new google.maps.DistanceMatrixService();
-          service.getDistanceMatrix(
-            {
-              origins: [userLocation],
-              destinations: [$scope.center],
-              travelMode: 'WALKING'
-            }, callback);
-          function callback(response, status) {
-            console.log(response.rows[0].elements[0].distance.text);
-          }
-        });
-      }
+      const distance = (() => {
+        if(navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            const userLocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            const service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix(
+              {
+                origins: [userLocation],
+                destinations: [$scope.center],
+                travelMode: 'WALKING'
+              }, callback);
+            function callback(response) {
+              $scope.distance = response.rows[0].elements[0].distance.text;
+              $scope.$apply();
+            }
+          });
+        }
+      });
 
       const marker = new google.maps.Marker({
         map: map,
@@ -43,11 +45,7 @@ function gMapShowView() {
       $scope.$watch('center', () => {
         map.setCenter($scope.center);
         marker.setPosition($scope.center);
-      });
-
-      $scope.$watch('userLocation', () => {
-        map.setCenter($scope.userLocation);
-        marker.setPosition($scope.userLocation);
+        distance();
       });
     }
   };

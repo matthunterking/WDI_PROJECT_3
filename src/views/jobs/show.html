@@ -34,9 +34,6 @@
     </div>
   </div>
 
-<div g-map-show-view center="jobsShow.job.location" class="map column"></div>
-
-
   <p class="column title is-4">Posted by</p>
 
   <div class="columns is-mobile">
@@ -48,8 +45,8 @@
         <p class="title is-4">{{ jobsShow.job.createdBy.bio }}</p></a>
       </div>
     </div>
-
-    <div g-map center="jobsShow.job.location" class="map column"></div>
+    <p>Distance: {{ jobsShow.distance }}</p>
+    <div g-map-show-view center="jobsShow.job.location" distance="jobsShow.distance" class="map column"></div>
 
     <!-- this section can only be seen by the job poster -->
     <section ng-controller="UsersProfileCtrl as usersProfile">

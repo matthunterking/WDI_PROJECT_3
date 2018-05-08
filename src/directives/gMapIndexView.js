@@ -28,7 +28,14 @@ function gMapIndexView() {
       const marker = new google.maps.Marker({
         map: map,
         position: map.getCenter(),
-        label: '😃',
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          fillColor: '#D4EDF4',
+          fillOpacity: 1,
+          scale: 8,
+          strokeColor: '#4298B5',
+          strokeWeight: 4
+        },
         animation: google.maps.Animation.DROP
       });
 
