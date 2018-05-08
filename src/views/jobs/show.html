@@ -72,7 +72,6 @@
       </div>
       <div class="column is-half">
         Applicant is: <a ui-sref='usersShow({ id: applicant.who._id })'><p class="title is-6">{{ applicant.who.firstname }} {{ applicant.who.surname }}</p></a>
-        Status is: <p class="title is-6">{{ applicant.status }}</p>
       </div>
 
       <div class="column is-one-quarter"  ng-controller="UsersProfileCtrl as usersProfile">
@@ -81,10 +80,7 @@
     </div>
   </div>
 </div>
-
-<form name="jobsShow.form" ng-submit="jobsShow.handleApplicantCreate()" novalidate>
-  <button class="button">Apply for this job</button>
-</form>
+<form name="jobsShow.form"  novalidate>
 
 <!-- end applicant panel -->
 <hr />
@@ -114,7 +110,9 @@
         <label for="content">Leave a message for {{ jobsShow.job.createdBy.firstname }}</label>
         <textarea class="textarea" ng-model="jobsShow.data.content" placeholder="Message"></textarea>
       </div>
-      <button class="button" ng-click="jobsShow.handleMessageCreate()">Submit Message</button>
+      <button class="button" ng-click="jobsShow.handleMessageCreate()">Submit message only</button>
+      <button class="button" ng-click="jobsShow.handleApplicantCreate()">Submit message AND apply for this job</button>
+      </form>
     </form>
 
     <!-- end messages panel -->

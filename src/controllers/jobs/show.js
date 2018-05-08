@@ -1,13 +1,15 @@
 JobsShowCtrl.$inject = ['Job', '$state'];
 
 function JobsShowCtrl(Job, $state) {
-  this.job = {};
-  this.data = {};
-  this.applicant = [];
+
+  const vm = this;
+
+  vm.job = {};
+  vm.data = {};
 
   Job
     .findById($state.params.id)
-    .then(res => this.job = res.data);
+    .then(res => vm.job = res.data);
 
   function handleDelete() {
     Job
@@ -17,34 +19,36 @@ function JobsShowCtrl(Job, $state) {
 
   function handleMessageCreate() {
 
-    if(this.form.$invalid) return false;
-    console.log(this.data);
+    if(vm.form.$invalid) return false;
+    console.log(vm.data);
 
     Job
-      .messageCreate($state.params.id, this.data)
-      .then(res => this.job = res.data);
+      .messageCreate($state.params.id, vm.data)
+      .then(res => vm.job = res.data);
   }
 
   function handleMessageDelete(message) {
     Job
       .messageDelete($state.params.id, message._id)
-      .then(res => this.job = res.data);
+      .then(res => vm.job = res.data);
   }
 
   function handleApplicantCreate() {
 
-    if(this.form.$invalid) return false;
-
+    if(vm.form.$invalid) return false;
+    console.log(vm.data);
     Job
-      .applicantCreate($state.params.id, this.data)
-      .then(res => this.job = res.data)
-      .then(handleMessageCreate());
+      .applicantCreate($state.params.id, vm.data)
+      .then(res => vm.job = res.data)
+      .then(handleMessageCreate())
+      .then(location.reload());
+
   }
 
   function handleApplicantDelete(applicant) {
     Job
       .applicantDelete($state.params.id, applicant._id)
-      .then(res => this.job = res.data);
+      .then(res => vm.job = res.data);
   }
 
 

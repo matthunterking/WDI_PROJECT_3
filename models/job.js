@@ -27,12 +27,12 @@ messageSchema.set('toJSON', {
 
 //so users can be associated as applicants to the job
 const applicantSchema = new mongoose.Schema({
-  who: { type: mongoose.Schema.ObjectId, ref: 'User' },
-  status: {
-    type: { type: String },
-    enum: ['pending','accepted', 'rejected']
-    // default: 'pending'
-  }
+  who: { type: mongoose.Schema.ObjectId, ref: 'User' }
+  // status: {
+  //   type: { type: String },
+  //   enum: ['pending','accepted', 'rejected'],
+  //   default: 'pending'
+  // }
 }, {
   timestamps: true
 });
