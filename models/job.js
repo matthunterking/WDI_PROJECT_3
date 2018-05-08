@@ -3,7 +3,11 @@ const moment = require('moment');
 
 // so users can leave messages on the job
 const messageSchema = new mongoose.Schema({
+<<<<<<< HEAD
+  message: { type: String },
+=======
   content: { type: String, required: true },
+>>>>>>> development
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' }
 }, {
   timestamps: true
@@ -27,9 +31,9 @@ messageSchema.set('toJSON', {
 const applicantSchema = new mongoose.Schema({
   who: { type: mongoose.Schema.ObjectId, ref: 'User' },
   status: {
-    type: String,
-    enum: ['pending','accepted', 'rejected'],
-    default: 'pending'
+    type: { type: String },
+    enum: ['pending','accepted', 'rejected']
+    // default: 'pending'
   }
 }, {
   timestamps: true
