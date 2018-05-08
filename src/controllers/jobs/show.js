@@ -1,6 +1,9 @@
 JobsShowCtrl.$inject = ['Job', '$state'];
 
 function JobsShowCtrl(Job, $state) {
+  this.job = {};
+  this.data = {};
+  this.distance = null;
 
   const vm = this;
 

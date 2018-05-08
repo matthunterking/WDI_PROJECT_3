@@ -3,6 +3,7 @@ const jobs = require('../controllers/jobs');
 const auth = require('../controllers/auth');
 const users = require('../controllers/users');
 const secureRoute = require('../lib/secureRoute');
+const oauth = require('../controllers/oauth');
 
 router.post('/register', auth.register);
 router.post('/login', auth.login);
@@ -39,5 +40,9 @@ router.route('/jobs/:id/applicants/:applicantId/reject')
 // router.post('/github', oauth.github);  /* <-- Use when needed with OAuth  */
 // router.post('/facebook', oauth.facebook);  /* <-- Use when needed with OAuth  */
 
+
+router.route('/google')
+  .post(oauth.google);
+// >>>>>>> gmail-oauth
 
 module.exports = router;

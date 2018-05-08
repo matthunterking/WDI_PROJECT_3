@@ -32,6 +32,8 @@
 
         <a class="navbar-item" ui-sref="register" ng-if="!main.isAuthenticated()">Register</a>
         <a class="navbar-item" ui-sref="home" ng-if="!main.isAuthenticated()">Login</a>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
       </div>
     </div>
   </nav>

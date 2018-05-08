@@ -3,7 +3,6 @@ const moment = require('moment');
 
 // so users can leave messages on the job
 const messageSchema = new mongoose.Schema({
-
   message: { type: String },
   content: { type: String, required: true },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' }
