@@ -27,6 +27,7 @@
         <a class="navbar-item" ui-sref="jobsIndex">All Jobs Available</a>
 
         <a class="navbar-item" ui-sref="usersIndex" ng-if="main.isAuthenticated()">Users</a>
+        <a class="navbar-item" ui-sref="jobsNew" ng-if="main.isAuthenticated()">Post a Job</a>
 
         <a class="navbar-item" ng-controller="LoginCtrl as login" ui-sref="usersProfile({ id: login.userId })" ng-if="main.isAuthenticated()">Profile</a>
 
