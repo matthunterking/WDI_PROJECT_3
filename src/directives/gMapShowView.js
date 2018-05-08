@@ -14,15 +14,23 @@ function gMapShowView() {
         zoom: 16
       });
 
-      // let userLocation;
-
       if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
           const userLocation = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
-          console.log('userLocation--->',userLocation);
+          console.log('userLocation--->',userLocation,'job location ---->',$scope.center);
+          const service = new google.maps.DistanceMatrixService();
+          service.getDistanceMatrix(
+            {
+              origins: [userLocation],
+              destinations: [$scope.center],
+              travelMode: 'WALKING'
+            }, callback);
+          function callback(response, status) {
+            console.log(response.rows[0].elements[0].distance.text);
+          }
         });
       }
 
