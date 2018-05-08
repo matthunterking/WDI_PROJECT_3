@@ -4,46 +4,39 @@
 
 <!-- FILTER DROPDOWN - NOT ACTIVE YET
 <div class="dropdown is-active">
-  <div class="dropdown-trigger">
-    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-      <span>Filter</span>
-      <span class="icon is-small">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-    </button>
-  </div>
-  <div class="dropdown-menu" id="dropdown-menu" role="menu">
-    <div class="dropdown-content">
-      <a href="#" class="dropdown-item">
-      Distance
-      </a>
-      <a class="dropdown-item">
-        Type of Job
-      </a>
-      <a href="#" class="dropdown-item is-active">
-        Duration
-      </a>
-    </div>
-  </div>
+<div class="dropdown-trigger">
+<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+<span>Filter</span>
+<span class="icon is-small">
+<i class="fas fa-angle-down" aria-hidden="true"></i>
+</span>
+</button>
+</div>
+<div class="dropdown-menu" id="dropdown-menu" role="menu">
+<div class="dropdown-content">
+<a href="#" class="dropdown-item">
+Distance
+</a>
+<a class="dropdown-item">
+Type of Job
+</a>
+<a href="#" class="dropdown-item is-active">
+Duration
+</a>
+</div>
+</div>
 </div> -->
 
-<div class="columns is-inline">
-  <div ng-repeat="job in jobsIndex.all" class="column ">
-    <div class="card">
-      <div class="card-content">
-        <div class="media">
-          <div class="media-content level is-mobile">
-            <p>{ job.icon }</p>
-            <div class="level-item">
-              <p class="">{{ job.category }} for {{job.createdBy.firstname}}</p>
-            </div>
-            <div class="level">
-              <p>{{ job.description }}</p>
-            </div>
-            <a class="level-item" ui-sref="jobsShow({ id: job._id })">More Details</a>
-          </div>
-        </div>
-      </div>
+
+<div ng-repeat="job in jobsIndex.all">
+
+
+  <div class="box">
+    <div class="columns">
+      <p class="column">{ job.icon }</p>
+      <p class="column">{{ job.category }} for {{job.createdBy.firstname}}</p>
+      <p class='column'>{{ job.description }}</p>
+      <p class='column'>{{job.status}}</p>
+      <p class="column"><a ui-sref="jobsShow({ id: job._id })">More Details</a></p>
     </div>
   </div>
-</div>

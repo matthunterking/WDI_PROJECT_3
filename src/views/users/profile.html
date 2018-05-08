@@ -16,7 +16,7 @@
 
   <p>Jobs you have applied for:</p>
   <div ng-controller='JobsIndexCtrl as jobsIndex'>
-  <div ng-repeat='job in jobsIndex.all'>
+  <div ng-repeat='job in jobsIndex.all' >
       <div ng-repeat='applicant in job.applicants'>
         <div ng-if="applicant.who === usersProfile.user._id">
           <p><a ui-sref='jobsShow({ id: job._id })'>{{job.category}}</a></p>

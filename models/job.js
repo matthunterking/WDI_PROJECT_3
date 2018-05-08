@@ -57,7 +57,8 @@ const jobSchema = new mongoose.Schema({
   location: { type: Object },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   applicants: [ applicantSchema ],
-  messages: [ messageSchema ]
+  messages: [ messageSchema ],
+  status: {type: String, default: 'available', enum: ['available', 'inprogress', 'finished']}
 }, {
   timestamps: true
 });
