@@ -29,7 +29,8 @@ import Job from './models/job';
 import User from './models/user';
 
 //directives
-import gMap from './directives/gMap';
+import gMapIndexView from './directives/gMapIndexView';
+import gMapShowView from './directives/gMapShowView';
 import gAutocomplete from './directives/gAutocomplete';
 
 angular.module('neighbourgood', ['ui.router', 'satellizer', 'ngMessages'])
@@ -47,5 +48,6 @@ angular.module('neighbourgood', ['ui.router', 'satellizer', 'ngMessages'])
   .controller('JobsShowCtrl', JobsShowCtrl)
   .service('Job', Job)
   .service('User', User)
-  .directive('gMap', gMap)
+  .directive('gMapIndexView', gMapIndexView)
+  .directive('gMapShowView', gMapShowView)
   .directive('gAutocomplete', gAutocomplete);

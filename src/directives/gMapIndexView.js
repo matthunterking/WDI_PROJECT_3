@@ -1,6 +1,6 @@
 /* global google */
 
-function gMap() {
+function gMapIndexView() {
   return {
     retrict: 'A',
     scope: {
@@ -52,4 +52,4 @@ function gMap() {
     }
   };
 }
-export default gMap;
+export default gMapIndexView;
