@@ -4,14 +4,17 @@ function gMapIndexView() {
   return {
     retrict: 'A',
     scope: {
-      center: '=',
-      listings: '='
+      userLocation: '=?',
+      jobListings: '=',
+      distance: '=?'
     },
     link($scope, $element) {
 
+      let listingMarkers = [];
+
       const map = new google.maps.Map($element[0], {
         center: { lat: 51.515, lng: -0.078 },
-        zoom: 16
+        zoom: 14
       });
 
       if(navigator.geolocation) {
@@ -20,12 +23,14 @@ function gMapIndexView() {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
+          $scope.userLocation = pos;
+          $scope.$apply();
           map.setCenter(pos);
-          marker.setPosition(pos);
+          userMarker.setPosition(pos);
         });
       }
 
-      const marker = new google.maps.Marker({
+      const userMarker = new google.maps.Marker({
         map: map,
         position: map.getCenter(),
         icon: {
@@ -39,18 +44,22 @@ function gMapIndexView() {
         animation: google.maps.Animation.DROP
       });
 
-      let listingMarkers = [];
+      const marker = new google.maps.Marker({
+        map: map,
+        position: map.getCenter(),
+        animation: google.maps.Animation.DROP
+      });
 
-      $scope.$watch('center', () => {
+      $scope.$watch('userLocation', () => {
         map.setCenter($scope.center);
         marker.setPosition($scope.center);
       });
 
-      $scope.$watch('listings', () => {
+      $scope.$watch('jobListings', () => {
         listingMarkers.forEach(marker => marker.setMap(null));
-        listingMarkers = $scope.listings.map((listing) => {
+        listingMarkers = $scope.jobListings.map((job) => {
           return new google.maps.Marker({
-            position: listing.location,
+            position: job.location,
             map: map
           });
         });

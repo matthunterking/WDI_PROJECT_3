@@ -38,7 +38,7 @@
 
   <div class="columns is-mobile">
     <div class="column is-one-quarter">
-      <img src="{{ jobsShow.job.createdBy.image }}" alt="" />
+      <img ng-src="{{ jobsShow.job.createdBy.image }}" alt="" />
     </div>
     <div class="column is-three-quarters">
       <a ui-sref='usersShow({ id: jobsShow.job.createdBy._id })'><p class="title is-2">{{ jobsShow.job.createdBy.firstname }} {{ jobsShow.job.createdBy.surname }}</p>
@@ -46,7 +46,7 @@
       </div>
     </div>
     <p>Distance: {{ jobsShow.distance }}</p>
-    <div g-map-show-view center="jobsShow.job.location" distance="jobsShow.distance" class="map column"></div>
+    <div g-map-show-view job-location="jobsShow.job.location" distance="jobsShow.distance" class="map column"></div>
 
     <!-- this section can only be seen by the job poster -->
     <section ng-controller="UsersProfileCtrl as usersProfile">
@@ -64,7 +64,7 @@
       <div class="comments">
         <div class="media" ng-repeat="message in jobsShow.job.messages">
           <div class="column is-one-quarter">
-            <img src="{{ message.createdBy.image }}" alt="" />
+            <img ng-src="{{ message.createdBy.image }}" alt="" />
           </div>
           <div class="column is-half">
             <p class="title is-4">{{ message.content }}</p>
