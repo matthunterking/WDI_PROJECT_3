@@ -5,7 +5,7 @@
   <p>{{usersShow.user.firstname}} {{usersShow.user.surname}}</p>
   <p>{{usersShow.user.bio}}</p>
 
-  <p>{{usersShow.user.firstname}}'s jobs:</p>
+  <p>Jobs {{usersShow.user.firstname}} has created:</p>
 
   <div ng-repeat='job in usersShow.user.jobs'>
     <a ui-sref='jobsShow({ id: job._id })'><p>{{job.category}}</p></a>

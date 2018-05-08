@@ -19,11 +19,18 @@ function JobsEditCtrl(Job, $state) {
       .then(() => $state.go('jobsShow', $state.params));
   }
 
+
+  function updateLocation(location) {
+    console.log('updating location..', location);
+    this.data.location = location;
+  }
+
   function isDanger(field) {
     return (this.form[field].$touched || this.form.$submitted) && (this.form[field].$error.required || this.form[field].$error.email);
   }
 
   this.handleUpdate = handleUpdate;
+  this.updateLocation = updateLocation;
   this.isDanger = isDanger;
 }
 
