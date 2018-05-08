@@ -61,7 +61,7 @@ User
           duration: 'ongoing',
           startdate: 'Wed Oct 18 2017 12:41:34 GMT+0000 (UTC)',
           enddate: 'Wed Oct 18 2018 12:41:34 GMT+0000 (UTC)',
-          location: { lat: 51.517, lng: -0.078 },
+          location: { lng: -0.078, lat: 41.517},
           createdBy: users[0],
           applicants: [],
           messages: [{message: 'I am great!', createdBy: users[1]}, {content: 'I am better!', createdBy: users[2]}]
@@ -72,7 +72,7 @@ User
           duration: 'once',
           startdate: 'Wed Oct 18 2017 12:41:34 GMT+0000 (UTC)',
           enddate: 'Wed Oct 18 2018 12:41:34 GMT+0000 (UTC)',
-          location: { lat: 51.517, lng: -0.079 },
+          location: { lng: -0.079, lat: 51.517 },
           createdBy: users[0],
           applicants: [],
           messages: [{message: 'I fix stuff good!', createdBy: users[2]}, {content: 'I fix stuff better!', createdBy: users[3]}]

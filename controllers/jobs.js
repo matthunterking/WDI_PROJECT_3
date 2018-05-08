@@ -9,6 +9,20 @@ function jobsIndex(req, res, next) {
     .catch(next);
 }
 
+function jobsIndexFilter(req, res, next) {
+  console.log(req.body);
+  Job
+    .find({
+      location: {
+        $geoWithin: {
+          $centerSphere: [ [ req.body.lng, req.body.lng ], req.body.maxDistance/3963.2 ] }
+      }
+    })
+    .exec()
+    .then(jobs => res.json(jobs))
+    .catch(next);
+}
+
 function jobsShow(req, res, next) {
   Job
     .findById(req.params.id)
@@ -156,6 +170,7 @@ function jobsApplicantReject(req, res, next) {
 
 module.exports = {
   index: jobsIndex,
+  indexFilter: jobsIndexFilter,
   show: jobsShow,
   create: jobsCreate,
   update: jobsUpdate,
