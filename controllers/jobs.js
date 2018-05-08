@@ -119,6 +119,41 @@ function jobsApplicantDelete(req, res, next) {
     .catch(next);
 }
 
+// accepting applicants
+
+function jobsApplicantAccept(req, res, next) {
+  Job
+    .findById(req.params.id)
+    .populate('createdBy messages.createdBy applicants.who')
+    .exec()
+    .then(job => {
+      const applicant = job.applicants.id(req.params.applicantId);
+      applicant.status = 'accepted';
+      return job.save();
+    })
+    .then(job => res.json(job))
+    .catch(next);
+}
+
+// rejecting applicants
+
+function jobsApplicantReject(req, res, next) {
+  Job
+    .findById(req.params.id)
+    .populate('createdBy messages.createdBy applicants.who')
+    .exec()
+    .then(job => {
+      const applicant = job.applicants.id(req.params.applicantId);
+      applicant.status = 'rejected';
+      return job.save();
+    })
+    .then(job => res.json(job))
+    .catch(next);
+}
+
+
+
+
 module.exports = {
   index: jobsIndex,
   show: jobsShow,
@@ -128,5 +163,7 @@ module.exports = {
   messageCreate: jobsMessageCreate,
   messageDelete: jobsMessageDelete,
   applicantCreate: jobsApplicantCreate,
-  applicantDelete: jobsApplicantDelete
+  applicantDelete: jobsApplicantDelete,
+  applicantAccept: jobsApplicantAccept,
+  applicantReject: jobsApplicantReject
 };

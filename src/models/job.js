@@ -36,6 +36,14 @@ function Job($http) {
     return $http.delete(`/api/jobs/${jobId}/applicants/${applicantId}`);
   }
 
+  function applicantAccept(jobId, applicantId, data) {
+    return $http.put(`/api/jobs/${jobId}/applicants/${applicantId}/accept`, data);
+  }
+
+  function applicantReject(jobId, applicantId, data) {
+    return $http.put(`/api/jobs/${jobId}/applicants/${applicantId}/reject`, data);
+  }
+
   this.find = find;
   this.findById = findById;
   this.removeById = removeById;
@@ -45,6 +53,8 @@ function Job($http) {
   this.messageDelete = messageDelete;
   this.applicantCreate = applicantCreate;
   this.applicantDelete = applicantDelete;
+  this.applicantAccept = applicantAccept;
+  this.applicantReject = applicantReject;
 }
 
 export default Job;

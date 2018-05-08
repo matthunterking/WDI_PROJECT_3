@@ -51,11 +51,26 @@ function JobsShowCtrl(Job, $state) {
   }
 
 
+  function handleApplicantAccept(applicant) {
+    Job
+      .applicantAccept($state.params.id, applicant._id)
+      .then(() => applicant.status = 'accepted');
+  }
+
+  function handleApplicantReject(applicant) {
+    Job
+      .applicantReject($state.params.id, applicant._id)
+      .then(() => applicant.status = 'rejected');
+  }
+
+
   this.handleDelete = handleDelete;
   this.handleMessageCreate = handleMessageCreate;
   this.handleMessageDelete = handleMessageDelete;
   this.handleApplicantCreate = handleApplicantCreate;
   this.handleApplicantDelete = handleApplicantDelete;
+  this.handleApplicantAccept = handleApplicantAccept;
+  this.handleApplicantReject = handleApplicantReject;
 }
 
 export default JobsShowCtrl;
