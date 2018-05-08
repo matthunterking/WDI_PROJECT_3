@@ -16,7 +16,7 @@ function gMap() {
 
       if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-          var pos = {
+          const pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
@@ -28,6 +28,7 @@ function gMap() {
       const marker = new google.maps.Marker({
         map: map,
         position: map.getCenter(),
+        label: '😃',
         animation: google.maps.Animation.DROP
       });
 

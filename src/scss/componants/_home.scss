@@ -1,6 +1,8 @@
 .animation-home {
   width: 90%;
   margin: 0 auto;
+  min-height: 400px;
+  max-height: 700px;
 }
 
 .sun {
@@ -22,13 +24,12 @@
   animation-iteration-count: infinite;
 }
 
-.house { margin-top: 80px }
-
 .car {
   width: 25%;
   position: relative;
   right: -120%;
   top: -85px;
+  visibility: hidden;
   animation-name: moveRight;
   animation-duration: 15s;
   animation-delay: 20s;
@@ -36,14 +37,29 @@
 }
 
 @keyframes moveLeft {
-0% { left:-30%; }
-50%   { left:25%; }
-100% { left:-30%; }
+0% { left:-30% }
+50%   { left:25% }
+100% { left:-30% }
 }
 
 @keyframes moveRight {
-0% { right:-120%; }
-100% { right:200%; }
+0% {
+  right:-120%;
+  visibility: hidden;
+ }
+
+25% {
+  right: -74%;
+  visibility: visible;
+}
+75% {
+  right: 20%;
+  visibility: hidden;
+}
+100% {
+  right:200%;
+  visibility: hidden;
+}
 }
 
 @keyframes rotate {

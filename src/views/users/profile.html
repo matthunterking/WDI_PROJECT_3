@@ -1,6 +1,7 @@
 <div class= 'box'>
-
+<img src='{{usersProfile.user.image}}' />
   <p>Welcome, {{usersProfile.user.firstname}}!</p>
+  <p>Your name: {{usersProfile.user.firstname}} {{usersProfile.user.surname}}</p>
   <p>Your email: {{usersProfile.user.email}}</p>
   <p>Your bio: {{usersProfile.user.bio}}</p>
   <p>Your location: {{usersProfile.user.location}}</p>
@@ -11,6 +12,7 @@
     <p>job created {{job.createdAtRelative}}</p>
   </div>
 
+<a ui-sref='usersEdit({ id: usersProfile.user._id })' class="button">Edit your account</a>
   <button ng-click='usersProfile.handleDelete()' class='button is-danger'>Delete your account</button>
 
 </div>

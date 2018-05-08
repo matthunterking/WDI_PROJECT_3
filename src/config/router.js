@@ -25,6 +25,16 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/jobs/new.html',
       controller: 'JobsNewCtrl as jobsNew'
     })
+    .state('jobsShow', {
+      url: '/jobs/:id',
+      templateUrl: 'views/jobs/show.html',
+      controller: 'JobsShowCtrl as jobsShow'
+    })
+    .state('jobsEdit', {
+      url: '/jobs/:id/edit',
+      templateUrl: 'views/jobs/edit.html',
+      controller: 'JobsEditCtrl as jobsEdit'
+    })
     .state('login', {
       url: '/login',
       templateUrl: 'views/auth/login.html'
@@ -45,9 +55,14 @@ function Router($stateProvider, $urlRouterProvider) {
       controller: 'UsersShowCtrl as usersShow'
     })
     .state('usersProfile', {
-      url: '/users/:id',
+      url: '/users/profile/:id',
       templateUrl: 'views/users/profile.html',
       controller: 'UsersProfileCtrl as usersProfile'
+    })
+    .state('usersEdit', {
+      url: '/users/:id/edit',
+      templateUrl: 'views/users/edit.html',
+      controller: 'UsersEditCtrl as usersEdit'
     });
 
   $urlRouterProvider.otherwise('/');

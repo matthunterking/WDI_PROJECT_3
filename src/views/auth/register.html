@@ -1,12 +1,11 @@
 <p class="is-size-2 title">Join NeighbourGood</p>
 
-<form ng-submit="register.handleRegister()">
-
-<form name='register.form' ng-submit="register.handleRegister()" novalidate>
-  <div class='' ng-if="register.form.$submitted && !main.isAuthenticated()">
-  Sorry, you made a mistake while registering.
+<div class='' ng-if="register.form.$submitted && !register.isAuthenticated()">
+Sorry, you made a mistake while registering.
 </div>
 
+
+<form name='register.form' ng-submit="register.handleRegister()" novalidate>
 
   <div class="field">
     <label class="label" for='firstname'>First Name</label>
@@ -38,6 +37,7 @@
       <div ng-messages="register.form.email.$error" ng-if="register.form.email.$dirty || register.form.$submitted">
         <div class='' ng-message="required">Please provide an email address</div>
         <div class= '' ng-message="email">This must be an email address</div>
+        <div class= '' ng-message="unique">Sorry, this email address has already been registered</div>
       </div>
       <!-- end in case of error -->
     </div>
@@ -56,7 +56,6 @@
   <div class="field">
     <label class="label" for="passwordConfirmation">Confirm Password</label>
     <div class="control">
-      <input class="input" type="password" placeholder="" ng-model="register.data.passwordConfirmation">
       <input class="input" type="password" placeholder="Confirm Password" name='passwordConfirmation' ng-model="register.data.passwordConfirmation" required ng-class = " {'is-danger': register.isDanger('passwordConfirmation')}" />
       <!-- in case of input error -->
       <div ng-messages="register.form.passwordConfirmation.$error" ng-if="register.form.passwordConfirmation.$dirty || register.form.$submitted">
@@ -84,6 +83,9 @@
       <input class="input" type="text" placeholder="" name='location' ng-model="register.data.location">
     </div>
   </div>
+  <div class='' ng-if="register.form.$submitted && !main.isAuthenticated()">
+  Sorry, you made a mistake while registering.
+</div>
   <p class="help">
     <button class="button submit">Submit</button>
   </p>

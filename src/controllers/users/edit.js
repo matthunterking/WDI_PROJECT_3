@@ -1,19 +1,25 @@
 UsersEditCtrl.$inject = ['User', '$state'];
 
 function UsersEditCtrl(User, $state) {
-  
-  this.user = {};
+  this.data = {};
 
   User.findById($state.params.id)
-    .then(res => this.user = res.data);
+    .then(res => this.data = res.data);
 
-  function handleSubmit() {
-    User.update(this.user)
-      .then(() => $state.go('usersShow', {
-        id: $state.params.id }));
+  function handleUpdate() {
+
+    if(this.form.$invalid) return false;
+
+    User.updateById($state.params.id, this.data)
+      .then(() => $state.go('usersProfile', $state.params));
   }
 
-  this.handleSubmit = handleSubmit;
+  function isDanger(field) {
+    return (this.form[field].$touched || this.form.$submitted) && (this.form[field].$error.required || this.form[field].$error.email);
+  }
+
+  this.handleUpdate = handleUpdate;
+  this.isDanger = isDanger;
 }
 
 export default UsersEditCtrl;

@@ -8,7 +8,6 @@
 </head>
 <body>
   <nav ng-controller="MainCtrl as main" class="navbar" role="navigation" aria-label="main navigation">
-    <!-- navbar-brand -->
     <div class="navbar-brand">
       <a class="navbar-item" ui-sref="home">
         <p class="is-size-2 title logo">NeighbourGood</p>
@@ -20,8 +19,6 @@
         <span aria-hidden="true"></span>
       </a>
     </div>
-    <!-- end navbar-brand -->
-    <!-- navbar-menu -->
     <div class="navbar-menu" ng-class="{ 'is-active': main.navBarIsOpen }">
       <div class="navbar-end">
         <a class="navbar-item" ui-sref="jobsIndex">All Jobs Available</a>
@@ -29,7 +26,7 @@
         <a class="navbar-item" ui-sref="usersIndex" ng-if="main.isAuthenticated()">Users</a>
         <a class="navbar-item" ui-sref="jobsNew" ng-if="main.isAuthenticated()">Post a Job</a>
 
-        <a class="navbar-item" ng-controller="LoginCtrl as login" ui-sref="usersProfile({ id: login.userId })" ng-if="main.isAuthenticated()">Profile</a>
+        <a class="navbar-item" ng-controller="LoginCtrl as login" ui-sref="usersProfile({ id: login.userId })" ng-if="main.isAuthenticated()">Profile <span ng-controller="UsersProfileCtrl as usersProfile">(logged in as {{usersProfile.user.firstname}})</span></a>
 
         <a class="navbar-item" ng-click="main.logout()" ng-if="main.isAuthenticated()">Logout</a>
 
@@ -37,13 +34,13 @@
         <a class="navbar-item" ui-sref="home" ng-if="!main.isAuthenticated()">Login</a>
       </div>
     </div>
-    <!-- end navbar-menu -->
   </nav>
 
-  <section class='section' ng-if="!main.isHome">
+  <section class='section' ng-controller="MainCtrl as main" ng-if="!main.isHome">
     <div class="container" ui-view>
       <ui-view></ui-view>
     </div>
   </section>
+
 </body>
 </html>

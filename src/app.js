@@ -22,6 +22,8 @@ import UsersEditCtrl from './controllers/users/edit';
 import UsersProfileCtrl from './controllers/users/profile';
 import JobsIndexCtrl from './controllers/jobs/index';
 import JobsNewCtrl from './controllers/jobs/new';
+import JobsShowCtrl from './controllers/jobs/show';
+import JobsEditCtrl from './controllers/jobs/edit';
 
 // Jobs and Users Models
 import Job from './models/job';
@@ -29,6 +31,7 @@ import User from './models/user';
 
 //directives
 import gMap from './directives/gMap';
+import gAutocomplete from './directives/gAutocomplete';
 
 angular.module('neighbourgood', ['ui.router', 'satellizer', 'ngMessages'])
   .config(Router)
@@ -42,6 +45,9 @@ angular.module('neighbourgood', ['ui.router', 'satellizer', 'ngMessages'])
   .controller('UsersProfileCtrl', UsersProfileCtrl)
   .controller('JobsIndexCtrl', JobsIndexCtrl)
   .controller('JobsNewCtrl', JobsNewCtrl)
+  .controller('JobsShowCtrl', JobsShowCtrl)
+  .controller('JobsEditCtrl', JobsEditCtrl)
   .service('Job', Job)
   .service('User', User)
-  .directive('gMap', gMap);
+  .directive('gMap', gMap)
+  .directive('gAutocomplete', gAutocomplete);

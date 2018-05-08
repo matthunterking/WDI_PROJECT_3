@@ -19,13 +19,13 @@ function Job($http) {
   function updateById(id, data) {
     return $http.put(`/api/jobs/${id}`, data);
   }
-  // 
-  // function commentCreate(jobId, data) {
-  //   return $http.post(`/api/jobs/${jobId}/comments`, data);           /* This will be added when comments are fucntional? */
-  // }
 
-  function commentDelete(jobId, commentId) {
-    return $http.delete(`/api/jobs/${jobId}/comments/${commentId}`);
+  function messageCreate(jobId, data) {
+    return $http.post(`/api/jobs/${jobId}/messages`, data);
+  }
+
+  function messageDelete(jobId, commentId) {
+    return $http.delete(`/api/jobs/${jobId}/messages/${commentId}`);
   }
 
   this.find = find;
@@ -33,8 +33,8 @@ function Job($http) {
   this.removeById = removeById;
   this.create = create;
   this.updateById = updateById;
-  // this.commentCreate = commentCreate;
-  this.commentDelete = commentDelete;
+  this.messageCreate = messageCreate;
+  this.messageDelete = messageDelete;
 }
 
 export default Job;

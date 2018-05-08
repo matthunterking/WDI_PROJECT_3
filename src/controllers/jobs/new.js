@@ -4,22 +4,27 @@ function JobsNewCtrl(Job, $state) {
   this.data = {};
 
   function handleCreate() {
-    console.log(this.data.location);
-    postcodeConverter(this.data.location);
+
+    if(this.form.$invalid) return false;
+
     Job
       .create(this.data)
       .then(() => $state.go('jobsIndex'));
   }
 
-  function postcodeConverter(postcode) {
-    return postcode;
-    //receive a post code
-    //send a request to app
-    //create an object and save the lat and long
-    //save that object in the record
+  function updateLocation(location) {
+    console.log('updating location..', location);
+    this.data.location = location;
   }
 
+  function isDanger(field) {
+    return (this.form[field].$touched || this.form.$submitted) && (this.form[field].$error.required);
+  }
+
+
   this.handleCreate = handleCreate;
+  this.updateLocation = updateLocation;
+  this.isDanger = isDanger;
 
 }
 

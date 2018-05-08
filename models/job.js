@@ -53,10 +53,11 @@ applicantSchema.set('toJSON', {
 const jobSchema = new mongoose.Schema({
   category: { type: String },
   description: { type: String },
-  duration: { type: String},
+  duration: { type: String },
   startdate: { type: Date },
   enddate: { type: Date },
-  location: { type: Object, required: true },
+  postcode: { type: String },
+  location: { type: Object },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   applicants: [ applicantSchema ],
   messages: [ messageSchema ]

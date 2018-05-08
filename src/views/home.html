@@ -1,59 +1,69 @@
-<div class="animation-home">
-  <img class="sun" src="http://www.freepngimg.com/download/sun/3-2-sun-png-clipart.png" alt="">
-  <img class="cloud" src="http://etc.usf.edu/clippix/pix/single-small-cloud-illustration_medium.png" alt="">
-  <img class="house" src="https://www.crazyielts.com/wp-content/uploads/2018/03/home-2003068_1280-823x450.png" alt="">
-  <img class="car" src="https://i.pinimg.com/originals/85/6f/47/856f47792b0a8701f5c8dc38ce671e01.png" alt="">
+<div class="columns">
+
+  <div class="animation-home column is-half">
+    <img class="sun" src="http://www.freepngimg.com/download/sun/3-2-sun-png-clipart.png" alt="">
+    <img class="cloud" src="http://etc.usf.edu/clippix/pix/single-small-cloud-illustration_medium.png" alt="">
+    <img class="house" src="https://www.crazyielts.com/wp-content/uploads/2018/03/home-2003068_1280-823x450.png" alt="">
+    <img class="car" src="https://i.pinimg.com/originals/85/6f/47/856f47792b0a8701f5c8dc38ce671e01.png" alt="">
+  </div>
+
+  <div class="column is-half">
+    <section class="section" ng-if="login.isAuthenticated()">
+      <p class="title has-text-centered">Hello welcome to NeighbourGood!</p>
+      <a ui-sref="jobsNew" class="button greenbutton">Post a job</a>
+      <a ui-sref="jobsIndex" class="button orangebutton">Find a job</a>
+    </section>
+
+    <section class="section" ng-if="!login.isAuthenticated()">
+      <div class='' ng-if="login.form.$submitted && !login.isAuthenticated()">
+        Sorry, there is an error with either your email or password.
+      </div>
+      <form name='login.form' ng-submit="login.handleLogin()" novalidate>
+        <div class="field">
+          <label for="email" class="label">Email</label>
+          <div class="control has-icons-left has-icons-right">
+            <input class="input" type="email" placeholder="Email" name="email" ng-model='login.data.email' required ng-class = " {'is-danger': login.isDanger('email')}" />
+            <!-- in case of input error -->
+            <div ng-messages="login.form.email.$error" ng-if="login.form.email.$dirty || login.form.$submitted">
+              <div class='' ng-message="required">Please provide your email address</div>
+              <div class= '' ng-message="email">This must be an email address</div>
+            </div>
+            <!-- end of in case of error -->
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+          </div>
+          <p class="help"></p>
+        </div>
+        <div class="field">
+          <label for="password" class="label">Password</label>
+          <div class="control has-icons-left has-icons-right">
+            <input class="input" type="password" placeholder="password" name="password" ng-model='login.data.password' required ng-class = " {'is-danger': login.isDanger('password')}" />
+            <!-- in case of input error -->
+            <div ng-messages="login.form.password.$error" ng-if="login.form.password.$dirty || login.form.$submitted">
+              <div class='' ng-message="required">Please provide your password</div>
+            </div>
+            <!-- end of in case of error -->
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-exclamation-triangle"></i>
+            </span>
+          </div>
+          <div class="field is-grouped is-grouped-centered">
+            <p class="help">
+              <button class="button redbutton">Log In</button>
+            </p>
+            <p class="help">
+              <a ui-sref="register" class="button orangebutton">Sign Up</a>
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
 </div>
-
-<section ng-if="login.isAuthenticated()">
-  <p>Thanks for using NeighbourGood!</p>
-</section>
-<section ng-if="!login.isAuthenticated()">
-  <form name='login.form' ng-submit="login.handleLogin()" novalidate>
-    <div class="field">
-      <label for="email" class="label">Email</label>
-      <div class="control has-icons-left has-icons-right">
-        <input class="input" type="email" placeholder="Email" name="email" ng-model='login.data.email' required ng-class = " {'is-danger': login.isDanger('email')}" />
-        <!-- in case of input error -->
-        <div ng-messages="login.form.email.$error" ng-if="login.form.email.$dirty || login.form.$submitted">
-          <div class='' ng-message="required">Please provide your email address</div>
-          <div class= '' ng-message="email">This must be an email address</div>
-        </div>
-        <!-- end of in case of error -->
-        <span class="icon is-small is-left">
-          <i class="fas fa-user"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
-      </div>
-      <p class="help"></p>
-    </div>
-
-    <div class="field">
-      <label for="password" class="label">Password</label>
-      <div class="control has-icons-left has-icons-right">
-        <input class="input" type="password" placeholder="password" name="password" ng-model='login.data.password' required ng-class = " {'is-danger': login.isDanger('password')}" />
-        <!-- in case of input error -->
-        <div ng-messages="login.form.password.$error" ng-if="login.form.password.$dirty || login.form.$submitted">
-          <div class='' ng-message="required">Please provide your password</div>
-        </div>
-        <!-- end of in case of error -->
-        <span class="icon is-small is-left">
-          <i class="fas fa-envelope"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-exclamation-triangle"></i>
-        </span>
-      </div>
-      <div class="field is-grouped is-grouped-centered">
-        <p class="help">
-          <button class="button submit">Submit</button>
-        </p>
-        <p class="help">
-          <a ui-sref="register" class="button register">Sign Up</a>
-        </p>
-      </div>
-    </div>
-  </form>
-</section>
