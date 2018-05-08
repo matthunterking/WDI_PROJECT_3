@@ -40,8 +40,7 @@ function JobsShowCtrl(Job, $state) {
     Job
       .applicantCreate($state.params.id, vm.data)
       .then(res => vm.job = res.data)
-      .then(handleMessageCreate())
-      .then(location.reload());
+      .then(handleMessageCreate);
 
   }
 

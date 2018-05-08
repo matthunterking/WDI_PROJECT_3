@@ -5,11 +5,11 @@
   <p>Your email: {{usersProfile.user.email}}</p>
   <p>Your bio: {{usersProfile.user.bio}}</p>
   <p>Your location: {{usersProfile.user.location}}</p>
-  <p>Your jobs:</p>
-
+  <p>Jobs you have created:</p>
   <div ng-repeat='job in usersProfile.user.jobs'>
     <a ui-sref='jobsShow({ id: job._id })'><p>{{job.category}}</p></a>
-    <p>job created {{job.createdAtRelative}}</p>
+    <p>Job created {{job.createdAtRelative}}</p>
+    <p>Number of applicants: {{job.applicants.length}}</p>
   </div>
 
 <a ui-sref='usersEdit({ id: usersProfile.user._id })' class="button">Edit your account</a>
