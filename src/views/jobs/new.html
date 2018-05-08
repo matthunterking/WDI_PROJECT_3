@@ -10,10 +10,8 @@
     <label class="label" for="category">Category</label>
     <div class="select">
       <select ng-model="jobsNew.data.category" name="category" required ng-class = " {'is-danger': jobsNew.isDanger('category')}"/>
-      <option value='Shopping'>Shopping</option>
-      <option value='Gardening'>Gardening</option>
-      <option value='DIY'>DIY</option>
-      <option value= 'Social'>Social</option>
+      <option value="" disabled selected>Select a category</option>
+      <option ng-repeat = 'cat in jobsNew.cats' value= '{{cat}}'>{{cat}}</option>
     </select>
     <div ng-messages="jobsNew.form.category.$error" ng-if="jobsNew.form.title.$dirty || jobsNew.form.$submitted">
       <div class='' ng-message="required">Please choose a category</div>
@@ -43,15 +41,25 @@
   <div class="field">
     <label class="label" for="duration">Duration</label>
     <div class="select">
-      <select ng-model="jobsNew.data.duration" name="duration" required ng-class= " {'is-danger': jobsEdit.isDanger('duration')}" />
-        <option value='1-2 hours'>1-2 hours</option>
-        <option value='Half a day'>Half a day</option>
-        <option value='Full day'>Full day</option>
-        <option value='1-3 days'>1-3 days</option>
-        <option value='More than 3 days'>More than 3 days</option>
+      <select ng-model="jobsNew.data.duration" name="duration" required ng-class= " {'is-danger': jobsNew.isDanger('duration')}" />
+      <option value="" disabled selected>Select a duration</option>
+      <option ng-repeat = 'duration in jobsNew.durations' value= '{{duration}}'>{{duration}}</option>
       </select>
       <div ng-messages="jobsNew.form.duration.$error" ng-if="jobsNew.form.duration.$dirty || jobsNew.form.$submitted">
         <div class='' ng-message="required">Please choose a duration</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label" for="frequency">Frequency</label>
+    <div class="select">
+      <select ng-model="jobsNew.data.frequency" name="frequency" required ng-class= " {'is-danger': jobsNew.isDanger('duration')}" />
+      <option value="" disabled selected>Select a frequency</option>
+      <option ng-repeat = 'frequency in jobsNew.frequencies' value= '{{frequency}}'>{{frequency}}</option>
+      </select>
+      <div ng-messages="jobsNew.form.frequency.$error" ng-if="jobsNew.form.frequency.$dirty || jobsNew.form.$submitted">
+        <div class='' ng-message="required">Please choose a frequency</div>
       </div>
     </div>
   </div>

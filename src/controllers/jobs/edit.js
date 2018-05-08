@@ -2,6 +2,9 @@ JobsEditCtrl.$inject = ['Job', '$state'];
 
 function JobsEditCtrl(Job, $state) {
   this.data = {};
+  this.cats = ['DIY', 'Gardening', 'Removals', 'Shopping', 'Social', 'Pet-sitting', 'Others'];
+  this.durations = ['1-2 hours', '2-3 hours', 'Half a day', 'Full day'];
+  this.frequencies =['Once', 'Daily', 'Weekly', 'Monthly'];
 
   Job
     .findById($state.params.id)

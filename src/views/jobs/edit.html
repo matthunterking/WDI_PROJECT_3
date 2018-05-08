@@ -10,10 +10,8 @@
     <label class="label" for="category">Category</label>
     <div class="select">
       <select ng-model="jobsEdit.data.category" name="category" required ng-class = " {'is-danger': jobsEdit.isDanger('category')}"/>
-      <option>Shopping</option>
-      <option>Gardening</option>
-      <option>DIY</option>
-      <option>Social</option>
+      <option value="" disabled selected>Select a category</option>
+      <option ng-repeat = 'cat in jobsEdit.cats' value= '{{cat}}'>{{cat}}</option>
     </select>
     <div ng-messages="jobsEdit.form.category.$error" ng-if="jobsEdit.form.title.$dirty || jobsEdit.form.$submitted">
       <div class='' ng-message="required">Please choose a category</div>
@@ -45,17 +43,28 @@
     <label class="label" for="duration">Duration</label>
     <div class="select">
       <select ng-model="jobsEdit.data.duration" name="duration" required ng-class= " {'is-danger': jobsEdit.isDanger('duration')}" />
-        <option>1-2 hours</option>
-        <option>Half a day</option>
-        <option>Full day</option>
-        <option>1-3 days</option>
-        <option>More then 3 days</option>
+      <option value="" disabled selected>Select a duration</option>
+      <option ng-repeat = 'duration in jobsEdit.durations' value= '{{duration}}'>{{duration}}</option>
       </select>
       <div ng-messages="jobsEdit.form.duration.$error" ng-if="jobsEdit.form.duration.$dirty || jobsEdit.form.$submitted">
         <div class='' ng-message="required">Please choose a duration</div>
       </div>
     </div>
   </div>
+
+  <div class="field">
+    <label class="label" for="frequency">Frequency</label>
+    <div class="select">
+      <select ng-model="jobsEdit.data.frequency" name="frequency" required ng-class= " {'is-danger': jobsEdit.isDanger('duration')}" />
+      <option value="" disabled selected>Select a frequency</option>
+      <option ng-repeat = 'frequency in jobsEdit.frequencies' value= '{{frequency}}'>{{frequency}}</option>
+      </select>
+      <div ng-messages="jobsEdit.form.frequency.$error" ng-if="jobsEdit.form.frequency.$dirty || jobsEdit.form.$submitted">
+        <div class='' ng-message="required">Please choose a frequency</div>
+      </div>
+    </div>
+  </div>
+
 
   <div class="field">
     <label class="label" for="startdate">Start Date</label>

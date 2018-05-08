@@ -2,6 +2,11 @@ JobsNewCtrl.$inject = ['Job', '$state'];
 
 function JobsNewCtrl(Job, $state) {
   this.data = {};
+  this.cats = ['DIY', 'Gardening', 'Removals', 'Shopping', 'Social', 'Pet-sitting', 'Others'];
+  this.durations = ['1-2 hours', '2-3 hours', 'Half a day', 'Full day'];
+  this.frequencies =['Once', 'Daily', 'Weekly', 'Monthly'];
+
+
 
   function handleCreate() {
 

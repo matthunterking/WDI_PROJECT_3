@@ -65,24 +65,7 @@ Sorry, you made a mistake while registering.
 
     </div>
   </div>
-  <div class="field">
-    <label class="label" for="bio">Bio<small> (optional)</small></label>
-    <div class="control">
-      <textarea class="textarea" type='text' ng-model="register.data.bio" placeholder="Please include a few lines about yourself so other users can get to know you" name='bio' ng-model="register.data.bio" ></textarea>
-    </div>
-  </div>
-  <div class="field">
-    <label class="label" for="image">Profile Picture<small> (optional)</small></label>
-    <div class="control">
-      <input class="input" type="text" placeholder="" name='image' ng-model="register.data.image">
-    </div>
-  </div>
-  <div class="field">
-    <label class="label" for="location">Location<small> (optional)</small></label>
-    <div class="control">
-      <input class="input" type="text" placeholder="" name='location' ng-model="register.data.location">
-    </div>
-  </div>
+  
   <div class='' ng-if="register.form.$submitted && !main.isAuthenticated()">
   Sorry, you made a mistake while registering.
 </div>

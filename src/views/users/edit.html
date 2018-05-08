@@ -77,12 +77,7 @@ Sorry, you made a mistake while editing your profile.
       <input class="input" type="text" placeholder="" name='image' ng-model="usersEdit.data.image">
     </div>
   </div>
-  <div class="field">
-    <label class="label" for="location">Location<small> (optional)</small></label>
-    <div class="control">
-      <input class="input" type="text" placeholder="" name='location' ng-model="usersEdit.data.location">
-    </div>
-  </div>
+
   <div class='' ng-if="usersEdit.form.$submitted && !main.isAuthenticated()">
   Sorry, you made a mistake while registering.
 </div>
