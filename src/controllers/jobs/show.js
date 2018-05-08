@@ -37,7 +37,8 @@ function JobsShowCtrl(Job, $state) {
 
     Job
       .applicantCreate($state.params.id, this.data)
-      .then(res => this.job = res.data);
+      .then(res => this.job = res.data)
+      .then(handleMessageCreate());
   }
 
   function handleApplicantDelete(applicant) {
