@@ -6,21 +6,24 @@
   <p>Your bio: {{usersProfile.user.bio}}</p>
   <hr />
 
-  <p>Jobs you have created:</p>
+  <p>Jobs you've created:</p>
   <div ng-repeat='job in usersProfile.user.jobs'>
     <p><a ui-sref='jobsShow({ id: job._id })'>{{job.category}}</a></p>
     <p>Job created {{job.createdAtRelative}}</p>
     <p>Number of applicants: {{job.applicants.length}}</p>
+    <p>Status: {{job.status}}</p>
   </div>
   <hr/>
 
-  <p>Jobs you have applied for:</p>
+  <p>Jobs you're helping with:</p>
   <div ng-controller='JobsIndexCtrl as jobsIndex'>
   <div ng-repeat='job in jobsIndex.all' >
       <div ng-repeat='applicant in job.applicants'>
         <div ng-if="applicant.who === usersProfile.user._id">
-          <p><a ui-sref='jobsShow({ id: job._id })'>{{job.category}}</a></p>
-          <p>Status: {{applicant.status}}</p>
+        <div ng-if="applicant.status === 'accepted'">
+          <p><a ui-sref='jobsShow({ id: job._id })'>{{job.category}} for {{job.createdBy.firstname}} {{job.createdBy.surname}}</a></p>
+          <p>Job status: {{job.status}}</p>
+        </div>
         </div>
       </div>
   </div>

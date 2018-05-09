@@ -159,7 +159,7 @@ function jobsStatusProgress(req, res, next) {
     .populate('createdBy messages.createdBy applicants.who')
     .exec()
     .then(job => {
-      job.status = 'inprogress';
+      job.status = 'in progress';
       return job.save();
     })
     .then(job => res.json(job))

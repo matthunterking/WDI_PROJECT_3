@@ -1,6 +1,6 @@
-JobsShowCtrl.$inject = ['Job', '$state', '$scope'];
+JobsShowCtrl.$inject = ['Job', '$state'];
 
-function JobsShowCtrl(Job, $state, $scope) {
+function JobsShowCtrl(Job, $state) {
   this.job = {};
   this.data = {};
   this.distance = null;
@@ -70,7 +70,7 @@ function JobsShowCtrl(Job, $state, $scope) {
   function handleStatusProgress() {
     Job
       .statusProgress($state.params.id)
-      .then(() => vm.status = 'inprogress')
+      .then(() => vm.status = 'in progress')
       .then(location.reload());
   }
 
