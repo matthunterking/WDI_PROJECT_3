@@ -1,10 +1,16 @@
 <div class= 'box'>
+
 <img src='{{usersProfile.user.image}}' />
   <p>Welcome, {{usersProfile.user.firstname}}! </p>
   <p>Your name: {{usersProfile.user.firstname}} {{usersProfile.user.surname}}</p>
   <p>Your email: {{usersProfile.user.email}}</p>
   <p>Your bio: {{usersProfile.user.bio}}</p>
   <hr />
+
+  <p class="is-size-4">Your rating as a job creator:</p>
+  <p class="is-size-4" ng-if='usersProfile.calculateAverageJobrating()'>{{ '⭐ '.repeat(usersProfile.calculateAverageJobrating()) }}</p>
+  <p class="is-size-4" ng-if='!usersProfile.calculateAverageJobrating()'>Oh, you don't have a rating...yet</p>
+
 
   <p>Jobs you've created:</p>
   <div ng-repeat='job in usersProfile.user.jobs'>
@@ -14,6 +20,10 @@
     <p>Status: {{job.status}}</p>
   </div>
   <hr/>
+
+  <p class="is-size-4">Your rating as someone who helps:</p>
+  <p class="is-size-4" ng-if="usersProfile.user.avgRating">{{'⭐ '.repeat(usersProfile.user.avgRating)}}</p>
+  <p class="is-size-4" ng-if="!usersProfile.user.avgRating">Oh, you don't have a rating...yet</p>
 
   <p>Jobs you're helping with:</p>
   <div ng-controller='JobsIndexCtrl as jobsIndex'>

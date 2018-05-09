@@ -6,6 +6,18 @@ function JobsIndexCtrl(Job) {
   Job
     .find()
     .then(res => this.all = res.data);
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 export default JobsIndexCtrl;

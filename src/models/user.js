@@ -18,10 +18,18 @@ function User($http) {
     return $http.put(`/api/users/${id}`, data);
   }
 
+  function userratingCreate(id, data){
+    return $http.post(`/api/users/${id}/userratings`, data);
+  }
+
+
+
   this.find = find;
   this.findById = findById;
   this.removeById = removeById;
   this.updateById = updateById;
+  this.userratingCreate = userratingCreate;
+
 }
 
 export default User;

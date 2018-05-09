@@ -82,8 +82,6 @@ function JobsShowCtrl(Job, $state) {
   }
 
 
-
-
   this.handleDelete = handleDelete;
   this.handleMessageCreate = handleMessageCreate;
   this.handleMessageDelete = handleMessageDelete;

@@ -28,6 +28,7 @@ messageSchema.set('toJSON', {
 const applicantSchema = new mongoose.Schema({
   who: { type: mongoose.Schema.ObjectId, ref: 'User' },
   status: {type: String, default: 'pending', enum: ['accepted', 'pending', 'rejected']}
+
 }, {
   timestamps: true
 });
@@ -58,7 +59,9 @@ const jobSchema = new mongoose.Schema({
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   applicants: [ applicantSchema ],
   messages: [ messageSchema ],
-  status: {type: String, default: 'available', enum: ['available', 'in progress', 'finished']}
+  status: {type: String, default: 'available', enum: ['available', 'in progress', 'finished']},
+  jobrating: {type: Number},
+  applicantrating: {type: Number}
 }, {
   timestamps: true
 });

@@ -151,6 +151,7 @@ function jobsApplicantReject(req, res, next) {
     .catch(next);
 }
 
+
 // change job status to in progress
 
 function jobsStatusProgress(req, res, next) {

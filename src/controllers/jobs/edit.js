@@ -11,9 +11,7 @@ function JobsEditCtrl(Job, $state) {
     .then(res => this.data = res.data);
 
   function handleUpdate() {
-
     if(this.form.$invalid) return false;
-
     Job
       .updateById($state.params.id, this.data)
       .then(() => $state.go('jobsShow', $state.params));

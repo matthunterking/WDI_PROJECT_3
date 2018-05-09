@@ -7,6 +7,17 @@
 
   <hr />
 
+  <p class="is-size-4">{{usersShow.user.firstname}}'s rating as a job creator:</p>
+  <p class="is-size-4" ng-if='usersShow.calculateAverageJobrating()'>{{ '⭐ '.repeat(usersShow.calculateAverageJobrating()) }}</p>
+  <p class="is-size-4" ng-if='!usersShow.calculateAverageJobrating()'>{{usersShow.user.firstname}} doesn't have a rating...yet</p>
+  <br />
+  <p class="is-size-4">{{usersShow.user.firstname}}'s rating as someone who helps:</p>
+  <p class="is-size-4" ng-if="usersShow.user.avgRating">{{'⭐ '.repeat(usersShow.user.avgRating)}}</p>
+  <p class="is-size-4" ng-if="!usersShow.user.avgRating">{{usersShow.user.firstname}} doesn't have a rating...yet</p>
+
+  <hr />
+
+
   <p>Jobs {{usersShow.user.firstname}} has created:</p>
 
   <div ng-repeat='job in usersShow.user.jobs'>
@@ -28,5 +39,33 @@
       </div>
   </div>
   </div>
+
+  <hr />
+
+  <p>Did you like {{usersShow.user.firstname}}'s help? Give a rating!</p>
+  <form name="usersShow.form"  novalidate>
+    <div class="field">
+      <label class="label" for="rating">Rating</label>
+      <div class="select">
+        <select ng-model="usersShow.data.rating">
+          <option value="" selected disabled>Please choose</option>
+          <option value="1">⭐</option>
+          <option value="2">⭐ ⭐</option>
+          <option value="3">⭐ ⭐ ⭐</option>
+          <option value="4">⭐ ⭐ ⭐ ⭐</option>
+          <option value="5">⭐ ⭐ ⭐ ⭐ ⭐</option>
+        </select>
+
+        <div ng-messages="usersShow.form.rating.$error" ng-if="usersShow.form.rating.$dirty || usersShow.form.$submitted">
+          <div class='' ng-message="required">Please choose a rating</div>
+        </div>
+      </div>
+      <button class="button" ng-click="usersShow.handleUserrating()">Rate {{usersShow.user.firstname}} </button>
+    </div>
+  </form>
+
+
+
+
 
 </div>
