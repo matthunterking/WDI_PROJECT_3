@@ -6,7 +6,8 @@ function gMapIndexView() {
     scope: {
       userLocation: '=?',
       jobListings: '=',
-      distance: '=?'
+      distance: '=?',
+      position: '='
     },
     link($scope, $element) {
 
@@ -23,8 +24,8 @@ function gMapIndexView() {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
-          $scope.userLocation = pos;
           $scope.$apply();
+          $scope.userLocation = pos;
           map.setCenter(pos);
           userMarker.setPosition(pos);
         });
@@ -53,6 +54,7 @@ function gMapIndexView() {
       $scope.$watch('userLocation', () => {
         map.setCenter($scope.center);
         marker.setPosition($scope.center);
+        $scope.getUserLocation();
       });
 
       $scope.$watch('jobListings', () => {
