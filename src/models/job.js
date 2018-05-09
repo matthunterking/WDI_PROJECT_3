@@ -49,6 +49,14 @@ function Job($http) {
     return $http.put(`/api/jobs/${jobId}/applicants/${applicantId}/reject`, data);
   }
 
+  function statusProgress(jobId, data) {
+    return $http.put(`/api/jobs/${jobId}/progress`, data);
+  }
+
+  function statusFinish(jobId, data) {
+    return $http.put(`/api/jobs/${jobId}/finish`, data);
+  }
+
   this.find = find;
   this.findById = findById;
   this.findByLocation = findByLocation;
@@ -61,6 +69,8 @@ function Job($http) {
   this.applicantDelete = applicantDelete;
   this.applicantAccept = applicantAccept;
   this.applicantReject = applicantReject;
+  this.statusProgress = statusProgress;
+  this.statusFinish = statusFinish;
 }
 
 export default Job;

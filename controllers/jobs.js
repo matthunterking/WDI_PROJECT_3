@@ -167,8 +167,35 @@ function jobsApplicantReject(req, res, next) {
     .catch(next);
 }
 
+// change job status to in progress
 
+function jobsStatusProgress(req, res, next) {
+  Job
+    .findById(req.params.id)
+    .populate('createdBy messages.createdBy applicants.who')
+    .exec()
+    .then(job => {
+      job.status = 'in progress';
+      return job.save();
+    })
+    .then(job => res.json(job))
+    .catch(next);
+}
 
+// change job status to finished
+
+function jobsStatusFinish(req, res, next) {
+  Job
+    .findById(req.params.id)
+    .populate('createdBy messages.createdBy applicants.who')
+    .exec()
+    .then(job => {
+      job.status = 'finished';
+      return job.save();
+    })
+    .then(job => res.json(job))
+    .catch(next);
+}
 
 module.exports = {
   index: jobsIndex,
@@ -182,5 +209,7 @@ module.exports = {
   applicantCreate: jobsApplicantCreate,
   applicantDelete: jobsApplicantDelete,
   applicantAccept: jobsApplicantAccept,
-  applicantReject: jobsApplicantReject
+  applicantReject: jobsApplicantReject,
+  statusProgress: jobsStatusProgress,
+  statusFinish: jobsStatusFinish
 };

@@ -57,7 +57,8 @@ function JobsShowCtrl(Job, $state) {
   function handleApplicantAccept(applicant) {
     Job
       .applicantAccept($state.params.id, applicant._id)
-      .then(() => applicant.status = 'accepted');
+      .then(() => applicant.status = 'accepted')
+      .then(handleStatusProgress);
   }
 
   function handleApplicantReject(applicant) {
@@ -65,6 +66,22 @@ function JobsShowCtrl(Job, $state) {
       .applicantReject($state.params.id, applicant._id)
       .then(() => applicant.status = 'rejected');
   }
+
+  function handleStatusProgress() {
+    Job
+      .statusProgress($state.params.id)
+      .then(() => vm.status = 'in progress')
+      .then(location.reload());
+  }
+
+  function handleStatusFinish() {
+    Job
+      .statusFinish($state.params.id)
+      .then(() => vm.status = 'finished')
+      .then(location.reload());
+  }
+
+
 
 
   this.handleDelete = handleDelete;
@@ -74,6 +91,8 @@ function JobsShowCtrl(Job, $state) {
   this.handleApplicantDelete = handleApplicantDelete;
   this.handleApplicantAccept = handleApplicantAccept;
   this.handleApplicantReject = handleApplicantReject;
+  this.handleStatusProgress = handleStatusProgress;
+  this.handleStatusFinish = handleStatusFinish;
 }
 
 export default JobsShowCtrl;

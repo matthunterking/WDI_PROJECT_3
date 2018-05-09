@@ -5,9 +5,8 @@ function Auth($authProvider) {
   $authProvider.signupUrl = '/api/register';
 
   $authProvider.google({
-    url: '/auth/google',
-    clientId: '188667229153-shoma2uvkvfojmif31r2fb28u9qreglb.apps.googleusercontent.com',
-    authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
+    url: '/api/google',
+    clientId: '188667229153-j0d8s2ul5lls4l3tggse2lbputgaav1t.apps.googleusercontent.com',
     redirectUri: window.location.origin,
     requiredUrlParams: ['scope'],
     optionalUrlParams: ['display'],
@@ -19,6 +18,6 @@ function Auth($authProvider) {
     popupOptions: { width: 452, height: 633 }
   });
 
-} 
+}
 
 export default Auth;

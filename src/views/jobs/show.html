@@ -1,13 +1,76 @@
-
-<!-- this section can only be seen when user is not logged in -->
+<!-- this section can only be seen when the user is not logged in -->
 <section ng-if='!main.isAuthenticated()'>
   <p>Thank you for your interest in NeighbourGood! If you'd like to help create a cooperative society, please <a ui-sref="home">log in</a> or <a ui-sref="register">register</a>.</p>
 </section>
 <!-- end of not-logged-in users section -->
 
 
+
+
+
 <!-- this section can only be seen when user is logged in -->
 <section ng-if='main.isAuthenticated()'>
+
+  <!-- this section can be seen only when the job is finished -->
+  <section ng-if="jobsShow.job.status === 'finished'">
+    <div ng-controller="UsersProfileCtrl as usersProfile">
+      <div class="columns is-mobile">
+        <div class="">
+          <div class="media" ng-repeat="applicant in jobsShow.job.applicants" ng-if="applicant.status === 'accepted'">
+            <div class="column is-one-quarter">
+              <img src="{{ applicant.who.image }}" alt="" />
+            </div>
+            <div class="column is-half">
+              <p ng-if="applicant.who._id !== usersProfile.user._id" class="title is-6">This job was done by <a ui-sref='usersShow({ id: applicant.who._id })'>{{ applicant.who.firstname }} {{ applicant.who.surname }}</a></p>
+              <p ng-if="applicant.who._id === usersProfile.user._id" class="title is-6">This job was done by <a ui-sref='usersProfile({ id: applicant.who._id })'>you</a>!</p>
+              <!-- only seen by job poster -->
+              <div ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
+                <button type="button" name="button" ng-click=''>Did you like {{applicant.who.firstname}}'s help? Give a rating!</button>
+              </div>
+              <!-- end of job-poster-only -->
+              <!-- only seen by person who did job -->
+              <button ng-click="" class="button" ng-if="applicant.who._id === usersProfile.user._id">What was it like helping {{jobsShow.job.createdBy.firstname}}? Give a rating!</button>
+              <!-- end of person-who-did-job  -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end of job-is-finished section -->
+
+
+  <!-- this section can be seen only when the job is in progress -->
+  <section ng-if="jobsShow.job.status === 'in progress'">
+    <section ng-controller="UsersProfileCtrl as usersProfile">
+      <div class="columns is-mobile">
+        <div class="">
+          <div class="media" ng-repeat="applicant in jobsShow.job.applicants" ng-if="applicant.status === 'accepted'">
+            <div class="column is-one-quarter">
+              <img src="{{ applicant.who.image }}" alt="" />
+            </div>
+            <div class="column is-half">
+              <p ng-if="applicant.who._id !== usersProfile.user._id" class="title is-6">This job is in progress, and is being done by <a ui-sref='usersShow({ id: applicant.who._id })'>{{ applicant.who.firstname }} {{ applicant.who.surname }}</a></p>
+              <!-- only seen by person doing job -->
+              <div ng-if="applicant.who._id === usersProfile.user._id">
+                <p class="title is-6">This job is in progress, and is being done by <a ui-sref='usersProfile({ id: applicant.who._id })'>you</a>!</p>
+                <button type="button" name="button" ng-click='jobsShow.handleStatusFinish()'>Mark this job as finished</button>
+              </div>
+              <!-- end only-person-doing-job -->
+              <!-- only seen by job poster -->
+
+              <div ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
+                <button type="button" name="button" ng-click='jobsShow.handleStatusFinish()'>Mark this job as finished</button>
+              </div>
+
+              <!-- end of job-poster-only -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+  <!-- end of job-in-progress section -->
 
   <!-- this section can only be seen by the job poster -->
   <section ng-controller="UsersProfileCtrl as usersProfile">
@@ -45,80 +108,88 @@
     <p>Distance: {{ jobsShow.distance }}</p>
     <div g-map-show-view job-location="jobsShow.job.location" distance="jobsShow.distance" class="map column"></div>
 
-    <!-- this section can only be seen by the job poster -->
-    <section ng-controller="UsersProfileCtrl as usersProfile">
-      <div ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
-        <a ui-sref='jobsEdit({ id: jobsShow.job._id })' class='button'>Edit this job</a>
-        <button ng-click='jobsShow.handleDelete()' class='button is-danger'>Delete this job</button>
-      </div>
+    <!-- this section can only be seen when job is available -->
+    <section ng-if="jobsShow.job.status === 'available'">
+
+      <!-- this section can only be seen by the job poster -->
+      <section ng-controller="UsersProfileCtrl as usersProfile">
+        <div ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
+          <a ui-sref='jobsEdit({ id: jobsShow.job._id })' class='button'>Edit this job</a>
+          <button ng-click='jobsShow.handleDelete()' class='button is-danger'>Delete this job</button>
+        </div>
       </section>
-    <!-- end of section-seen-only-by-job-poster -->
+      <!-- end of section-seen-only-by-job-poster -->
 
 
-    <hr />
-<!-- applicant panel -->
-<p class='title is-4'>Applicants For This Job</p>
-<div class="columns is-mobile">
-  <div class="">
-    <div class="media" ng-repeat="applicant in jobsShow.job.applicants">
-      <div class="column is-one-quarter">
-        <img src="{{ applicant.who.image }}" alt="" />
-      </div>
-      <div class="column is-half">
-        <p class="title is-6">Applicant is: <a ui-sref='usersShow({ id: applicant.who._id })'>{{ applicant.who.firstname }} {{ applicant.who.surname }}</a></p>
-        <p class="title is-6">Status: {{applicant.status}}</p>
-        <!-- only seen by job poster -->
-        <section ng-controller="UsersProfileCtrl as usersProfile">
-          <section ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
-            <button type="button" name="button" ng-click='jobsShow.handleApplicantAccept(applicant)'>Choose this applicant</button>
-            <button type="button" name="button" ng-click='jobsShow.handleApplicantReject(applicant)'>Reject this applicant</button>
-          </section>
-        </section>
-        <!-- end of job-poster-only -->
-      </div>
-
-      <div class="column is-one-quarter"  ng-controller="UsersProfileCtrl as usersProfile">
-        <button ng-click="jobsShow.handleApplicantDelete(applicant)" class="button is-danger" ng-if="applicant.who._id === usersProfile.user._id">Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
-<form name="jobsShow.form"  novalidate>
-
-<!-- end applicant panel -->
-<hr />
-
-<!-- messages panel -->
-<p class='title is-4'>Messages About This Job</p>
-    <div class="columns is-mobile">
-      <div class="comments">
-        <div class="media" ng-repeat="message in jobsShow.job.messages">
-          <div class="column is-one-quarter">
-            <img ng-src="{{ message.createdBy.image }}" alt="" />
-          </div>
-          <div class="column is-half">
-            <p class="title is-4">{{ message.content }}</p>
-            Message from: <a ui-sref='usersShow({ id: message.createdBy._id })'><p class="title is-6">{{ message.createdBy.firstname }} {{ message.createdBy.surname }}</p></a>
-
-          </div>
-          <div class="column is-one-quarter"  ng-controller="UsersProfileCtrl as usersProfile">
-            <button ng-click="jobsShow.handleMessageDelete(message)" class="button is-danger" ng-if="message.createdBy._id === usersProfile.user._id">Delete</button>
+      <hr />
+      <!-- applicant panel -->
+      <p class='title is-4'>Applicants For This Job</p>
+      <div class="columns is-mobile">
+        <div class="">
+          <div class="media" ng-repeat="applicant in jobsShow.job.applicants">
+            <div class="column is-one-quarter">
+              <img src="{{ applicant.who.image }}" alt="" />
+            </div>
+            <div class="column is-half">
+              <p class="title is-6">Applicant is: <a ui-sref='usersShow({ id: applicant.who._id })'>{{ applicant.who.firstname }} {{ applicant.who.surname }}</a></p>
+              <p class="title is-6">Status: {{applicant.status}}</p>
+              <!-- only seen by job poster -->
+              <section ng-controller="UsersProfileCtrl as usersProfile">
+                <section ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
+                  <button type="button" name="button" ng-click='jobsShow.handleApplicantAccept(applicant)'>Choose this applicant</button>
+                  <!-- <button type="button" name="button" ng-click='jobsShow.handleApplicantReject(applicant)'>Reject this applicant</button> -->
+                </section>
+              </section>
+              <!-- end of job-poster-only -->
+            </div>
+            <!-- this div only seen by applicant -->
+            <div class="column is-one-quarter"  ng-controller="UsersProfileCtrl as usersProfile">
+              <button ng-click="jobsShow.handleApplicantDelete(applicant)" class="button is-danger" ng-if="applicant.who._id === usersProfile.user._id">Withdraw your application</button>
+            </div>
+            <!-- end of div-only-seen-by-applicant -->
           </div>
         </div>
       </div>
-    </div>
 
-    <form name="jobsShow.form"  novalidate>
-      <div class="field">
-        <label for="content">Leave a message for {{ jobsShow.job.createdBy.firstname }}</label>
-        <textarea class="textarea" ng-model="jobsShow.data.content" placeholder="Message"></textarea>
-      </div>
-      <button class="button" ng-click="jobsShow.handleMessageCreate()">Submit message only</button>
-      <button class="button" ng-click="jobsShow.handleApplicantCreate()">Submit message AND apply for this job</button>
+
+        <!-- end applicant panel -->
+        <hr />
+
+        <!-- messages panel -->
+
+        <p class='title is-4'>Messages About This Job</p>
+        <div class="columns is-mobile">
+          <div class="comments">
+            <div class="media" ng-repeat="message in jobsShow.job.messages">
+              <div class="column is-one-quarter">
+                <img ng-src="{{ message.createdBy.image }}" alt="" />
+              </div>
+              <div class="column is-half">
+                <p class="title is-4">{{ message.content }}</p>
+                Message from: <a ui-sref='usersShow({ id: message.createdBy._id })'><p class="title is-6">{{ message.createdBy.firstname }} {{ message.createdBy.surname }}</p></a>
+              </div>
+              <!-- only seen by message writer -->
+              <div class="column is-one-quarter"  ng-controller="UsersProfileCtrl as usersProfile">
+                <button ng-click="jobsShow.handleMessageDelete(message)" class="button is-danger" ng-if="message.createdBy._id === usersProfile.user._id">Delete your message</button>
+              </div>
+              <!-- end message-writer-only -->
+            </div>
+          </div>
+        </div>
+
+        <form name="jobsShow.form"  novalidate>
+          <div class="field">
+            <label for="content">Leave a message for {{ jobsShow.job.createdBy.firstname }}</label>
+            <textarea class="textarea" ng-model="jobsShow.data.content" placeholder="Message"></textarea>
+          </div>
+          <button class="button" ng-click="jobsShow.handleMessageCreate()">Submit message only</button>
+          <button class="button" ng-click="jobsShow.handleApplicantCreate()">Submit message AND apply for this job</button>
+        </form>
       </form>
-    </form>
 
-    <!-- end messages panel -->
+      <!-- end messages panel -->
+    </section>
+    <!-- end of job-seen-only-when-available -->
 
   </section>
 

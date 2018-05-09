@@ -52,13 +52,14 @@ const jobSchema = new mongoose.Schema({
   category: { type: String },
   description: { type: String },
   duration: { type: String },
+  frequency: { type: String },
   startdate: { type: Date },
   enddate: { type: Date },
-  postcode: { type: String },
   location: { type: Object },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   applicants: [ applicantSchema ],
-  messages: [ messageSchema ]
+  messages: [ messageSchema ],
+  status: {type: String, default: 'available', enum: ['available', 'in progress', 'finished']}
 }, {
   timestamps: true
 });
