@@ -2,8 +2,13 @@
 
 <div class="map" g-map-index-view job-listings="jobsIndex.all">GOOGLE MAP</div>
 
-<!-- FILTER DROPDOWN - NOT ACTIVE YET
-<div class="dropdown is-active">
+<form class="" ng-submit="jobsIndex.jobsFilter()">
+  <input type='text' ng-model="jobsIndex.criteria.lng" placeholder="lng"></input>
+  <input type='text' ng-model="jobsIndex.criteria.lat" placeholder="lat"></input>
+  <input type='text'ng-model="jobsIndex.criteria.maxDistance" placeholder="maxDistance"></input>
+  <button type="submit">Submit</button>
+</form>
+<!-- <div class="dropdown is-active">
   <div class="dropdown-trigger">
     <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
       <span>Filter</span>
