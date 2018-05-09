@@ -72,10 +72,20 @@ Sorry, you made a mistake while editing your profile.
     </div>
   </div>
   <div class="field">
-    <label class="label" for="image">Profile Picture<small> (optional)</small></label>
-    <div class="control">
-      <input class="input" type="text" placeholder="" name='image' ng-model="usersEdit.data.image">
+    <label class="label" class="file-label"><label class="label" class="file-label">
+    <input class="file-input" type="file" ng-model="usersEdit.data.image" upload-image>
+    <div class="image is-1by1">
+      <img ng-src="{{ usersEdit.data.image }}">
     </div>
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fa fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Change profile picture
+      </span>
+    </span>
+  </label>
   </div>
 
   <div class='' ng-if="usersEdit.form.$submitted && !main.isAuthenticated()">
@@ -85,3 +95,11 @@ Sorry, you made a mistake while editing your profile.
     <button class="button submit">Submit</button>
   </p>
 </form>
+
+
+<!-- <div class="field">
+  <label class="label" for="image">Profile Picture<small> (optional)</small></label>
+  <div class="control">
+    <input class="input" type="text" placeholder="" name='image' ng-model="usersEdit.data.image">
+  </div>
+</div> -->
