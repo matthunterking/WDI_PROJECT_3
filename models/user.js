@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 mongoose.Promise = require('bluebird');
 
 const userratingSchema = new mongoose.Schema({
-  rating: {type: Number}
+  rating: { type: Number }
 });
 
 
@@ -25,7 +25,7 @@ userSchema.virtual('jobs', {
 
 
 userSchema.virtual('avgRating')
-  .get(function(){
+  .get(function() {
     return this.userratings.reduce((sum, userrating) => sum + userrating.rating, 0) / this.userratings.length;
   });
 

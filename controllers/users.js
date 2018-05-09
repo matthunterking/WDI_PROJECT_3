@@ -44,14 +44,16 @@ function usersDelete(req, res, next){
     .catch(next);
 }
 
-function userratingCreate(req, res, next){
+function usersUserratingCreate(req, res, next){
+
   User
+
     .findById(req.params.id)
-    .populate('userratings.rating')
+
     .exec()
     .then(user => {
       user.userratings.push(req.body);
-      user.save();
+      return user.save();
     })
     .then(user => res.json(user))
     .catch(next);
@@ -65,5 +67,5 @@ module.exports = {
   show: usersShow,
   update: usersUpdate,
   delete: usersDelete,
-  userratingCreate: userratingCreate
+  userratingCreate: usersUserratingCreate
 };

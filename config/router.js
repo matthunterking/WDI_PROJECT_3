@@ -16,8 +16,7 @@ router.route('/users/:id')
   .put(secureRoute, users.update)
   .delete(secureRoute, users.delete);
 
-router.route('/users/:id/userratings')
-  .post(users.userratingCreate);
+router.post('/users/:id/userratings', users.userratingCreate);
 
 router.route('/jobs')
   .get(jobs.index)
@@ -50,6 +49,9 @@ router.route('/jobs/:id/progress')
 
 router.route('/jobs/:id/finish')
   .put(secureRoute, jobs.statusFinish);
+
+router.route('/jobs/:id/review')
+  .put(secureRoute, jobs.statusReview);
 
 
 

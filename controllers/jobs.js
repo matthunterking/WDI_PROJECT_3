@@ -199,6 +199,21 @@ function jobsStatusFinish(req, res, next) {
     .catch(next);
 }
 
+// change job status to reviewed
+
+function jobsStatusReview(req, res, next) {
+  Job
+    .findById(req.params.id)
+    .populate('createdBy messages.createdBy applicants.who')
+    .exec()
+    .then(job => {
+      job.status = 'reviewed';
+      return job.save();
+    })
+    .then(job => res.json(job))
+    .catch(next);
+}
+
 module.exports = {
   index: jobsIndex,
   indexFilter: jobsIndexFilter,
@@ -213,5 +228,6 @@ module.exports = {
   applicantAccept: jobsApplicantAccept,
   applicantReject: jobsApplicantReject,
   statusProgress: jobsStatusProgress,
-  statusFinish: jobsStatusFinish
+  statusFinish: jobsStatusFinish,
+  statusReview: jobsStatusReview
 };

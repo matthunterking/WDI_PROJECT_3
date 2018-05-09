@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const GeoJson = require('mongoose-geojson-schema');
+// const GeoJson = require('mongoose-geojson-schema');
 const moment = require('moment');
 
 // so users can leave messages on the job
@@ -60,9 +60,8 @@ const jobSchema = new mongoose.Schema({
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   applicants: [ applicantSchema ],
   messages: [ messageSchema ],
-  status: {type: String, default: 'available', enum: ['available', 'in progress', 'finished']},
-  jobrating: {type: Number},
-  applicantrating: {type: Number}
+  status: {type: String, default: 'available', enum: ['available', 'in progress', 'finished', 'reviewed']},
+  jobrating: { type: Number }
 }, {
   timestamps: true
 });

@@ -1,46 +1,10 @@
-<div class= 'box'>
 
-  <img src='{{usersShow.user.image}}'/>
+<section ng-controller="UsersProfileCtrl as usersProfile">
+<div ng-if="usersShow.user._id === usersProfile.user._id">
+<p>Hi, {{usersProfile.user.firstname}}! This is what your profile looks like to other users. </p>
+</div>
 
-  <p>{{usersShow.user.firstname}} {{usersShow.user.surname}}</p>
-  <p>{{usersShow.user.bio}}</p>
-
-  <hr />
-
-  <p class="is-size-4">{{usersShow.user.firstname}}'s rating as a job creator:</p>
-  <p class="is-size-4" ng-if='usersShow.calculateAverageJobrating()'>{{ '⭐ '.repeat(usersShow.calculateAverageJobrating()) }}</p>
-  <p class="is-size-4" ng-if='!usersShow.calculateAverageJobrating()'>{{usersShow.user.firstname}} doesn't have a rating...yet</p>
-  <br />
-  <p class="is-size-4">{{usersShow.user.firstname}}'s rating as someone who helps:</p>
-  <p class="is-size-4" ng-if="usersShow.user.avgRating">{{'⭐ '.repeat(usersShow.user.avgRating)}}</p>
-  <p class="is-size-4" ng-if="!usersShow.user.avgRating">{{usersShow.user.firstname}} doesn't have a rating...yet</p>
-
-  <hr />
-
-
-  <p>Jobs {{usersShow.user.firstname}} has created:</p>
-
-  <div ng-repeat='job in usersShow.user.jobs'>
-    <a ui-sref='jobsShow({ id: job._id })'><p>{{job.category}}</p></a>
-  </div>
-
-  <hr />
-
-  <p>Jobs {{usersShow.user.firstname}} has helped with:</p>
-  <div ng-controller='JobsIndexCtrl as jobsIndex'>
-  <div ng-repeat='job in jobsIndex.all' >
-      <div ng-repeat='applicant in job.applicants'>
-        <div ng-if="applicant.who === usersShow.user._id">
-        <div ng-if="applicant.status === 'accepted'">
-          <p><a ui-sref='jobsShow({ id: job._id })'>{{job.category}} for {{job.createdBy.firstname}} {{job.createdBy.surname}}</a></p>
-          <p>Job status: {{job.status}}</p>
-        </div>
-        </div>
-      </div>
-  </div>
-  </div>
-
-  <hr />
+<div class= 'box' ng-if="usersShow.user._id !== usersProfile.user._id">
 
   <p>Did you like {{usersShow.user.firstname}}'s help? Give a rating!</p>
   <form name="usersShow.form"  novalidate>
@@ -63,9 +27,56 @@
       <button class="button" ng-click="usersShow.handleUserrating()">Rate {{usersShow.user.firstname}} </button>
     </div>
   </form>
-
-
-
-
-
 </div>
+
+  <hr />
+
+
+
+
+  <img src='{{usersShow.user.image}}'/>
+
+  <p>{{usersShow.user.firstname}} {{usersShow.user.surname}}</p>
+  <p>{{usersShow.user.bio}}</p>
+
+  <hr />
+
+  <p class="is-size-4">{{usersShow.user.firstname}}'s average rating as an asker:</p>
+  <p class="is-size-4" ng-if='usersShow.calculateAverageJobrating()'>{{ '⭐ '.repeat(usersShow.calculateAverageJobrating()) }} ({{usersShow.user.jobs.length}} ratings)</p>
+  <p class="is-size-4" ng-if='!usersShow.calculateAverageJobrating()'>{{usersShow.user.firstname}} doesn't have a rating...yet</p>
+  <br />
+  <p class="is-size-4">{{usersShow.user.firstname}}'s average rating as a helper:</p>
+  <p class="is-size-4" ng-if="usersShow.user.avgRating">{{'⭐ '.repeat(usersShow.user.avgRating)}} ({{usersShow.user.userratings.length}} ratings)</p>
+  <p class="is-size-4" ng-if="!usersShow.user.avgRating">{{usersShow.user.firstname}} doesn't have a rating...yet</p>
+
+  <hr />
+
+
+  <p>{{usersShow.user.firstname}} has asked for help with:</p>
+
+  <div ng-repeat='job in usersShow.user.jobs'>
+    <a ui-sref='jobsShow({ id: job._id })'><p>{{job.category}}</p></a>
+  </div>
+  <!-- <div ng-repeat='userrating in usersShow.user.userratings'>
+    <p>{{userrating.rating}}</p></a>
+  </div> -->
+
+  <hr />
+
+  <p>{{usersShow.user.firstname}} has helped with:</p>
+  <div ng-controller='JobsIndexCtrl as jobsIndex'>
+  <div ng-repeat='job in jobsIndex.all' >
+      <div ng-repeat='applicant in job.applicants'>
+        <div ng-if="applicant.who === usersShow.user._id">
+        <div ng-if="applicant.status === 'accepted'">
+          <p><a ui-sref='jobsShow({ id: job._id })'>{{job.category}} for {{job.createdBy.firstname}} {{job.createdBy.surname}}</a></p>
+        </div>
+        </div>
+      </div>
+  </div>
+  </div>
+
+  <hr />
+
+
+</section>
