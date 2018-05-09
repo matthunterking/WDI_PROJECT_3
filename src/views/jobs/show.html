@@ -143,20 +143,21 @@
               </section>
               <!-- end of job-poster-only -->
             </div>
-            <!-- this div only seen by message writer -->
+            <!-- this div only seen by applicant -->
             <div class="column is-one-quarter"  ng-controller="UsersProfileCtrl as usersProfile">
-              <button ng-click="jobsShow.handleApplicantDelete(applicant)" class="button is-danger" ng-if="applicant.who._id === usersProfile.user._id">Delete</button>
+              <button ng-click="jobsShow.handleApplicantDelete(applicant)" class="button is-danger" ng-if="applicant.who._id === usersProfile.user._id">Withdraw your application</button>
             </div>
-            <!-- end of div-only-seen-by-message-writer -->
+            <!-- end of div-only-seen-by-applicant -->
           </div>
         </div>
       </div>
-      <form name="jobsShow.form"  novalidate>
+
 
         <!-- end applicant panel -->
         <hr />
 
         <!-- messages panel -->
+
         <p class='title is-4'>Messages About This Job</p>
         <div class="columns is-mobile">
           <div class="comments">
@@ -167,11 +168,12 @@
               <div class="column is-half">
                 <p class="title is-4">{{ message.content }}</p>
                 Message from: <a ui-sref='usersShow({ id: message.createdBy._id })'><p class="title is-6">{{ message.createdBy.firstname }} {{ message.createdBy.surname }}</p></a>
-
               </div>
+              <!-- only seen by message writer -->
               <div class="column is-one-quarter"  ng-controller="UsersProfileCtrl as usersProfile">
-                <button ng-click="jobsShow.handleMessageDelete(message)" class="button is-danger" ng-if="message.createdBy._id === usersProfile.user._id">Delete</button>
+                <button ng-click="jobsShow.handleMessageDelete(message)" class="button is-danger" ng-if="message.createdBy._id === usersProfile.user._id">Delete your message</button>
               </div>
+              <!-- end message-writer-only -->
             </div>
           </div>
         </div>
