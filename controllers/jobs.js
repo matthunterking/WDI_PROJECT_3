@@ -12,13 +12,13 @@ function jobsIndex(req, res, next) {
 function jobsIndexFilter(req, res, next) {
   //max distance is in km!
   const radians = (req.body.maxDistance / 6378.1);
-  console.log(req.body.maxDistance);
   console.log(radians);
   Job
     .find({
       location: {
         $geoWithin: {
-          $centerSphere: [ [ req.body.lng, req.body.lat ], radians ] }
+          $centerSphere: [ [ req.body.lng, req.body.lat ], radians ]
+        }
       }
     })
     .exec()

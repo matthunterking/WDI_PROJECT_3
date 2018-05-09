@@ -61,7 +61,7 @@ User
           duration: 'ongoing',
           startdate: 'Wed Oct 18 2017 12:41:34 GMT+0000 (UTC)',
           enddate: 'Wed Oct 18 2018 12:41:34 GMT+0000 (UTC)',
-          location: { lng: -0.078, lat: 41.517},
+          location: { lng: -0.078, lat: 41.517 },
           createdBy: users[0],
           applicants: [],
           messages: [{message: 'I am great!', createdBy: users[1]}, {content: 'I am better!', createdBy: users[2]}]

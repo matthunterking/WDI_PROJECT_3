@@ -68,15 +68,6 @@ jobSchema.virtual('createdAtRelative')
     return moment(this.createdAt).fromNow();
   });
 
-// jobSchema.virtual('geoJSON')
-//   .get(function(){
-//     const geoArray = [];
-//     geoArray.push(this.location.lng);
-//     geoArray.push(this.location.lat);
-//     return geoArray;
-//   });
-
-
 jobSchema.set('toJSON', {
   virtuals: true
 });
