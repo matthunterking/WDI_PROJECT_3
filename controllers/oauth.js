@@ -9,11 +9,12 @@ function google(req, res, next) {
   rp({
     method: 'POST',
     url: 'https://accounts.google.com/o/oauth2/token',
-    body: {
+    form: {
       client_id: req.body.clientId,
       client_secret: process.env.GOOGLE_SECRET,
       code: req.body.code,
-      redirect_uri: req.body.redirectUri
+      redirect_uri: req.body.redirectUri,
+      grant_type: 'authorization_code'
     },
     json: true
   })
@@ -31,18 +32,21 @@ function google(req, res, next) {
       });
     })
     .then(response => {
+      console.log(response);
       return User.findOne({ $or: [
         {email: response.email},
-        {googleid: response.id}                     /* <----- */
+        {googleId: response.sub}                     /* <----- */
       ] })
         .then(user => {
+          console.log(user);
           if(!user) {
             user = new User({
-              username: response.login,
-              googleid: response.id                 /* <----- first name and last name is required so that is whats required */
+              email: response.email,                /* <----- first name and last name is required so that is whats required */
+              firstname: response.given_name,
+              surname: response.family_name
             });
           }
-          user.googleid = response.id;              /* <----- */
+          user.googleId = response.sub;              /* <----- */
           return user.save();
         });
     })
@@ -58,10 +62,3 @@ function google(req, res, next) {
 }
 
 module.exports = { google };
-//
-// function google(req, res) {
-//   console.log(req.body);
-//   res.sendStatus(200);
-// }
-//
-// module.exports = { google };

@@ -92,49 +92,48 @@
               </div>
             </div>
           </div>
-        </section>
-      </section>
-      <!-- end of job-in-progress section -->
+    </section>
+  </section>
+  <!-- end of job-in-progress section -->
 
-      <!-- this section can only be seen by the job poster -->
-      <section ng-controller="UsersProfileCtrl as usersProfile">
-        <section ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
-          Hello, {{usersProfile.user.firstname}}! This job was posted by you.
-        </section>
-      </section>
-      <!-- end of job-poster-only section -->
+  <!-- this section can only be seen by the job poster -->
+  <section ng-controller="UsersProfileCtrl as usersProfile">
+    <section ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
+      Hello, {{usersProfile.user.firstname}}! This job was posted by you.
+    </section>
+  </section>
+  <!-- end of job-poster-only section -->
 
-      <p class="title is-2">{{ jobsShow.job.category }} for {{ jobsShow.job.createdBy.firstname }}</p>
-      <div class="columns is-mobile">
-        <div class="column is-one-quarter">
-          <img src="https://i.ebayimg.com/images/g/WK8AAOSwxg5XyBUD/s-l300.jpg" alt="" />
-        </div>
-        <div class="column is-three-quarters">
-          <p class="title is-4">{{ jobsShow.job.description }}</p>
-          <p class="title is-4">Duration: {{ jobsShow.job.duration }}</p>
-          <p class="title is-4">Start Date: {{ jobsShow.job.startdate | date : format : timezone }}</p>
-          <p class="title is-4">End Date: {{ jobsShow.job.enddate | date : format : timezone }}</p>
-          <p class="title is-4">Posted {{ jobsShow.job.createdAtRelative }}</p>
+  <p class="title is-2">{{ jobsShow.job.category }} for {{ jobsShow.job.createdBy.firstname }}</p>
+  <div class="columns is-mobile">
+    <div class="column is-one-quarter">
+      <img src="https://i.ebayimg.com/images/g/WK8AAOSwxg5XyBUD/s-l300.jpg" alt="" />
+    </div>
+    <div class="column is-three-quarters">
+      <p class="title is-4">{{ jobsShow.job.description }}</p>
+      <p class="title is-4">Duration: {{ jobsShow.job.duration }}</p>
+      <p class="title is-4">Start Date: {{ jobsShow.job.startdate | date : format : timezone }}</p>
+      <p class="title is-4">End Date: {{ jobsShow.job.enddate | date : format : timezone }}</p>
+      <p class="title is-4">Posted {{ jobsShow.job.createdAtRelative }}</p>
 
-        </div>
+    </div>
+  </div>
+  <p class="column title is-4">Posted by</p>
+
+  <div class="columns is-mobile">
+    <div class="column is-one-quarter">
+      <img ng-src="{{ jobsShow.job.createdBy.image }}" alt="" />
+    </div>
+    <div class="column is-three-quarters">
+      <a ui-sref='usersShow({ id: jobsShow.job.createdBy._id })'><p class="title is-2">{{ jobsShow.job.createdBy.firstname }} {{ jobsShow.job.createdBy.surname }}</p>
+        <p class="title is-4">{{ jobsShow.job.createdBy.bio }}</p></a>
       </div>
+    </div>
+    <p>Distance: {{ jobsShow.distance }}</p>
+    <div g-map-show-view job-location="jobsShow.job.location" distance="jobsShow.distance" class="map column"></div>
 
-      <p class="column title is-4">Posted by</p>
-
-      <div class="columns is-mobile">
-        <div class="column is-one-quarter">
-          <img ng-src="{{ jobsShow.job.createdBy.image }}" alt="" />
-        </div>
-        <div class="column is-three-quarters">
-          <a ui-sref='usersShow({ id: jobsShow.job.createdBy._id })'><p class="title is-2">{{ jobsShow.job.createdBy.firstname }} {{ jobsShow.job.createdBy.surname }}</p></a>
-          </div>
-        </div>
-        <p>Distance: {{ jobsShow.distance }}</p>
-        <div g-map-show-view job-location="jobsShow.job.location" distance="jobsShow.distance" class="map column"></div>
-
-        <!-- this section can only be seen when job is available -->
-        <section ng-if="jobsShow.job.status === 'available'">
-
+    <!-- this section can only be seen when job is available -->
+    <section ng-if="jobsShow.job.status === 'available'">
           <!-- this section can only be seen by the job poster -->
           <section ng-controller="UsersProfileCtrl as usersProfile">
             <div ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">

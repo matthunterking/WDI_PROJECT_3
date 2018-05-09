@@ -75,6 +75,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular-filepicker@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/angular-filepicker/-/angular-filepicker-1.1.4.tgz#1293ad69087d1cb57767bcbad23c7e2d9a20adbc"
+
 angular-messages@^1.6.10:
   version "1.6.10"
   resolved "https://registry.yarnpkg.com/angular-messages/-/angular-messages-1.6.10.tgz#09eedc5b50db99eeed9776414428c587c1259715"
@@ -2252,6 +2256,10 @@ filename-regex@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/filename-regex/-/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26"
 
+filepicker-js@^2.4.18:
+  version "2.4.18"
+  resolved "https://registry.yarnpkg.com/filepicker-js/-/filepicker-js-2.4.18.tgz#82ab850b9944b12258f3617fe516d47d48a5795c"
+
 fill-range@^2.1.0:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/fill-range/-/fill-range-2.2.3.tgz#50b77dfd7e469bc7492470963699fe7a8485a723"
@@ -3823,6 +3831,10 @@ mongodb@3.0.7:
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.0.7.tgz#cfcbaee992d78dabca67177f8f9db9cf13ac3a44"
   dependencies:
     mongodb-core "3.0.7"
+
+mongoose-geojson-schema@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/mongoose-geojson-schema/-/mongoose-geojson-schema-2.1.2.tgz#d53b532a690b2000e641856f673d9c0ee8d2ce91"
 
 mongoose-legacy-pluralize@1.0.2:
   version "1.0.2"

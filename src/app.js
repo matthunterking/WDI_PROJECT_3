@@ -8,9 +8,13 @@ import './scss/style.scss';
 import '@uirouter/angularjs';
 import 'satellizer';
 
+import 'filepicker-js';
+import 'angular-filepicker/dist/angular_filepicker';
+
 // Our modules
 import Router from './config/router';
 import Auth from './config/auth';
+import Upload from './config/upload';
 
 //our controllers
 import MainCtrl from './controllers/main';
@@ -33,10 +37,12 @@ import User from './models/user';
 import gMapIndexView from './directives/gMapIndexView';
 import gMapShowView from './directives/gMapShowView';
 import gAutocomplete from './directives/gAutocomplete';
+import uploadImage from './directives/uploadImage';
 
-angular.module('neighbourgood', ['ui.router', 'satellizer', 'ngMessages'])
+angular.module('neighbourgood', ['ui.router', 'satellizer','angular-filepicker', 'ngMessages'])
   .config(Router)
   .config(Auth)
+  .config(Upload)
   .controller('MainCtrl', MainCtrl)
   .controller('LoginCtrl', LoginCtrl)
   .controller('RegisterCtrl', RegisterCtrl)
@@ -52,4 +58,5 @@ angular.module('neighbourgood', ['ui.router', 'satellizer', 'ngMessages'])
   .service('User', User)
   .directive('gMapIndexView', gMapIndexView)
   .directive('gMapShowView', gMapShowView)
-  .directive('gAutocomplete', gAutocomplete);
+  .directive('gAutocomplete', gAutocomplete)
+  .directive('uploadImage', uploadImage);

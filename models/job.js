@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
+const GeoJson = require('mongoose-geojson-schema');
 const moment = require('moment');
 
 // so users can leave messages on the job
 const messageSchema = new mongoose.Schema({
   message: { type: String },
-  content: { type: String, required: true },
+  content: { type: String },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' }
 }, {
   timestamps: true
@@ -70,7 +71,6 @@ jobSchema.virtual('createdAtRelative')
   .get(function(){
     return moment(this.createdAt).fromNow();
   });
-
 
 jobSchema.set('toJSON', {
   virtuals: true

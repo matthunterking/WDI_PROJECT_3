@@ -8,6 +8,11 @@ function Job($http) {
     return $http.get(`/api/jobs/${id}`);
   }
 
+  function findByLocation(data) {
+    console.log(data);
+    return $http.post('/api/jobsfiltered', data);
+  }
+
   function removeById(id) {
     return $http.delete(`/api/jobs/${id}`);
   }
@@ -54,6 +59,7 @@ function Job($http) {
 
   this.find = find;
   this.findById = findById;
+  this.findByLocation = findByLocation;
   this.removeById = removeById;
   this.create = create;
   this.updateById = updateById;

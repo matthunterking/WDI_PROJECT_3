@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
   firstname: { type: String, required: true },
   surname: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+  password: { type: String },
   bio: { type: String },
   image: { type: String },
   userratings: [ userratingSchema ]
@@ -23,13 +23,6 @@ userSchema.virtual('jobs', {
   foreignField: 'createdBy'
 });
 
-// userSchema
-//   .virtual('avgUserrating')
-//   .get(function getAvgUserrating(){
-//     if(this.userratings.length === 0) return 'N/A';
-//     const ratings = this.userratings.map(userrating => userrating.rating);
-//     return Math.round(((ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length) * 2) / 2);
-//   });
 
 userSchema.virtual('avgRating')
   .get(function(){
@@ -58,6 +51,9 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next){
+  if(!this.googleId && !this.password) {
+    this.invalidate('password', 'Password is required');
+  }
   if(this.isModified('password') && this._passwordConfirmation !== this.password){
     this.invalidate('passwordConfirmation', 'does not match');
   }

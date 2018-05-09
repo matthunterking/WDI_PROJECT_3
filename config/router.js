@@ -28,6 +28,9 @@ router.route('/jobs/:id')
   .put(secureRoute, jobs.update)
   .delete(secureRoute, jobs.delete);
 
+router.route('/jobsfiltered')
+  .post(jobs.indexFilter);
+
 router.post('/jobs/:id/messages', secureRoute, jobs.messageCreate);
 router.delete('/jobs/:id/messages/:messageId', secureRoute, jobs.messageDelete);
 

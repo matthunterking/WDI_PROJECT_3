@@ -9,6 +9,23 @@ function jobsIndex(req, res, next) {
     .catch(next);
 }
 
+function jobsIndexFilter(req, res, next) {
+  //max distance is in km!
+  const radians = (parseFloat(req.body.maxDistance) / 6378.1);
+  console.log(radians);
+  Job
+    .find({
+      location: {
+        $geoWithin: {
+          $centerSphere: [ [ parseFloat(req.body.lng), parseFloat(req.body.lat) ], radians ]
+        }
+      }
+    })
+    .exec()
+    .then(jobs => res.json(jobs))
+    .catch(next);
+}
+
 function jobsShow(req, res, next) {
   Job
     .findById(req.params.id)
@@ -184,6 +201,7 @@ function jobsStatusFinish(req, res, next) {
 
 module.exports = {
   index: jobsIndex,
+  indexFilter: jobsIndexFilter,
   show: jobsShow,
   create: jobsCreate,
   update: jobsUpdate,
