@@ -58,7 +58,7 @@ User
           frequency: 'Weekly',
           startdate: 'Fri May 11 2018 12:41:34 GMT+0000 (UTC)',
           enddate: 'Fri Jun 29 2018 12:41:34 GMT+0000 (UTC)',
-          location: { lat: 51.516282, lng: -0.080964 },
+          location: { lng: -0.080964, lat: 51.516282 },
           createdBy: users[0],
           applicants: [],
           messages: []
@@ -70,7 +70,7 @@ User
           frequency: 'Once',
           startdate: 'Sat May 12 2018 12:41:34 GMT+0000 (UTC)',
           enddate: 'Sat May 12 2018 12:41:34 GMT+0000 (UTC)',
-          location: { lat: 51.517862, lng: -0.073664 },
+          location: { lng: -0.073664, lat: 51.517862 },
           createdBy: users[1],
           applicants: [],
           messages: []
@@ -82,7 +82,7 @@ User
           frequency: 'Monthly',
           startdate: 'Wed Jun 20 2018 12:41:34 GMT+0000 (UTC)',
           enddate: 'Wed Jun 20 2018 12:41:34 GMT+0000 (UTC)',
-          location: { lat: 51.515546, lng: -0.077249 },
+          location: { lng: -0.077249, lat: 51.515546 },
           createdBy: users[2],
           applicants: [],
           messages: []
@@ -94,7 +94,7 @@ User
           frequency: 'Daily',
           startdate: 'Mon May 28 2018 12:41:34 GMT+0000 (UTC)',
           enddate: 'Mon Jul 30 2018 12:41:34 GMT+0000 (UTC)',
-          location: { lat: 51.512810, lng: -0.071224 },
+          location: { lng: -0.071224, lat: 51.512810 },
           createdBy: users[3],
           applicants: [],
           messages: []

@@ -11,7 +11,8 @@ function jobsIndex(req, res, next) {
 
 function jobsIndexFilter(req, res, next) {
   //max distance is in km!
-  const radians = (req.body.maxDistance / 6378.1);
+  const radians = (parseFloat(req.body.maxDistance) / 6378.1);
+  console.log(radians);
   Job
     .find({
       location: {
