@@ -7,7 +7,8 @@ function gMapIndexView() {
       userLocation: '=?',
       jobListings: '=',
       distance: '=?',
-      position: '='
+      position: '=',
+      setLocation: '&'
     },
     link($scope, $element) {
 
@@ -24,6 +25,7 @@ function gMapIndexView() {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
+          $scope.setLocation({ pos });
           $scope.$apply();
           $scope.userLocation = pos;
           map.setCenter(pos);

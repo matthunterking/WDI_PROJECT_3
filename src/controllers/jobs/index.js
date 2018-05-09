@@ -3,6 +3,7 @@ JobsIndexCtrl.$inject = ['Job'];
 function JobsIndexCtrl(Job) {
   this.all = [];
   this.userLocation = {};
+  this.criteria = {};
 
   Job
     .find()
@@ -16,7 +17,13 @@ function JobsIndexCtrl(Job) {
       });
   }
 
+  function setUserLocation(pos) {
+    this.criteria.lat = pos.lat;
+    this.criteria.lng = pos.lng;
+  }
+
   this.jobsFilter = jobsFilter;
+  this.setUserLocation = setUserLocation;
 
 }
 export default JobsIndexCtrl;
