@@ -34,7 +34,7 @@ function google(req, res, next) {
     .then(response => {
       console.log(response);
       return User.findOne({ $or: [
-        {email: response.email},
+        {userGoogle: response.sub},
         {googleId: response.Id}                     /* <----- */
       ] })
         .then(user => {
