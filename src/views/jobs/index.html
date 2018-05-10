@@ -1,4 +1,3 @@
-<h1>Available Jobs</h1>
 <div class="map" g-map-index-view job-listings="jobsIndex.all" set-location="jobsIndex.setUserLocation(pos)">GOOGLE MAP</div>
 <form class="" ng-submit="jobsIndex.jobsFilter()">
   <input type='text' ng-model="jobsIndex.criteria.lng" value="jobsIndex.userLocation.lng" hidden></input>
@@ -21,7 +20,7 @@
 
   <div class="box">
     <div class="columns">
-      <p class="column">{ job.icon }</p>
+      <p class="column"><img class="smallIcon" ng-src="./assets/icons/{{ job.category }}.png" alt="" /></p>
       <p class="column">{{ job.category }} for {{job.createdBy.firstname}}</p>
       <p class='column'>{{ job.description }}</p>
       <p class='column'>{{job.status}}</p>
