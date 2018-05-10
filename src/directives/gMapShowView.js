@@ -2,7 +2,7 @@
 
 function gMapShowView() {
   return {
-    retrict: 'A',
+    restrict: 'A',
     scope: {
       userLocation: '=?',
       jobLocation: '=',

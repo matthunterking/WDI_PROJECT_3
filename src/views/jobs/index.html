@@ -3,13 +3,14 @@
 <form class="" ng-submit="jobsIndex.jobsFilter()">
   <input type='text' ng-model="jobsIndex.criteria.lng" value="jobsIndex.userLocation.lng" hidden></input>
   <input type='text' ng-model="jobsIndex.criteria.lat" value="jobsIndex.userLocation.lat" hidden></input>
-  <select type='text'ng-model="jobsIndex.criteria.maxDistance" placeholder="maxDistance">
-    <option value="5">5km</option>
-    <option value="10">10km</option>
-    <option value="15">15km</option>
-    <option value="20">20km</option>
-    <option value="25">25km</option>
-    <option value="5000000000000000">+25km</option>
+  <select type='text' ng-model="jobsIndex.criteria.maxDistance" placeholder="maxDistance">
+    <option value='' selected disabled>Choose a search radius</option>
+    <option value="0.5">500m</option>
+    <option value="1">1km</option>
+    <option value="2">2km</option>
+    <option value="3">3km</option>
+    <option value="4">4km</option>
+    <option value="5000000000000000">5km and beyond</option>
   </select>
   <button type="submit">Submit</button>
 </form>
