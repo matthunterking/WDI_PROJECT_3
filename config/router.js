@@ -46,9 +46,7 @@ router.route('/jobs/:id/finish')
 // router.post('/github', oauth.github);  /* <-- Use when needed with OAuth  */
 // router.post('/facebook', oauth.facebook);  /* <-- Use when needed with OAuth  */
 
-
 router.route('/google')
   .post(oauth.google);
-// >>>>>>> gmail-oauth
 
 module.exports = router;
