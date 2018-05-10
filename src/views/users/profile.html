@@ -1,8 +1,8 @@
 <div class= 'box'>
-  <p class="profile-title title is-1" >Welcome {{ usersProfile.user.firstname}}! </p>
-  <div class="columns">
+  <p class="profile-title title is-1 has-text-centered" >Welcome {{ usersProfile.user.firstname}}! </p>
+  <div class="columns is-vcentered">
     <div class="column is-one-third">
-      <img class="profile-image image is-256x256" src='{{usersProfile.user.image}}' />
+      <img class="profile-image image is-256x256 centered" src='{{usersProfile.user.image}}' />
     </div>
     <div class="">
       <p class="subtitle is-4">{{usersProfile.user.firstname}} {{usersProfile.user.surname}}</p>
@@ -34,7 +34,7 @@
   <p class="subtitle is-4">Your average rating as a helper:</p>
   <p class="bodyText" ng-if="usersProfile.user.avgRating">{{'⭐ '.repeat(usersProfile.user.avgRating)}} ({{usersProfile.user.userratings.length}} ratings)</p>
   <p class="bodyText" ng-if="!usersProfile.user.avgRating">Oh, you don't have a rating...yet</p>
-  
+
   <hr/>
 
   <p class="subtitle is-4">You are helping with:</p>
@@ -43,9 +43,9 @@
       <div ng-repeat='applicant in job.applicants'>
         <div ng-if="applicant.who === usersProfile.user._id">
           <div ng-if="applicant.status === 'accepted'">
-            <p><a ui-sref='jobsShow({ id: job._id })'>{{job.category}} for {{job.createdBy.firstname}} {{job.createdBy.surname}}</a></p>
-            <p>Job status: {{job.status}}</p>
-            <p ng-if="job.status === 'reviewed'">How the asker rated you: {{ '⭐ '.repeat(job.jobrating) }}</p>
+            <p class="bodyText"><a ui-sref='jobsShow({ id: job._id })'>{{job.category}} for {{job.createdBy.firstname}} {{job.createdBy.surname}}</a></p>
+            <p class="bodyText">Job status: {{job.status}}</p>
+            <p class="bodyText" ng-if="job.status === 'reviewed'">How the asker rated you: {{ '⭐ '.repeat(job.jobrating) }}</p>
           </div>
         </div>
       </div>
