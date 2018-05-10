@@ -19,11 +19,12 @@
 
 
   <div class="box">
+    <a ui-sref="jobsShow({ id: job._id })">
     <div class="columns">
       <p class="column"><img class="smallIcon" ng-src="./assets/icons/{{ job.category }}.png" alt="" /></p>
-      <p class="column">{{ job.category }} for {{job.createdBy.firstname}}</p>
-      <p class='column'>{{ job.description }}</p>
-      <p class='column'>{{job.status}}</p>
-      <p class="column"><a ui-sref="jobsShow({ id: job._id })">More Details</a></p>
+      <p class="column bodyText">{{ job.category }} for {{job.createdBy.firstname}}</p>
+      <p class='column subText'>{{ job.description }}</p>
+      <p class='column bodyText'>{{job.status}}</p>
     </div>
+  </a>
   </div>
