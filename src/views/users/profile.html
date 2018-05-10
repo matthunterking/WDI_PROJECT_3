@@ -1,10 +1,10 @@
 <div class= 'box'>
   <p class="profile-title title is-1 has-text-centered" >Welcome {{ usersProfile.user.firstname}}! </p>
-  <div class="columns is-vcentered">
-    <div class="column is-one-third">
+  <div class="columns is-mobile is-vcentered">
+    <div class="column is-one-third-desktop is-half-mobile">
       <img class="profile-image image is-256x256 centered" src='{{usersProfile.user.image}}' />
     </div>
-    <div class="">
+    <div class="column is-two-thirds-desktop is-half-mobile">
       <p class="subtitle is-4">{{usersProfile.user.bio}}</p>
       <p class="subtitle is-4">{{usersProfile.user.email}}</p>
     </div>

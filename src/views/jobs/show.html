@@ -1,10 +1,10 @@
 <!-- this section can only be seen when user is logged in -->
 <section ng-if='main.isAuthenticated()'>
-  <div class="columns">
-    <div class="column is-one-fifth">
+  <div class="columns is-mobile">
+    <div class="column is-one-fifth-desktop is-one-quarter-mobile">
       <img class="largeIcon" ng-src="./assets/icons/{{ jobsShow.job.category }}.png" alt="" />
     </div>
-    <div class="column is-two-fifths">
+    <div class="column is-two-fifths-desktop is-three-quarters-mobile">
       <div class="box">
         <p class="title is-1">{{ jobsShow.job.category }} for {{ jobsShow.job.createdBy.firstname }}</p>
         <article class="media">
@@ -18,7 +18,7 @@
         </article>
       </div>
     </div>
-    <div class="column is-two-fifths has-text-centered">
+    <div class="column is-two-fifths-desktop has-text-centered">
       <p class="title is-4">Posted by</p>
       <div class="box">
         <article class="media">
