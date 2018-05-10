@@ -66,6 +66,7 @@ function gMapIndexView() {
       var infowindow = new google.maps.InfoWindow();
 
       $scope.$watch('jobListings', () => {
+        console.log('joblistings changed');
         listingMarkers.forEach(marker => marker.setMap(null));
         listingMarkers = $scope.jobListings.map((job) => {
           const marker = new google.maps.Marker({
@@ -77,8 +78,9 @@ function gMapIndexView() {
             console.log(job.startdate);
             showInfoWindow(job, marker);
           });
+          return marker;
         });
-      });
+      }, true);
 
       function showInfoWindow(job, marker){
         infowindow.close();
