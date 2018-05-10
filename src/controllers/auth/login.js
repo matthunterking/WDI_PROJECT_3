@@ -22,7 +22,7 @@ function LoginCtrl(User, $auth, $state) {
 
   function authenticate(provider) {
     $auth.authenticate(provider)
-      .then(() => $state.go('jobsIndex'));
+      .then(() => $state.go('jobsShow'));  /* <--- Is the the right directive? */
   }
 
   this.isAuthenticated = $auth.isAuthenticated;

@@ -35,18 +35,18 @@ function google(req, res, next) {
       console.log(response);
       return User.findOne({ $or: [
         {email: response.email},
-        {googleId: response.sub}                     /* <----- */
+        {googleId: response.sub}
       ] })
         .then(user => {
           console.log(user);
           if(!user) {
             user = new User({
-              email: response.email,                /* <----- first name and last name is required so that is whats required */
+              email: response.email,
               firstname: response.given_name,
               surname: response.family_name
             });
           }
-          user.googleId = response.sub;              /* <----- */
+          user.googleId = response.sub;
           return user.save();
         });
     })
