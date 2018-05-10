@@ -1,59 +1,59 @@
 <div class= 'box'>
   <p class="profile-title title is-1" >Welcome {{ usersProfile.user.firstname}}! </p>
-    <div class="columns">
-      <div class="column is-one-third">
-        <img class="profile-image image is-256x256" src='{{usersProfile.user.image}}' />
-      </div>
-      <div class="">
-        <p class="title is-3">Your name: </p>
-        <p class="subtitle is-3">{{usersProfile.user.firstname}} {{usersProfile.user.surname}}</p>
-        <p class="title is-3">Your email:</p>
-        <p class="subtitle is-3">{{usersProfile.user.email}}</p>
-        <p class="title is-3">Your bio: </p>
-        <p class="subtitle is-3">{{usersProfile.user.bio}}</p>
-      </div>
+  <div class="columns">
+    <div class="column is-one-third">
+      <img class="profile-image image is-256x256" src='{{usersProfile.user.image}}' />
     </div>
-  <hr/>
-
-
-<div class="">
-  <p class="title is-3">Your average rating as an asker:</p>
-  <p class="subtitle is-2" ng-if='usersProfile.calculateAverageJobrating()'>{{ '⭐ '.repeat(usersProfile.calculateAverageJobrating()) }} ({{usersProfile.user.jobs.length}} ratings)</p>
-  <p class="is-size-4" ng-if='!usersProfile.calculateAverageJobrating()'>Oh, you don't have a rating...yet</p>
-</div>
-
-
-
-  <p>You've asked for help with...</p>
-  <div ng-repeat='job in usersProfile.user.jobs'>
-    <p><a ui-sref='jobsShow({ id: job._id })'>{{job.category}}</a></p>
-    <p>Job created {{job.createdAtRelative}}</p>
-    <p>Number of applicants: {{job.applicants.length}}</p>
-    <p>Status: {{job.status}}</p>
+    <div class="">
+      <p class="subtitle is-4">{{usersProfile.user.firstname}} {{usersProfile.user.surname}}</p>
+      <p class="subtitle is-4">{{usersProfile.user.email}}</p>
+      <p class="subtitle is-4">{{usersProfile.user.bio}}</p>
+    </div>
   </div>
+
   <hr/>
 
-  <p class="is-size-4">Your average rating as a helper:</p>
-  <p class="is-size-4" ng-if="usersProfile.user.avgRating">{{'⭐ '.repeat(usersProfile.user.avgRating)}} ({{usersProfile.user.userratings.length}} ratings)</p>
-  <p class="is-size-4" ng-if="!usersProfile.user.avgRating">Oh, you don't have a rating...yet</p>
+  <div class="">
+    <p class="subtitle is-4">Your average rating as an asker:</p>
+    <p class="bodyText" ng-if='usersProfile.calculateAverageJobrating()'>{{ '⭐ '.repeat(usersProfile.calculateAverageJobrating()) }} ({{usersProfile.user.jobs.length}} ratings)</p>
+    <p class="bodyText" ng-if='!usersProfile.calculateAverageJobrating()'>Oh, you don't have a rating...yet</p>
+  </div>
 
-  <p>You are helping with:</p>
+  <hr/>
+
+  <div ng-repeat='job in usersProfile.user.jobs'>
+    <p class="subtitle is-4">You've asked for help with...</p>
+    <p class="subtitle is-4"><a ui-sref='jobsShow({ id: job._id })'>{{job.category}}</a></p>
+    <p class="bodyText">Job created {{job.createdAtRelative}}</p>
+    <p class="bodyText">Number of applicants: {{job.applicants.length}}</p>
+    <p class="bodyText">Status: {{job.status}}</p>
+  </div>
+
+  <hr/>
+
+  <p class="subtitle is-4">Your average rating as a helper:</p>
+  <p class="bodyText" ng-if="usersProfile.user.avgRating">{{'⭐ '.repeat(usersProfile.user.avgRating)}} ({{usersProfile.user.userratings.length}} ratings)</p>
+  <p class="bodyText" ng-if="!usersProfile.user.avgRating">Oh, you don't have a rating...yet</p>
+  
+  <hr/>
+
+  <p class="subtitle is-4">You are helping with:</p>
   <div ng-controller='JobsIndexCtrl as jobsIndex'>
-  <div ng-repeat='job in jobsIndex.all' >
+    <div ng-repeat='job in jobsIndex.all' >
       <div ng-repeat='applicant in job.applicants'>
         <div ng-if="applicant.who === usersProfile.user._id">
-        <div ng-if="applicant.status === 'accepted'">
-          <p><a ui-sref='jobsShow({ id: job._id })'>{{job.category}} for {{job.createdBy.firstname}} {{job.createdBy.surname}}</a></p>
-          <p>Job status: {{job.status}}</p>
-          <p ng-if="job.status === 'reviewed'">How the asker rated you: {{ '⭐ '.repeat(job.jobrating) }}</p>
-        </div>
+          <div ng-if="applicant.status === 'accepted'">
+            <p><a ui-sref='jobsShow({ id: job._id })'>{{job.category}} for {{job.createdBy.firstname}} {{job.createdBy.surname}}</a></p>
+            <p>Job status: {{job.status}}</p>
+            <p ng-if="job.status === 'reviewed'">How the asker rated you: {{ '⭐ '.repeat(job.jobrating) }}</p>
+          </div>
         </div>
       </div>
-  </div>
+    </div>
   </div>
 
   <div>
-    <a ui-sref='usersEdit({ id: usersProfile.user._id })' class="button">Edit your account</a>
+    <a ui-sref='usersEdit({ id: usersProfile.user._id })' class="button orangebutton">Edit your account</a>
     <button ng-click='usersProfile.handleDelete()' class='button is-danger'>Delete your account</button>
   </div>
 </div>
