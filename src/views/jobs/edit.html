@@ -1,4 +1,4 @@
-<p class="is-size-2 title">Edit this job</p>
+<p class="title is-1">Edit this job</p>
 
 <div class='' ng-if="jobsEdit.form.$submitted">
   Sorry, you made a mistake while editing this job.
@@ -10,7 +10,7 @@
     <label class="label" for="category">Category</label>
     <div class="select">
       <select ng-model="jobsEdit.data.category" name="category" required ng-class = " {'is-danger': jobsEdit.isDanger('category')}"/>
-      <option value="" disabled selected>Select a category</option>
+      <option class="" value="" disabled selected>Select a category</option>
       <option ng-repeat = 'cat in jobsEdit.cats' value= '{{cat}}'>{{cat}}</option>
     </select>
     <div ng-messages="jobsEdit.form.category.$error" ng-if="jobsEdit.form.title.$dirty || jobsEdit.form.$submitted">
@@ -88,6 +88,6 @@
   </div>
 
   <p class="help">
-    <button class="button submit">Submit</button>
+    <button class="button greenbutton submit">Submit</button>
   </p>
   </form>
