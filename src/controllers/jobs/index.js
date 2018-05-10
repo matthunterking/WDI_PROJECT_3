@@ -1,6 +1,6 @@
-JobsIndexCtrl.$inject = ['Job'];
+JobsIndexCtrl.$inject = ['Job', '$scope'];
 
-function JobsIndexCtrl(Job) {
+function JobsIndexCtrl(Job, $scope) {
 
   const vm = this;
 
@@ -18,7 +18,7 @@ function JobsIndexCtrl(Job) {
     Job
       .findByLocation(vm.criteria)
       .then(res => {
-        vm.all = res.data;
+        vm.available = res.data;
       });
   }
 
@@ -35,6 +35,8 @@ function JobsIndexCtrl(Job) {
       }
     }
   }
+
+  $scope.$watch(vm.all, availability);
 
   this.jobsFilter = jobsFilter;
   vm.setUserLocation = setUserLocation;

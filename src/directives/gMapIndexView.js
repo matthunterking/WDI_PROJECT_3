@@ -75,7 +75,6 @@ function gMapIndexView() {
           });
           listingMarkers.push(marker);
           marker.addListener('click', () => {
-            console.log(job.startdate);
             showInfoWindow(job, marker);
           });
           return marker;

@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String },
   bio: { type: String },
-  image: { type: String },
+  image: { type: String, default: '../../assets/images/default-user.png' },
   userratings: [ userratingSchema ]
 });
 

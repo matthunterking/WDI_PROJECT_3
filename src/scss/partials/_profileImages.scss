@@ -16,6 +16,17 @@
   border: 2px solid $darkblue;
 }
 
+.profile-image-tiny {
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 100%;
+  border: 1px solid $darkblue;
+  margin-right: 10px;
+}
+
 @media only screen and (max-width: 600px) {
   .profile-image {
     height: 150px;
