@@ -2,22 +2,33 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 mongoose.Promise = require('bluebird');
 
+const userratingSchema = new mongoose.Schema({
+  rating: { type: Number }
+});
+
+
 const userSchema = new mongoose.Schema({
   firstname: { type: String, required: true },
   surname: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String },
   bio: { type: String },
-  image: { type: String }
-  // googleId: { type: Number, unique: true }
+  image: { type: String },
+  userratings: [ userratingSchema ]
 });
-
 
 userSchema.virtual('jobs', {
   ref: 'Job',
   localField: '_id',
   foreignField: 'createdBy'
 });
+
+
+userSchema.virtual('avgRating')
+  .get(function() {
+    return this.userratings.reduce((sum, userrating) => sum + userrating.rating, 0) / this.userratings.length;
+  });
+
 
 userSchema.plugin(require('mongoose-unique-validator'));
 

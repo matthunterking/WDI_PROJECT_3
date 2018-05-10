@@ -2,7 +2,7 @@
 
 function gMapIndexView() {
   return {
-    retrict: 'A',
+    restrict: 'A',
     scope: {
       userLocation: '=?',
       jobListings: '=',
@@ -16,7 +16,8 @@ function gMapIndexView() {
 
       const map = new google.maps.Map($element[0], {
         center: { lat: 51.515, lng: -0.078 },
-        zoom: 14
+        zoom: 14,
+        scrollwheel: false
       });
 
       if(navigator.geolocation) {
@@ -53,23 +54,55 @@ function gMapIndexView() {
         animation: google.maps.Animation.DROP
       });
 
+
+
       $scope.$watch('userLocation', () => {
         map.setCenter($scope.center);
         marker.setPosition($scope.center);
         $scope.getUserLocation();
       });
 
+
+      var infowindow = new google.maps.InfoWindow();
+
       $scope.$watch('jobListings', () => {
         listingMarkers.forEach(marker => marker.setMap(null));
         listingMarkers = $scope.jobListings.map((job) => {
-          return new google.maps.Marker({
+          const marker = new google.maps.Marker({
             position: job.location,
             map: map
+          });
+          listingMarkers.push(marker);
+          marker.addListener('click', () => {
+            console.log(job.startdate);
+            showInfoWindow(job, marker);
           });
         });
       });
 
+      function showInfoWindow(job, marker){
+        infowindow.close();
+        infowindow.setContent(`<div>
+          <h1><strong>${job.category} for ${job.createdBy.firstname}</strong></h1>
+          <p>${job.description}</p>
+          <p>${job.startdate} to ${job.enddate}</p>
+        <p><a href='/#!/jobs/${job._id}'>Get more information</a></p>
+      </div>`);
+        infowindow.open(map, marker);
+        map.setCenter(marker.getPosition());
+      }
+
+
+
+      //when you click on your location marker, infowindow says 'you are here'...
+      userMarker.addListener('click', (function () {
+        infowindow.setContent('<strong>You are here!</strong>');
+        infowindow.open(map, userMarker);
+      }));
+
     }
   };
 }
+
+
 export default gMapIndexView;

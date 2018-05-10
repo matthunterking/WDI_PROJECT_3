@@ -1,37 +1,54 @@
 JobsEditCtrl.$inject = ['Job', '$state'];
 
 function JobsEditCtrl(Job, $state) {
-  this.data = {};
-  this.cats = ['DIY', 'Gardening', 'Removals', 'Shopping', 'Social', 'Pet-sitting', 'Others'];
-  this.durations = ['1-2 hours', '2-3 hours', 'Half a day', 'Full day'];
-  this.frequencies =['Once', 'Daily', 'Weekly', 'Monthly'];
+
+  const vm = this;
+  vm.data = {};
+  vm.cats = ['DIY', 'Gardening', 'Removals', 'Shopping', 'Social', 'Pet-sitting', 'Others'];
+  vm.durations = ['1-2 hours', '2-3 hours', 'Half a day', 'Full day'];
+  vm.frequencies =['Once', 'Daily', 'Weekly', 'Monthly'];
 
   Job
     .findById($state.params.id)
-    .then(res => this.data = res.data);
+    .then(res => vm.data = res.data);
 
   function handleUpdate() {
-
     if(this.form.$invalid) return false;
-
     Job
-      .updateById($state.params.id, this.data)
-      .then(() => $state.go('jobsShow', $state.params));
+      .updateById($state.params.id, vm.data)
+      .then(() => $state.go('jobsShow', $state.params))
+      .then(ifFinished);
   }
 
 
   function updateLocation(location) {
     console.log('updating location..', location);
-    this.data.location = location;
+    vm.data.location = location;
+  }
+
+  function handleStatusReview() {
+    Job
+      .statusReview($state.params.id)
+      .then(() => vm.status = 'reviewed')
+      .then(location.reload());
+  }
+
+  function ifFinished() {
+    console.log(vm.data.status);
+    if (vm.data.status === 'finished') {
+      handleStatusReview();
+    }
   }
 
   function isDanger(field) {
-    return (this.form[field].$touched || this.form.$submitted) && (this.form[field].$error.required || this.form[field].$error.email);
+    return (vm.form[field].$touched || vm.form.$submitted) && (vm.form[field].$error.required || vm.form[field].$error.email);
   }
 
   this.handleUpdate = handleUpdate;
   this.updateLocation = updateLocation;
   this.isDanger = isDanger;
+  this.handleStatusReview = handleStatusReview;
+  this.ifFinished = ifFinished;
 }
 
 export default JobsEditCtrl;

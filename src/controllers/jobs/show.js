@@ -81,7 +81,12 @@ function JobsShowCtrl(Job, $state) {
       .then(location.reload());
   }
 
-
+  function handleStatusReview() {
+    Job
+      .statusReview($state.params.id)
+      .then(() => vm.status = 'reviewed')
+      .then(location.reload());
+  }
 
 
   this.handleDelete = handleDelete;
@@ -93,6 +98,7 @@ function JobsShowCtrl(Job, $state) {
   this.handleApplicantReject = handleApplicantReject;
   this.handleStatusProgress = handleStatusProgress;
   this.handleStatusFinish = handleStatusFinish;
+  this.handleStatusReview = handleStatusReview;
 }
 
 export default JobsShowCtrl;

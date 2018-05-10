@@ -57,6 +57,10 @@ function Job($http) {
     return $http.put(`/api/jobs/${jobId}/finish`, data);
   }
 
+  function statusReview(jobId, data) {
+    return $http.put(`/api/jobs/${jobId}/review`, data);
+  }
+
   this.find = find;
   this.findById = findById;
   this.findByLocation = findByLocation;
@@ -71,6 +75,7 @@ function Job($http) {
   this.applicantReject = applicantReject;
   this.statusProgress = statusProgress;
   this.statusFinish = statusFinish;
+  this.statusReview = statusReview;
 }
 
 export default Job;
