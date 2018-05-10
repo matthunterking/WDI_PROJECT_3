@@ -24,15 +24,14 @@
   animation-iteration-count: infinite;
 }
 
-.car {
+.plane {
   width: 25%;
   position: relative;
-  right: -120%;
-  top: -85px;
-  visibility: hidden;
+  right: -500%;
+  top: -440px;
   animation-name: moveRight;
-  animation-duration: 15s;
-  animation-delay: 20s;
+  animation-duration: 25s;
+  animation-delay: 10s;
   animation-iteration-count: infinite;
 }
 
@@ -44,21 +43,11 @@
 
 @keyframes moveRight {
 0% {
-  right:-120%;
-  visibility: hidden;
+  right:-500%;
  }
 
-25% {
-  right: -74%;
-  visibility: visible;
-}
-75% {
-  right: 20%;
-  visibility: hidden;
-}
 100% {
   right:200%;
-  visibility: hidden;
 }
 }
 
