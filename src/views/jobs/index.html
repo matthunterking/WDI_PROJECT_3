@@ -1,8 +1,9 @@
-<div class="map" g-map-index-view job-listings="jobsIndex.all" set-location="jobsIndex.setUserLocation(pos)">GOOGLE MAP</div>
+<div class="map" g-map-index-view job-listings="jobsIndex.available" set-location="jobsIndex.setUserLocation(pos)">GOOGLE MAP</div>
+<p class='title is-3'>Free to lend a helping hand? Here are all available jobs near you:</p>
 <form class="" ng-submit="jobsIndex.jobsFilter()">
   <input type='text' ng-model="jobsIndex.criteria.lng" value="jobsIndex.userLocation.lng" hidden></input>
   <input type='text' ng-model="jobsIndex.criteria.lat" value="jobsIndex.userLocation.lat" hidden></input>
-  <select type='text' ng-model="jobsIndex.criteria.maxDistance" placeholder="maxDistance">
+  <select class='jobsindexinputbar' type='text' ng-model="jobsIndex.criteria.maxDistance" placeholder="maxDistance">
     <option value='' selected disabled>Choose a search radius</option>
     <option value="0.5">500m</option>
     <option value="1">1km</option>
@@ -11,20 +12,17 @@
     <option value="4">4km</option>
     <option value="5000000000000000">5km and beyond</option>
   </select>
-  <button type="submit">Submit</button>
+  <button class="button orangebutton shortbutton" type="submit">Submit</button>
 </form>
 
-
-<div ng-repeat="job in jobsIndex.all">
-
-
+<div ng-repeat="job in jobsIndex.available">
   <div class="box">
     <a ui-sref="jobsShow({ id: job._id })">
     <div class="columns">
       <p class="column"><img class="smallIcon" ng-src="./assets/icons/{{ job.category }}.png" alt="" /></p>
       <p class="column bodyText">{{ job.category }} for {{job.createdBy.firstname}}</p>
       <p class='column subText'>{{ job.description }}</p>
-      <p class='column bodyText'>{{job.status}}</p>
+      <p class='column subText'>{{job.startdate | date : format : timezone }} to {{job.enddate | date : format : timezone }}</p>
     </div>
   </a>
   </div>
