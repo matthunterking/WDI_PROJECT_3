@@ -39,7 +39,7 @@
 
   <p class="subtitle is-4">You are helping with:</p>
   <div ng-controller='JobsIndexCtrl as jobsIndex'>
-    <div ng-repeat='job in jobsIndex.all' >
+    <div ng-repeat='job in jobsIndex.all'>
       <div ng-repeat='applicant in job.applicants'>
         <div ng-if="applicant.who === usersProfile.user._id">
           <div ng-if="applicant.status === 'accepted'">
