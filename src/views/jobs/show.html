@@ -1,13 +1,13 @@
 <!-- this section can only be seen when user is logged in -->
 <section ng-if='main.isAuthenticated()'>
   <div class="columns">
-    <div class="column is-three-thirds has-text-centered">
-      <p class="title is-1">{{ jobsShow.job.category }} for {{ jobsShow.job.createdBy.firstname }}</p>
+    <div class="column is-one-fifth">
+      <img class="largeIcon" ng-src="./assets/icons/{{ jobsShow.job.category }}.png" alt="" />
+    </div>
+    <div class="column is-two-fifths">
       <div class="box">
+        <p class="title is-1">{{ jobsShow.job.category }} for {{ jobsShow.job.createdBy.firstname }}</p>
         <article class="media">
-          <div class="media-left">
-            <img class="largeIcon" ng-src="./assets/icons/{{ jobsShow.job.category }}.png" alt="" />
-          </div>
           <div class="media-content">
             <div class="content">
               <p class="bodyText">{{ jobsShow.job.description }}</p>
@@ -18,7 +18,7 @@
         </article>
       </div>
     </div>
-    <div class="column is-one-third has-text-centered">
+    <div class="column is-two-fifths has-text-centered">
       <p class="title is-4">Posted by</p>
       <div class="box">
         <article class="media">
@@ -50,8 +50,8 @@
   </div>
 </section>
 
-<div g-map-show-view job-location="jobsShow.job.location" distance="jobsShow.distance" class="map column"></div>
 <p class="bodyText has-text-centered">{{ jobsShow.distance }} from your current location</p>
+<div g-map-show-view job-location="jobsShow.job.location" distance="jobsShow.distance" class="map column"></div>
 
 <!-- this section can be seen only when the job is finished -->
 <section ng-if="jobsShow.job.status !== ('in progress' || 'available')">
@@ -153,7 +153,7 @@
             </div>
             <!-- only seen by message writer -->
             <div class="column is-one-quarter"  ng-controller="UsersProfileCtrl as usersProfile">
-              <button ng-click="jobsShow.handleMessageDelete(message)" class="button redbutton" ng-if="message.createdBy._id === usersProfile.user._id">Delete your message</button>
+              <button ng-click="jobsShow.handleMessageDelete(message)" class="button redbutton" ng-if="message.createdBy._id === usersProfile.user._id">Delete</button>
             </div>
             <!-- end message-writer-only -->
           </div>
@@ -208,7 +208,7 @@
         </div>
         <div class="column is-one-quarter">
           <button class="button bluebutton" ng-click="jobsShow.handleMessageCreate()">Submit message only</button>
-          <button class="button greenbutton" ng-click="jobsShow.handleApplicantCreate()">Submit message and apply for this job</button>
+          <button class="button greenbutton" ng-click="jobsShow.handleApplicantCreate()">Message and apply for this job</button>
         </div>
       </div>
     </form>
