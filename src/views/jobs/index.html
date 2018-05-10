@@ -18,11 +18,20 @@
 <div ng-repeat="job in jobsIndex.available">
   <div class="box">
     <a ui-sref="jobsShow({ id: job._id })">
-    <div class="columns">
-      <p class="column"><img class="smallIcon" ng-src="./assets/icons/{{ job.category }}.png" alt="" /></p>
-      <p class="column bodyText">{{ job.category }} for {{job.createdBy.firstname}}</p>
-      <p class='column subText'>{{ job.description }}</p>
-      <p class='column subText'>{{job.startdate | date : format : timezone }} to {{job.enddate | date : format : timezone }}</p>
-    </div>
-  </a>
+      <div class="columns">
+        <div class='column'>
+          <div class='columns is-mobile'>
+            <div class='column'>
+              <img class="smallIcon" ng-src="./assets/icons/{{ job.category }}.png" alt="" />
+            </div>
+            <div class='column'>
+              <p class='bodyText'>{{ job.category }} for {{job.createdBy.firstname}}</p>
+            </div>
+          </div>
+        </div>
+        <div class='column'><p class='subText'>{{ job.description }}</p></div>
+        <div class='column'><p class='subText'>{{job.startdate | date : format : timezone }} to {{job.enddate | date : format : timezone }}</p></div>
+      </div>
+    </a>
   </div>
+</div>

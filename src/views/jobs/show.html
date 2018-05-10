@@ -12,7 +12,8 @@
             <div class="content">
               <p class="bodyText">{{ jobsShow.job.description }}</p>
               <p class="subText">Duration: {{ jobsShow.job.duration }}</p>
-              <p class="subText">Start Date: {{ jobsShow.job.startdate | date : format : timezone }} to {{ jobsShow.job.enddate | date : format : timezone }}</p>
+              <p class="subText">Frequency: {{ jobsShow.job.frequency }}</p>
+              <p class="subText">From {{ jobsShow.job.startdate | date : format : timezone }} to {{ jobsShow.job.enddate | date : format : timezone }}</p>
             </div>
           </div>
         </article>
@@ -58,14 +59,15 @@
     <div ng-controller="UsersProfileCtrl as usersProfile">
       <div class="columns is-mobile" ng-repeat="applicant in jobsShow.job.applicants" ng-if="applicant.status === 'accepted'">
         <div class="column is-one-third">
-          <img class="profile-image image is-256x256 centered" src='{{usersProfile.user.image}}' />
+          <img class="profile-image image is-256x256 centered" src='{{applicant.who.image}}' />
         </div>
         <div class="column is-two-thirds">
           <p ng-if="applicant.who._id !== usersProfile.user._id" class="bodyText">This job was done by <a ui-sref='usersShow({ id: applicant.who._id })'>{{ applicant.who.firstname }} {{ applicant.who.surname }}</a></p>
           <p ng-if="applicant.who._id === usersProfile.user._id" class="bodyText">This job was done by <a ui-sref='usersProfile({ id: applicant.who._id })'>you</a>!</p>
           <!-- only seen by job poster -->
           <div ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
-            <p class="bodyText">Did you like {{applicant.who.firstname}}'s help? <a ui-sref= "usersShow({ id: applicant.who._id })">Give a rating!</a></p>
+            <p class="bodyText">Did you like {{applicant.who.firstname}}'s help?</p>
+                <a ui-sref= "usersShow({ id: applicant.who._id })"><button class="button orangebutton">Give a rating!</button></a>
           </div>
           <!-- end of job-poster-only -->
 
@@ -114,7 +116,7 @@
     <section ng-controller="UsersProfileCtrl as usersProfile">
       <div class="columns is-mobile" ng-repeat="applicant in jobsShow.job.applicants" ng-if="applicant.status === 'accepted'">
         <div class="column is-one-third">
-          <img class="profile-image image is-256x256 centered" src='{{usersProfile.user.image}}' />
+          <img class="profile-image image is-256x256 centered" src='{{applicant.who.image}}' />
         </div>
         <div class="column is-two-thirds">
           <p ng-if="applicant.who._id !== usersProfile.user._id" class="title is-4">This job is in progress, and is being done by <a ui-sref='usersShow({ id: applicant.who._id })'>{{ applicant.who.firstname }} {{ applicant.who.surname }}</a></p>
