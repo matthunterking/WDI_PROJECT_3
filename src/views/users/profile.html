@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <div class="columns">
+  <div class="columns box">
     <div class="column">
       <p class="title is-3">Your average rating as an asker:</p>
       <p class="subtitle is-4" ng-if='usersProfile.calculateAverageJobrating()'>{{ '⭐ '.repeat(usersProfile.calculateAverageJobrating()) }} ({{usersProfile.user.jobs.length}} ratings)</p>
@@ -40,10 +40,10 @@
     </div>
   </div>
 
-  <div class="columns">
-    <div class="column">
-      <div ng-repeat='job in usersProfile.user.jobs'>
-        <p class="job-click title is-3">You've asked for help with...</p>
+  <div class="columns box">
+    <div class="column is-half" ng-repeat='job in usersProfile.user.jobs'>
+    <div>
+      <p class="job-click title is-3">You've asked for help with...</p>
         <p class="title is-4"><a ui-sref='jobsShow({ id: job._id })'>{{job.category}}</a></p>
         <p class="subtitle is-4">Job created {{job.createdAtRelative}}</p>
         <p class="subtitle is-4">Number of applicants: {{job.applicants.length}}</p>
