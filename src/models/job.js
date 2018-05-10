@@ -8,6 +8,11 @@ function Job($http) {
     return $http.get(`/api/jobs/${id}`);
   }
 
+  function findByLocation(data) {
+    console.log(data);
+    return $http.post('/api/jobsfiltered', data);
+  }
+
   function removeById(id) {
     return $http.delete(`/api/jobs/${id}`);
   }
@@ -52,8 +57,13 @@ function Job($http) {
     return $http.put(`/api/jobs/${jobId}/finish`, data);
   }
 
+  function statusReview(jobId, data) {
+    return $http.put(`/api/jobs/${jobId}/review`, data);
+  }
+
   this.find = find;
   this.findById = findById;
+  this.findByLocation = findByLocation;
   this.removeById = removeById;
   this.create = create;
   this.updateById = updateById;
@@ -65,6 +75,7 @@ function Job($http) {
   this.applicantReject = applicantReject;
   this.statusProgress = statusProgress;
   this.statusFinish = statusFinish;
+  this.statusReview = statusReview;
 }
 
 export default Job;

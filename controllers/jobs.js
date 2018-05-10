@@ -9,6 +9,23 @@ function jobsIndex(req, res, next) {
     .catch(next);
 }
 
+function jobsIndexFilter(req, res, next) {
+  //max distance is in km!
+  const radians = (parseFloat(req.body.maxDistance) / 6378.1);
+  console.log(radians);
+  Job
+    .find({
+      location: {
+        $geoWithin: {
+          $centerSphere: [ [ parseFloat(req.body.lng), parseFloat(req.body.lat) ], radians ]
+        }
+      }
+    })
+    .exec()
+    .then(jobs => res.json(jobs))
+    .catch(next);
+}
+
 function jobsShow(req, res, next) {
   Job
     .findById(req.params.id)
@@ -151,6 +168,7 @@ function jobsApplicantReject(req, res, next) {
     .catch(next);
 }
 
+
 // change job status to in progress
 
 function jobsStatusProgress(req, res, next) {
@@ -181,8 +199,24 @@ function jobsStatusFinish(req, res, next) {
     .catch(next);
 }
 
+// change job status to reviewed
+
+function jobsStatusReview(req, res, next) {
+  Job
+    .findById(req.params.id)
+    .populate('createdBy messages.createdBy applicants.who')
+    .exec()
+    .then(job => {
+      job.status = 'reviewed';
+      return job.save();
+    })
+    .then(job => res.json(job))
+    .catch(next);
+}
+
 module.exports = {
   index: jobsIndex,
+  indexFilter: jobsIndexFilter,
   show: jobsShow,
   create: jobsCreate,
   update: jobsUpdate,
@@ -194,5 +228,6 @@ module.exports = {
   applicantAccept: jobsApplicantAccept,
   applicantReject: jobsApplicantReject,
   statusProgress: jobsStatusProgress,
-  statusFinish: jobsStatusFinish
+  statusFinish: jobsStatusFinish,
+  statusReview: jobsStatusReview
 };

@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
+// const GeoJson = require('mongoose-geojson-schema');
 const moment = require('moment');
 
 // so users can leave messages on the job
 const messageSchema = new mongoose.Schema({
   message: { type: String },
-  content: { type: String, required: true },
+  content: { type: String },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' }
 }, {
   timestamps: true
@@ -28,6 +29,7 @@ messageSchema.set('toJSON', {
 const applicantSchema = new mongoose.Schema({
   who: { type: mongoose.Schema.ObjectId, ref: 'User' },
   status: {type: String, default: 'pending', enum: ['accepted', 'pending', 'rejected']}
+
 }, {
   timestamps: true
 });
@@ -58,7 +60,8 @@ const jobSchema = new mongoose.Schema({
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   applicants: [ applicantSchema ],
   messages: [ messageSchema ],
-  status: {type: String, default: 'available', enum: ['available', 'in progress', 'finished']}
+  status: {type: String, default: 'available', enum: ['available', 'in progress', 'finished', 'reviewed']},
+  jobrating: { type: Number }
 }, {
   timestamps: true
 });
@@ -67,7 +70,6 @@ jobSchema.virtual('createdAtRelative')
   .get(function(){
     return moment(this.createdAt).fromNow();
   });
-
 
 jobSchema.set('toJSON', {
   virtuals: true

@@ -14,6 +14,7 @@ function UsersEditCtrl(User, $state) {
       .then(() => $state.go('usersProfile', $state.params));
   }
 
+
   function isDanger(field) {
     return (this.form[field].$touched || this.form.$submitted) && (this.form[field].$error.required || this.form[field].$error.email);
   }
