@@ -167,6 +167,19 @@
                   <p class="bodyText"><a ui-sref='usersShow({ id: applicant.applicant._id })'>{{ applicant.who.firstname }} {{ applicant.who.surname }}</a></p>
                   <p class="subText">Status: {{applicant.status}}</p>
                 </div>
+                  <!-- only seen by job poster -->
+                  <section ng-controller="UsersProfileCtrl as usersProfile">
+                    <section ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
+                      <button class="button greenbutton" name="button" ng-click='jobsShow.handleApplicantAccept(applicant)'>Choose this applicant</button>
+                      <!-- <button type="button" name="button" ng-click='jobsShow.handleApplicantReject(applicant)'>Reject this applicant</button> -->
+                    </section>
+                  </section>
+                  <!-- end of job-poster-only -->
+                <!-- this div only seen by applicant -->
+                <section ng-controller="UsersProfileCtrl as usersProfile">
+                  <button ng-click="jobsShow.handleApplicantDelete(applicant)" class="button redbutton" ng-if="applicant.who._id === usersProfile.user._id">Withdraw your application</button>
+                </section>
+                <!-- end of div-only-seen-by-applicant -->
               </div>
             </article>
           </div>
@@ -175,21 +188,7 @@
               <div class="column is-one-quarter">
                 <img src="{{ applicant.applicant.image }}" alt="" />
               </div>
-              <div class="column is-half">
-                <!-- only seen by job poster -->
-                <section ng-controller="UsersProfileCtrl as usersProfile">
-                  <section ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
-                    <button type="button" name="button" ng-click='jobsShow.handleApplicantAccept(applicant)'>Choose this applicant</button>
-                    <!-- <button type="button" name="button" ng-click='jobsShow.handleApplicantReject(applicant)'>Reject this applicant</button> -->
-                  </section>
-                </section>
-                <!-- end of job-poster-only -->
-              </div>
-              <!-- this div only seen by applicant -->
-              <div class="column is-one-quarter"  ng-controller="UsersProfileCtrl as usersProfile">
-                <button ng-click="jobsShow.handleApplicantDelete(applicant)" class="button redbutton" ng-if="applicant.who._id === usersProfile.user._id">Withdraw your application</button>
-              </div>
-              <!-- end of div-only-seen-by-applicant -->
+
             </div>
           </div>
         </div>
