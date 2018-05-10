@@ -21,6 +21,7 @@ function jobsIndexFilter(req, res, next) {
         }
       }
     })
+    .populate('createdBy')
     .exec()
     .then(jobs => res.json(jobs))
     .catch(next);
