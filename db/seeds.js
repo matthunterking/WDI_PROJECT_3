@@ -93,7 +93,7 @@ User
     password: 'a',
     passwordConfirmation: 'a',
     bio: 'Plumbing is what I do. If there\'s a leak, I\'ll plug it!',
-    image: '../../assets/images/tony.jpg'
+    image: '../../assets/images/tony2.jpeg'
   },{
     firstname: 'Mavis',
     surname: 'Hutton',
@@ -126,6 +126,14 @@ User
     passwordConfirmation: 'a',
     bio: 'I am originally from sweden but now live in London.',
     image: '../../assets/images/steve.jpg'
+  },{
+    firstname: 'Caroline',
+    surname: 'Smith',
+    email: 'caroline@email.com',
+    password: 'a',
+    passwordConfirmation: 'a',
+    bio: 'I like to be active and want to be part of the community.',
+    image: '../../assets/images/caroline.jpg'
   }])
   .then(users => {
     console.log(`${users.length} users created`);
@@ -259,7 +267,7 @@ User
         frequency: 'Daily',
         startdate: '2018-05-20T12:41:34.000Z',
         enddate: '2018-06-11T12:41:34.000Z',
-        location: { lng: -0.073224, lat: 51.5235810 },
+        location: { lng: -0.2206, lat: 51.4183 },
         createdBy: users[11],
         applicants: [],
         messages: []
@@ -271,6 +279,17 @@ User
         startdate: '2018-05-11T12:41:34.000Z',
         enddate: '2018-07-11T12:41:34.000Z',
         location: { lng: -0.083250, lat: 51.53522 },
+        createdBy: users[7],
+        applicants: [],
+        messages: []
+      },{
+        category: 'Miscellaneous',
+        description: 'I am changing careers and could do with someone having a look at my CV.',
+        duration: '1-2 hours',
+        frequency: 'Weekly',
+        startdate: '2018-05-11T12:41:34.000Z',
+        enddate: '2018-07-11T12:41:34.000Z',
+        location: { lng: -0.0982, lat: 51.3762 },
         createdBy: users[7],
         applicants: [],
         messages: []
