@@ -1,7 +1,9 @@
 .button {
   font-family: $bodytextfont;
-  width: 90%;
+  width: 100%;
   margin: 5px;
+  font-size: 20px;
+  border: 1px solid $darkblue;
 }
 
 .orangebutton { background-color: $orange }
@@ -11,3 +13,5 @@
 .greenbutton { background-color: $green }
 
 .bluebutton { background-color: $darkblue }
+
+.shortbutton { width: 100px }

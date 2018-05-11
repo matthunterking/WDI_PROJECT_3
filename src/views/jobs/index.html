@@ -1,9 +1,9 @@
-<h1>Available Jobs</h1>
-<div class="map" g-map-index-view job-listings="jobsIndex.all" set-location="jobsIndex.setUserLocation(pos)">GOOGLE MAP</div>
+<div class="map" g-map-index-view job-listings="jobsIndex.available" set-location="jobsIndex.setUserLocation(pos)">GOOGLE MAP</div>
+<p class='title is-3'>Free to lend a helping hand? Here are all available jobs near you:</p>
 <form class="" ng-submit="jobsIndex.jobsFilter()">
   <input type='text' ng-model="jobsIndex.criteria.lng" value="jobsIndex.userLocation.lng" hidden></input>
   <input type='text' ng-model="jobsIndex.criteria.lat" value="jobsIndex.userLocation.lat" hidden></input>
-  <select type='text' ng-model="jobsIndex.criteria.maxDistance" placeholder="maxDistance">
+  <select class='jobsindexinputbar' type='text' ng-model="jobsIndex.criteria.maxDistance" placeholder="maxDistance">
     <option value='' selected disabled>Choose a search radius</option>
     <option value="0.5">500m</option>
     <option value="1">1km</option>
@@ -12,19 +12,26 @@
     <option value="4">4km</option>
     <option value="5000000000000000">5km and beyond</option>
   </select>
-  <button type="submit">Submit</button>
+  <button class="button orangebutton shortbutton" type="submit">Submit</button>
 </form>
 
-
-<div ng-repeat="job in jobsIndex.all">
-
-
+<div ng-repeat="job in jobsIndex.available">
   <div class="box">
-    <div class="columns">
-      <p class="column">{ job.icon }</p>
-      <p class="column">{{ job.category }} for {{job.createdBy.firstname}}</p>
-      <p class='column'>{{ job.description }}</p>
-      <p class='column'>{{job.status}}</p>
-      <p class="column"><a ui-sref="jobsShow({ id: job._id })">More Details</a></p>
-    </div>
+    <a ui-sref="jobsShow({ id: job._id })">
+      <div class="columns">
+        <div class='column'>
+          <div class='columns is-mobile'>
+            <div class='column'>
+              <img class="smallIcon" ng-src="./assets/icons/{{ job.category }}.png" alt="" />
+            </div>
+            <div class='column'>
+              <p class='bodyText'>{{ job.category }} for {{job.createdBy.firstname}}</p>
+            </div>
+          </div>
+        </div>
+        <div class='column'><p class='subText'>{{ job.description }}</p></div>
+        <div class='column'><p class='subText'>{{job.startdate | date : format : timezone }} to {{job.enddate | date : format : timezone }}</p></div>
+      </div>
+    </a>
   </div>
+</div>

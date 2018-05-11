@@ -1,3 +1,11 @@
+.profile-image {
+  border-radius:100%;
+  border: 2px solid $darkblue;
+  height: 256px;
+  width: 256px;
+
+}
+
 .profile-image-small {
   width: 80px;
   height: 80px;
@@ -6,4 +14,22 @@
   background-position: center;
   border-radius: 100%;
   border: 2px solid $darkblue;
+}
+
+.profile-image-tiny {
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 100%;
+  border: 1px solid $darkblue;
+  margin-right: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .profile-image {
+    height: 150px;
+    width: 150px;
+  }
 }

@@ -1,29 +1,46 @@
-JobsIndexCtrl.$inject = ['Job'];
+JobsIndexCtrl.$inject = ['Job', '$scope'];
 
-function JobsIndexCtrl(Job) {
-  this.all = [];
-  this.userLocation = {};
-  this.criteria = {};
+function JobsIndexCtrl(Job, $scope) {
+
+  const vm = this;
+
+  vm.all = [];
+  vm.userLocation = {};
+  vm.criteria = {};
+  vm.available = [];
 
   Job
     .find()
-    .then(res => this.all = res.data);
+    .then(res => vm.all = res.data)
+    .then(availability);
 
   function jobsFilter() {
     Job
-      .findByLocation(this.criteria)
+      .findByLocation(vm.criteria)
       .then(res => {
-        this.all = res.data;
+        vm.available = res.data;
       });
   }
 
   function setUserLocation(pos) {
-    this.criteria.lat = pos.lat;
-    this.criteria.lng = pos.lng;
+    vm.criteria.lat = pos.lat;
+    vm.criteria.lng = pos.lng;
   }
 
+  function availability() {
+    var x = vm.all;
+    for (var i = 0; i< x.length; i++) {
+      if (x[i].status === 'available') {
+        vm.available.push(x[i]);
+      }
+    }
+  }
+
+  $scope.$watch(vm.all, availability);
+
   this.jobsFilter = jobsFilter;
-  this.setUserLocation = setUserLocation;
+  vm.setUserLocation = setUserLocation;
+  this.availability = availability;
 
 }
 export default JobsIndexCtrl;

@@ -75,7 +75,6 @@ function gMapIndexView() {
           });
           listingMarkers.push(marker);
           marker.addListener('click', () => {
-            console.log(job.startdate);
             showInfoWindow(job, marker);
           });
           return marker;
@@ -84,11 +83,12 @@ function gMapIndexView() {
 
       function showInfoWindow(job, marker){
         infowindow.close();
-        infowindow.setContent(`<div>
-          <h1><strong>${job.category} for ${job.createdBy.firstname}</strong></h1>
-          <p>${job.description}</p>
-          <p>${job.startdate} to ${job.enddate}</p>
-        <p><a href='/#!/jobs/${job._id}'>Get more information</a></p>
+        infowindow.setContent(`<div style='width: 200px'>
+          <div class="profile-image-small" style="background-image: url(${job.createdBy.image})"></div>
+
+          <h1 class='bodyText'>${job.category} for ${job.createdBy.firstname}</h1>
+          <p class='subText'>${job.description}</p>
+        <br /><p class='subText'><strong><a href='/#!/jobs/${job._id}'>Get more information</a></strong></p>
       </div>`);
         infowindow.open(map, marker);
         map.setCenter(marker.getPosition());

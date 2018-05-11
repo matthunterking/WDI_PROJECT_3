@@ -25,7 +25,7 @@
 
         <a class="navbar-item" ui-sref="jobsNew" ng-if="main.isAuthenticated()">Post a Job</a>
 
-        <a class="navbar-item" ng-controller="LoginCtrl as login" ui-sref="usersProfile({ id: login.userId })" ng-if="main.isAuthenticated()">Profile <span ng-controller="UsersProfileCtrl as usersProfile">(logged in as {{usersProfile.user.firstname}})</span></a>
+        <a class="navbar-item" ng-controller="UsersProfileCtrl as usersProfile" ui-sref="usersProfile({ id: usersProfile.user._id })" ng-if="main.isAuthenticated()"><div class="profile-image-tiny" style="background-image: url({{ usersProfile.user.image }})"></div><div><p class='usernamespan'>{{usersProfile.user.firstname}}</p></div></a>
 
         <a class="navbar-item" ng-click="main.logout()" ng-if="main.isAuthenticated()">Logout</a>
 
