@@ -15,9 +15,11 @@
     </section>
 
     <section class="section" ng-if="!login.isAuthenticated()">
-      <div class='' ng-if="login.form.$submitted && !login.isAuthenticated()">
+      <div class='box' ng-if="login.form.$submitted && !login.isAuthenticated()">
         Sorry, there is an error with either your email or password.
       </div>
+      <div class="box">
+
       <form name='login.form' ng-submit="login.handleLogin()" novalidate>
         <div class="field">
           <label for="email" class="label">Email</label>
@@ -25,8 +27,8 @@
             <input class="input" type="email" placeholder="Email" name="email" ng-model='login.data.email' required ng-class = " {'is-danger': login.isDanger('email')}" />
             <!-- in case of input error -->
             <div ng-messages="login.form.email.$error" ng-if="login.form.email.$dirty || login.form.$submitted">
-              <div class='' ng-message="required">Please provide your email address</div>
-              <div class= '' ng-message="email">This must be an email address</div>
+              <div ng-message="required">Please provide your email address</div>
+              <div ng-message="email">This must be an email address</div>
             </div>
             <!-- end of in case of error -->
             <span class="icon is-small is-left">
@@ -41,7 +43,7 @@
         <div class="field">
           <label for="password" class="label">Password</label>
           <div class="control has-icons-left has-icons-right">
-            <input class="input" type="password" placeholder="password" name="password" ng-model='login.data.password' required ng-class = " {'is-danger': login.isDanger('password')}" />
+            <input class="input" type="password" placeholder="Password" name="password" ng-model='login.data.password' required ng-class = " {'is-danger': login.isDanger('password')}" />
             <!-- in case of input error -->
             <div ng-messages="login.form.password.$error" ng-if="login.form.password.$dirty || login.form.$submitted">
               <div class='' ng-message="required">Please provide your password</div>
@@ -54,23 +56,25 @@
               <i class="fas fa-exclamation-triangle"></i>
             </span>
           </div>
-          <div class="field is-grouped is-grouped-centered">
+          <div class="field">
             <p class="help">
-              <button class="button redbutton">Log In</button>
-            </p>
-            <p class="help">
-              <a ui-sref="register" class="button orangebutton">Sign Up</a>
+              <button class="button greenbutton">Log In</button>
             </p>
           </div>
         </div>
       </form>
-      <p>
-
-        <a class="button redbutton" ng-click="login.authenticate('google')">
+    </div>
+    <div class="box">
+    <p class="help">
+      <a ui-sref="register" class="button orangebutton">Sign Up</a>
+    </p>
+  </div>
+      <div class="box">
+        <a class="button googlebutton" ng-click="login.authenticate('google')">
           <img class="left"width="20px" alt="Google Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
           Sign in with Google
         </a>
-      </p>
+      </div>
     </div>
   </section>
 </div>
