@@ -83,7 +83,7 @@ function gMapIndexView() {
 
       function showInfoWindow(job, marker){
         infowindow.close();
-        infowindow.setContent(`<div style='width: 150px'>
+        infowindow.setContent(`<div style='width: 200px'>
           <div class="profile-image-small" style="background-image: url(${job.createdBy.image})"></div>
 
           <h1 class='bodyText'>${job.category} for ${job.createdBy.firstname}</h1>

@@ -15,49 +15,57 @@ Job.collection.drop();
 
 User
   .create([{
-    firstname: 'Jane',
-    surname: 'Austen',
-    email: 'jane@email.com',
-    password: 'password',
-    passwordConfirmation: 'password',
-    bio: 'I enjoy reading, having tea, and matchmaking people. I love talking to people and don\'t get to do it enough!',
-    image: 'https://www.biography.com/.image/t_share/MTE1ODA0OTcxNTQ2ODcxMzA5/jane-austen-9192819-1-402.jpg'
+    firstname: 'Li-zhen',
+    surname: 'Su',
+    email: 'su@email.com',
+    password: 'a',
+    passwordConfirmation: 'a',
+    bio: 'I enjoy reading, walking, chatting and having a cup of tea.',
+    image: '../../assets/images/sulizhen.jpg'
   },{
-    firstname: 'Emily',
-    surname: 'Brontë',
-    email: 'emily@email.com',
-    password: 'password',
-    passwordConfirmation: 'password',
-    bio: 'I love walking, shopping and am quite good at gardening. I hate cooking.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Emily_Bront%C3%AB_by_Patrick_Branwell_Bront%C3%AB_restored.jpg'
+    firstname: 'Mo-wan',
+    surname: 'Chow',
+    email: 'chow@email.com',
+    password: 'a',
+    passwordConfirmation: 'a',
+    bio: 'I\'m a journalist and work long hours, but am always happy to help on the weekends with removals or gardening.',
+    image: '../../assets/images/chowmowan.jpg'
   },{
-    firstname: 'Arthur',
-    surname: 'Conan Doyle',
-    email: 'arthur@email.com',
-    password: 'password',
-    passwordConfirmation: 'password',
-    bio: 'If you need a hand moving something, I\'m your man! Also good at pet-sitting. Unfortunately, I am bad at gardening and often need help mowing my lawn.' ,
-    image: 'https://collectionimages.npg.org.uk/large/mw01926/Arthur-Conan-Doyle.jpg'
+    firstname: 'Qiwu',
+    surname: 'He',
+    email: 'he@email.com',
+    password: 'a',
+    passwordConfirmation: 'a',
+    bio: 'I love dogs and cats, and would love any opportunity to pet-sit!',
+    image: '../../assets/images/heqiwu.jpg'
   },{
-    firstname: 'Charles',
-    surname: 'Dickens',
-    email: 'charles@email.com',
-    password: 'password',
-    passwordConfirmation: 'password',
-    bio: 'I love cooking. Don\'t have time to shop though - far too busy.',
-    image: 'https://www.telegraph.co.uk/content/dam/news/china-watch/china-watch-migration/charles-dickens_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwZwVSIA7rSIkPn18jgFKEo0.jpg?imwidth=450'
+    firstname: 'Jingwen',
+    surname: 'Wang',
+    email: 'wang@email.com',
+    password: 'a',
+    passwordConfirmation: 'a',
+    bio: 'I love cooking, shopping and playing with cats!',
+    image: '../../assets/images/wangjingwen.jpg'
+  },{
+    firstname: 'Blondie',
+    surname: 'Mok',
+    email: 'blondie@email.com',
+    password: 'a',
+    passwordConfirmation: 'a',
+    bio: 'I like tinkering with things and can fix anything from an armchair to a zipper.',
+    image: '../../assets/images/blondiemok.jpg'
   }])
   .then(users => {
     console.log(`${users.length} users created`);
 
     return Job
       .create([
-        {category: 'Social',
-          description: 'Would be grateful if someone could have tea with me every Friday.',
+        {category: 'Removals',
+          description: 'Am buying an armchair off Gumtree, would appreciate it if someone with a van could help me pick it up from Islington and drive it to my home in Whitechapel.',
           duration: '1-2 hours',
-          frequency: 'Weekly',
-          startdate: 'Fri May 11 2018 12:41:34 GMT+0000 (UTC)',
-          enddate: 'Fri Jun 29 2018 12:41:34 GMT+0000 (UTC)',
+          frequency: 'Once',
+          startdate: '2018-05-19T12:41:34.000Z',
+          enddate: '2018-07-11T12:41:34.000Z',
           location: { lng: -0.080964, lat: 51.516282 },
           createdBy: users[0],
           applicants: [],
@@ -68,8 +76,8 @@ User
           description: 'I have a wobbly desk and I hope someone handy can take a look at it!',
           duration: 'Half a day',
           frequency: 'Once',
-          startdate: 'Sat May 12 2018 12:41:34 GMT+0000 (UTC)',
-          enddate: 'Sat May 12 2018 12:41:34 GMT+0000 (UTC)',
+          startdate: '2018-05-20T12:41:34.000Z',
+          enddate: '2018-05-20T12:41:34.000Z',
           location: { lng: -0.073664, lat: 51.517862 },
           createdBy: users[1],
           applicants: [],
@@ -77,11 +85,11 @@ User
         },
 
         {category: 'Gardening',
-          description: 'My garden is so overgrown I\'ve lost my hound in it, need help sorting it out every month.',
-          duration: 'Full day',
+          description: 'My lawn grows really fast... could someone help mow it every month?',
+          duration: 'Half a day',
           frequency: 'Monthly',
-          startdate: 'Wed Jun 20 2018 12:41:34 GMT+0000 (UTC)',
-          enddate: 'Wed Jun 20 2018 12:41:34 GMT+0000 (UTC)',
+          startdate: '2018-05-20T12:41:34.000Z',
+          enddate: '2019-05-11T12:41:34.000Z',
           location: { lng: -0.077249, lat: 51.515546 },
           createdBy: users[2],
           applicants: [],
@@ -89,13 +97,25 @@ User
         },
 
         {category: 'Pet-sitting',
-          description: 'Need someone to feed my cat Miss Havisham when I\'m in America on a book tour.',
+          description: 'Need someone to feed my cat while I am on holiday in South America.',
           duration: '1-2 hours',
           frequency: 'Daily',
-          startdate: 'Mon May 28 2018 12:41:34 GMT+0000 (UTC)',
-          enddate: 'Mon Jul 30 2018 12:41:34 GMT+0000 (UTC)',
+          startdate: '2018-05-20T12:41:34.000Z',
+          enddate: '2018-06-11T12:41:34.000Z',
           location: { lng: -0.071224, lat: 51.512810 },
           createdBy: users[3],
+          applicants: [],
+          messages: []
+        },
+
+        {category: 'Meet-up',
+          description: 'Would like someone to accompany me to the hospital every Friday.',
+          duration: '1-2 hours',
+          frequency: 'Weekly',
+          startdate: '2018-05-11T12:41:34.000Z',
+          enddate: '2018-07-11T12:41:34.000Z',
+          location: { lng: -0.088990, lat: 51.504642 },
+          createdBy: users[4],
           applicants: [],
           messages: []
         }
