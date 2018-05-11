@@ -4,7 +4,7 @@ function JobsEditCtrl(Job, $state) {
 
   const vm = this;
   vm.data = {};
-  vm.cats = ['DIY', 'Gardening', 'Removals', 'Shopping', 'Meet-up', 'Pet-sitting', 'Miscellaneous'];
+  vm.cats = ['Cooking', 'DIY', 'Gardening', 'Removals', 'Shopping', 'Meet-up', 'Pet-sitting', 'Miscellaneous'];
   vm.durations = ['1-2 hours', '2-3 hours', 'Half a day', 'Full day'];
   vm.frequencies =['Once', 'Daily', 'Weekly', 'Monthly'];
 

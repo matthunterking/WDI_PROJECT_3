@@ -28,8 +28,11 @@ function UsersShowCtrl(User, $state) {
     var userjobs = vm.user.jobs;
     if (userjobs) {
       for (var i = 0; i< userjobs.length; i++) {
-        array.push(userjobs[i].jobrating);
+        if (userjobs[i].jobrating) {
+          array.push(userjobs[i].jobrating);
+        }
       }
+      console.log(array);
       var answer = (array.reduce(function(a, b) {
         return a + b;
       }, 0)) / array.length;
