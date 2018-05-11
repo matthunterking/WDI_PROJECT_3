@@ -1,11 +1,19 @@
-
 <section ng-controller="UsersProfileCtrl as usersProfile">
-<div ng-if="usersShow.user._id === usersProfile.user._id">
-<p>Hi, {{usersProfile.user.firstname}}! This is what your profile looks like to other users. </p>
-</div>
+  <div ng-if="usersShow.user._id === usersProfile.user._id">
+    <p>Hi, {{usersProfile.user.firstname}}! This is what your profile looks like to other users. </p>
+  </div>
 
-<div class= 'box' ng-if="usersShow.user._id !== usersProfile.user._id">
-
+<<<<<<< HEAD
+  <div class="columns is-vcentered">
+    <div class="column is-one-third">
+      <img class="profile-image image is-256x256 centered" src='{{usersShow.user.image}}' />
+    </div>
+    <div class="">
+      <p class="title is-3">{{usersShow.user.firstname}} {{usersShow.user.surname}}</p>
+      <p class="subtitle is-4">{{usersShow.user.bio}}</p>
+    </div>
+  </div>
+=======
   <p>Have you enjoyed {{usersShow.user.firstname}}'s help? Give a rating!</p>
   <form name="usersShow.form"  novalidate>
     <div class="field">
@@ -19,64 +27,64 @@
           <option value="4">⭐ ⭐ ⭐ ⭐</option>
           <option value="5">⭐ ⭐ ⭐ ⭐ ⭐</option>
         </select>
+>>>>>>> development
 
-        <div ng-messages="usersShow.form.rating.$error" ng-if="usersShow.form.rating.$dirty || usersShow.form.$submitted">
-          <div class='' ng-message="required">Please choose a rating</div>
+  <div class= 'box' ng-if="usersShow.user._id !== usersProfile.user._id">
+
+    <p class="title is-3">Did you like {{usersShow.user.firstname}}'s help? Give a rating!</p>
+    <form name="usersShow.form"  novalidate>
+      <div class="field">
+        <label class="label subtitle is-4" for="rating">Rating</label>
+        <div class="select">
+          <select ng-model="usersShow.data.rating">
+            <option value="" selected disabled>Please choose</option>
+            <option value="1">⭐</option>
+            <option value="2">⭐ ⭐</option>
+            <option value="3">⭐ ⭐ ⭐</option>
+            <option value="4">⭐ ⭐ ⭐ ⭐</option>
+            <option value="5">⭐ ⭐ ⭐ ⭐ ⭐</option>
+          </select>
+
+          <div ng-messages="usersShow.form.rating.$error" ng-if="usersShow.form.rating.$dirty || usersShow.form.$submitted">
+            <div class='' ng-message="required">Please choose a rating</div>
+          </div>
         </div>
+        <button class="button orangebutton" ng-click="usersShow.handleUserrating()">Rate {{usersShow.user.firstname}} </button>
       </div>
-      <button class="button" ng-click="usersShow.handleUserrating()">Rate {{usersShow.user.firstname}} </button>
+    </form>
+  </div>
+
+  <div class="box">
+    <p class="title is-3">{{usersShow.user.firstname}}'s average rating as an asker:</p>
+    <p class="subtitle is-4" ng-if='usersShow.calculateAverageJobrating()'>{{ '⭐ '.repeat(usersShow.calculateAverageJobrating()) }} ({{usersShow.user.jobs.length}} ratings)</p>
+    <p class="subtitle is-4" ng-if='!usersShow.calculateAverageJobrating()'>{{usersShow.user.firstname}} doesn't have a rating...yet</p>
+  </div>
+
+  <div class="box">
+    <p class="title is-3">{{usersShow.user.firstname}}'s average rating as a helper:</p>
+    <p class="subtitle is-4" ng-if="usersShow.user.avgRating">{{'⭐ '.repeat(usersShow.user.avgRating)}} ({{usersShow.user.userratings.length}} ratings)</p>
+    <p class="subtitle is-4" ng-if="!usersShow.user.avgRating">{{usersShow.user.firstname}} doesn't have a rating...yet</p>
+  </div>
+
+  <div class="box">
+    <p class="title is-3">{{usersShow.user.firstname}} has asked for help with:</p>
+    <div ng-repeat='job in usersShow.user.jobs'>
+      <a ui-sref='jobsShow({ id: job._id })'><p class="subtitle is-5">{{job.category}}</p></a>
     </div>
-  </form>
-</div>
-
-  <hr />
-
-
-
-
-  <img src='{{usersShow.user.image}}'/>
-
-  <p>{{usersShow.user.firstname}} {{usersShow.user.surname}}</p>
-  <p>{{usersShow.user.bio}}</p>
-
-  <hr />
-
-  <p class="is-size-4">{{usersShow.user.firstname}}'s average rating as an asker:</p>
-  <p class="is-size-4" ng-if='usersShow.calculateAverageJobrating()'>{{ '⭐ '.repeat(usersShow.calculateAverageJobrating()) }} ({{usersShow.user.jobs.length}} ratings)</p>
-  <p class="is-size-4" ng-if='!usersShow.calculateAverageJobrating()'>{{usersShow.user.firstname}} doesn't have a rating...yet</p>
-  <br />
-  <p class="is-size-4">{{usersShow.user.firstname}}'s average rating as a helper:</p>
-  <p class="is-size-4" ng-if="usersShow.user.avgRating">{{'⭐ '.repeat(usersShow.user.avgRating)}} ({{usersShow.user.userratings.length}} ratings)</p>
-  <p class="is-size-4" ng-if="!usersShow.user.avgRating">{{usersShow.user.firstname}} doesn't have a rating...yet</p>
-
-  <hr />
-
-
-  <p>{{usersShow.user.firstname}} has asked for help with:</p>
-
-  <div ng-repeat='job in usersShow.user.jobs'>
-    <a ui-sref='jobsShow({ id: job._id })'><p>{{job.category}}</p></a>
   </div>
-  <!-- <div ng-repeat='userrating in usersShow.user.userratings'>
-    <p>{{userrating.rating}}</p></a>
-  </div> -->
 
-  <hr />
-
-  <p>{{usersShow.user.firstname}} has helped with:</p>
-  <div ng-controller='JobsIndexCtrl as jobsIndex'>
-  <div ng-repeat='job in jobsIndex.all' >
-      <div ng-repeat='applicant in job.applicants'>
-        <div ng-if="applicant.who === usersShow.user._id">
-        <div ng-if="applicant.status === 'accepted'">
-          <p><a ui-sref='jobsShow({ id: job._id })'>{{job.category}} for {{job.createdBy.firstname}} {{job.createdBy.surname}}</a></p>
-        </div>
+  <div class="box">
+    <p class="title is-3">{{usersShow.user.firstname}} has helped with:</p>
+    <div ng-controller='JobsIndexCtrl as jobsIndex'>
+      <div ng-repeat='job in jobsIndex.all' >
+        <div ng-repeat='applicant in job.applicants'>
+          <div ng-if="applicant.who === usersShow.user._id">
+            <div ng-if="applicant.status === 'accepted'">
+              <p><a ui-sref='jobsShow({ id: job._id })'>{{job.category}} for {{job.createdBy.firstname}} {{job.createdBy.surname}}</a></p>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
   </div>
-  </div>
-
-  <hr />
-
-
 </section>
