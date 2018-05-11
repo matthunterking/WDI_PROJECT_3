@@ -3,7 +3,6 @@
     <p>Hi, {{usersProfile.user.firstname}}! This is what your profile looks like to other users. </p>
   </div>
 
-<<<<<<< HEAD
   <div class="columns is-vcentered">
     <div class="column is-one-third">
       <img class="profile-image image is-256x256 centered" src='{{usersShow.user.image}}' />
@@ -13,24 +12,8 @@
       <p class="subtitle is-4">{{usersShow.user.bio}}</p>
     </div>
   </div>
-=======
-  <p>Have you enjoyed {{usersShow.user.firstname}}'s help? Give a rating!</p>
-  <form name="usersShow.form"  novalidate>
-    <div class="field">
-      <label class="label" for="rating">Rating</label>
-      <div class="select">
-        <select ng-model="usersShow.data.rating">
-          <option value="" selected disabled>Please choose</option>
-          <option value="1">⭐</option>
-          <option value="2">⭐ ⭐</option>
-          <option value="3">⭐ ⭐ ⭐</option>
-          <option value="4">⭐ ⭐ ⭐ ⭐</option>
-          <option value="5">⭐ ⭐ ⭐ ⭐ ⭐</option>
-        </select>
->>>>>>> development
 
   <div class= 'box' ng-if="usersShow.user._id !== usersProfile.user._id">
-
     <p class="title is-3">Did you like {{usersShow.user.firstname}}'s help? Give a rating!</p>
     <form name="usersShow.form"  novalidate>
       <div class="field">
