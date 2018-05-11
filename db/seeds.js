@@ -55,53 +55,77 @@ User
     bio: 'I like tinkering with things and can fix anything from an armchair to a zipper.',
     image: '../../assets/images/blondiemok.jpg'
   },{
-    firstname: 'Charles',
-    surname: 'Dickens',
-    email: 'charles@email.com',
-    password: 'password',
-    passwordConfirmation: 'password',
-    bio: 'I love cooking. Don\'t have time to shop though - far too busy.',
-    image: 'https://www.telegraph.co.uk/content/dam/news/china-watch/china-watch-migration/charles-dickens_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwZwVSIA7rSIkPn18jgFKEo0.jpg?imwidth=450'
-  },{
     firstname: 'Alan',
     surname: 'Marsh',
     email: 'alan@email.com',
-    password: 'password',
-    passwordConfirmation: 'password',
+    password: 'a',
+    passwordConfirmation: 'a',
     bio: 'My favourtie past time is watching the football, especially the mighty arsenal!',
     image: '../../assets/images/alan.jpg'
   },{
     firstname: 'Ralph',
     surname: 'Spencer',
     email: 'raplh@email.com',
-    password: 'password',
-    passwordConfirmation: 'password',
+    password: 'a',
+    passwordConfirmation: 'a',
     bio: 'Back in the day I used to be a top cricket player. Now I struggle with doing the house work. My knees arent what they used to be',
-    image: '../../assets/images/raplh.jpg'
+    image: '../../assets/images/ralph.jpg'
   },{
     firstname: 'Kate',
     surname: 'Jackson',
     email: 'kate@email.com',
-    password: 'password',
-    passwordConfirmation: 'password',
+    password: 'a',
+    passwordConfirmation: 'a',
     bio: 'I love gardening. Any time of the year I\'m available to help assist in making your garden look presentbale' ,
     image: '../../assets/images/kate.jpg'
   },{
     firstname: 'Carl',
     surname: 'Doyle',
     email: 'carl@email.com',
-    password: 'password',
-    passwordConfirmation: 'password',
+    password: 'a',
+    passwordConfirmation: 'a',
     bio: 'Cooking is a real hobbie of mine. I spend most of my time in the kitchen trying out new recipes. I make a mean chicken tikka massala!' ,
     image: '../../assets/images/carl.jpg'
   },{
     firstname: 'Tony',
     surname: 'Vesin',
     email: 'tony@email.com',
-    password: 'password',
-    passwordConfirmation: 'password',
-    bio: 'Plumbing is what I do. If there\'s a leak, i\'ll plug it!',
+    password: 'a',
+    passwordConfirmation: 'a',
+    bio: 'Plumbing is what I do. If there\'s a leak, I\'ll plug it!',
     image: '../../assets/images/tony.jpg'
+  },{
+    firstname: 'Mavis',
+    surname: 'Hutton',
+    email: 'mavis@neighbourgood.com',
+    password: 'a',
+    passwordConfirmation: 'a',
+    bio: 'I\'m a retired nurse and my family have all moved away. So I\'m looking for some help around the house',
+    image: '../../assets/images/mavis.jpg'
+  },{
+    firstname: 'Rose',
+    surname: 'Wiltshire',
+    email: 'rose@email.com',
+    password: 'a',
+    passwordConfirmation: 'a',
+    bio: 'I\'m a freelance artist so have lots of time to help other people!',
+    image: '../../assets/images/rose.jpg'
+  },{
+    firstname: 'Sam',
+    surname: 'Butcher',
+    email: 'sam@email.com',
+    password: 'a',
+    passwordConfirmation: 'a',
+    bio: 'I love living in London and really want to give something back to the community',
+    image: '../../assets/images/sam.jpg'
+  },{
+    firstname: 'Steve',
+    surname: 'McDonald',
+    email: 'steve@email.com',
+    password: 'a',
+    passwordConfirmation: 'a',
+    bio: 'I am originally from sweden but now live in London.',
+    image: '../../assets/images/steve.jpg'
   }])
   .then(users => {
     console.log(`${users.length} users created`);
@@ -115,7 +139,7 @@ User
         startdate: 'Fri May 25 2018 12:41:34 GMT+0000 (UTC)',
         enddate: 'Fri May 25 2018 12:41:34 GMT+0000 (UTC)',
         location: { lng: -0.078696, lat: 51.571610 },
-        createdBy: users[0],
+        createdBy: users[6],
         applicants: [],
         messages: []
       },{
@@ -126,7 +150,7 @@ User
         startdate: 'Sat May 12 2018 12:41:34 GMT+0000 (UTC)',
         enddate: 'Sat May 12 2018 12:41:34 GMT+0000 (UTC)',
         location: { lng: -0.051905, lat: 51.552635 },
-        createdBy: users[1],
+        createdBy: users[7],
         applicants: [],
         messages: []
       },{
@@ -137,7 +161,7 @@ User
         startdate: 'Wed Jun 20 2018 12:41:34 GMT+0000 (UTC)',
         enddate: 'Wed Jun 20 2018 12:41:34 GMT+0000 (UTC)',
         location: { lng: -0.101473, lat: 51.543348 },
-        createdBy: users[2],
+        createdBy: users[10],
         applicants: [],
         messages: []
       },{
@@ -152,13 +176,13 @@ User
         applicants: [],
         messages: []
       },{
-        category: 'Social',
+        category: 'Meet-up',
         description: 'Would be grateful if someone could have tea with me every Friday.',
         duration: '1-2 hours',
         frequency: 'Weekly',
         startdate: 'Fri May 11 2018 12:41:34 GMT+0000 (UTC)',
         enddate: 'Fri Jun 29 2018 12:41:34 GMT+0000 (UTC)',
-        location: { lng: -0.080964, lat: 51.516282 },
+        location: { lng: -0.080964, lat: 51.536282 },
         createdBy: users[0],
         applicants: [],
         messages: []
@@ -169,8 +193,8 @@ User
         frequency: 'Once',
         startdate: 'Sat May 12 2018 12:41:34 GMT+0000 (UTC)',
         enddate: 'Sat May 12 2018 12:41:34 GMT+0000 (UTC)',
-        location: { lng: -0.073664, lat: 51.517862 },
-        createdBy: users[1],
+        location: { lng: -0.073664, lat: 51.521862 },
+        createdBy: users[12],
         applicants: [],
         messages: []
       },{
@@ -180,8 +204,8 @@ User
         frequency: 'Monthly',
         startdate: 'Wed Jun 20 2018 12:41:34 GMT+0000 (UTC)',
         enddate: 'Wed Jun 20 2018 12:41:34 GMT+0000 (UTC)',
-        location: { lng: -0.077249, lat: 51.515546 },
-        createdBy: users[2],
+        location: { lng: -0.077659, lat: 51.515546 },
+        createdBy: users[8],
         applicants: [],
         messages: []
       },{
@@ -191,8 +215,8 @@ User
         frequency: 'Daily',
         startdate: 'Mon May 28 2018 12:41:34 GMT+0000 (UTC)',
         enddate: 'Mon Jul 30 2018 12:41:34 GMT+0000 (UTC)',
-        location: { lng: -0.071224, lat: 51.512810 },
-        createdBy: users[3],
+        location: { lng: -0.077624, lat: 51.519810 },
+        createdBy: users[9],
         applicants: [],
         messages: []
       },{
@@ -202,8 +226,8 @@ User
         frequency: 'Once',
         startdate: '2018-05-19T12:41:34.000Z',
         enddate: '2018-07-11T12:41:34.000Z',
-        location: { lng: -0.080964, lat: 51.516282 },
-        createdBy: users[0],
+        location: { lng: -0.082364, lat: 51.5161582 },
+        createdBy: users[13],
         applicants: [],
         messages: []
       },{
@@ -213,8 +237,8 @@ User
         frequency: 'Once',
         startdate: '2018-05-20T12:41:34.000Z',
         enddate: '2018-05-20T12:41:34.000Z',
-        location: { lng: -0.073664, lat: 51.517862 },
-        createdBy: users[1],
+        location: { lng: -0.073564, lat: 51.517322 },
+        createdBy: users[2],
         applicants: [],
         messages: []
       },{
@@ -224,8 +248,8 @@ User
         frequency: 'Monthly',
         startdate: '2018-05-20T12:41:34.000Z',
         enddate: '2019-05-11T12:41:34.000Z',
-        location: { lng: -0.077249, lat: 51.515546 },
-        createdBy: users[2],
+        location: { lng: -0.076749, lat: 51.535546 },
+        createdBy: users[10],
         applicants: [],
         messages: []
       },{
@@ -235,8 +259,8 @@ User
         frequency: 'Daily',
         startdate: '2018-05-20T12:41:34.000Z',
         enddate: '2018-06-11T12:41:34.000Z',
-        location: { lng: -0.071224, lat: 51.512810 },
-        createdBy: users[3],
+        location: { lng: -0.073224, lat: 51.5235810 },
+        createdBy: users[11],
         applicants: [],
         messages: []
       },{
@@ -246,12 +270,11 @@ User
         frequency: 'Weekly',
         startdate: '2018-05-11T12:41:34.000Z',
         enddate: '2018-07-11T12:41:34.000Z',
-        location: { lng: -0.088990, lat: 51.504642 },
-        createdBy: users[4],
+        location: { lng: -0.083250, lat: 51.53522 },
+        createdBy: users[7],
         applicants: [],
         messages: []
-      }
-      ]);
+      }]);
   })
 
   .then(jobs => {
