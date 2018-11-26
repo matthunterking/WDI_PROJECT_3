@@ -1,6 +1,6 @@
 ![Title Page](image.png)
 
-#NeighbourGood
+# --> NeighbourGood
 --------------
 * [View app on Heroku](https://neighbourgood.herokuapp.com/#!/)
 * [View repository on GitHub](https://github.com/Ozzieb93/WDI_PROJECT_3)
