@@ -1,6 +1,40 @@
-![Title Page](image.png)
+# WDI Project 3 - NeighbourGood <img style='float: right' src='https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png'>
+---
+<a href='https://neighbourgood.herokuapp.com/#!/'>
+<img style='width: 100%;' src='/screenshots/Logo_neighbourGood.png' alt='logo screenshot'></a>
 
-# --> NeighbourGood
+### Project Overview and Motivation
+
+### Contributors
+<div style='width:100%; height: 100px; display:flex;'>
+<div style='border: 1px solid black; width:300px; height: 100px; display:flex; justify-content:space-around; margin-right: 5px'>
+  <img src='/screenshots/MHK.jpg' width=60px/>
+  <div>
+  <h6>Matt Hunter-King</h6>
+  <p>Web Development</p>
+  </div>
+</div>
+<br />
+<div style='border: 1px solid black; width:300px; height: 100px; display:flex; justify-content:space-around; margin-right: 5px'>
+  <img src='/screenshots/OB.jpeg' width=90px/>
+  <div>
+  <h6>Ozzie Balesaria</h6>
+  <p>Web Development</p>
+  </div>
+</div>
+<br />
+<div style='border: 1px solid black; width:300px; height: 100px; display:flex; justify-content:space-around; margin-right: 5px'>
+  <img src='/screenshots/SY.jpeg' width=90px/>
+  <div>
+  <h6>Stephanie Ye</h6>
+  <p>Web Development</p>
+  </div>
+</div>
+</div>
+
+### Timeframe
+10 days (June 2018)
+
 --------------
 * [View app on Heroku](https://neighbourgood.herokuapp.com/#!/)
 * [View repository on GitHub](https://github.com/Ozzieb93/WDI_PROJECT_3)
