@@ -43,12 +43,15 @@ This was our third project as part of the General Assembly Web Development Immer
 * JavaScript
 * HTML5
 * Bulma
-* Google Maps
 * Gmail Oauth
-* Filestack
 * Balsamiq
 * Trello
 * Insomnia
+
+### API's used
+* Google Maps
+* Google Maps Place Autocomplete
+* Filestack
 
 ---
 
