@@ -6,30 +6,16 @@
 ### Project Overview and Motivation
 
 ### Contributors
+<hr />
+<img src='/screenshots/MHK.jpg' width=60px />
+<h6>Matt Hunter-King - Web Development</h6>
+<hr />
+<img src='/screenshots/OB.jpeg' width=90px/>
+<h6>Ozzie Balesaria - Web Development</h6>
+<hr />
+<img src='/screenshots/SY.jpeg' width=90px/>
+<h6>Stephanie Ye - Web Development</h6>
 
-<div style='border: 1px solid black; width:300px; height: 100px; display:flex; justify-content:space-around; margin-right: 5px'>
-  <img src='/screenshots/MHK.jpg' width=60px/>
-  <div>
-  <h6>Matt Hunter-King</h6>
-  <p>Web Development</p>
-  </div>
-</div>
-<br />
-<div style='border: 1px solid black; width:300px; height: 100px; display:flex; justify-content:space-around; margin-right: 5px'>
-  <img src='/screenshots/OB.jpeg' width=90px/>
-  <div>
-  <h6>Ozzie Balesaria</h6>
-  <p>Web Development</p>
-  </div>
-</div>
-<br />
-<div style='border: 1px solid black; width:300px; height: 100px; display:flex; justify-content:space-around; margin-right: 5px'>
-  <img src='/screenshots/SY.jpeg' width=90px/>
-  <div>
-  <h6>Stephanie Ye</h6>
-  <p>Web Development</p>
-  </div>
-</div>
 
 ### Timeframe
 10 days (June 2018)
