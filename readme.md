@@ -6,7 +6,7 @@
 ### Project Overview and Motivation
 
 ### Contributors
-<div style='width:100%; height: 100px; display:flex;'>
+
 <div style='border: 1px solid black; width:300px; height: 100px; display:flex; justify-content:space-around; margin-right: 5px'>
   <img src='/screenshots/MHK.jpg' width=60px/>
   <div>
@@ -29,7 +29,6 @@
   <h6>Stephanie Ye</h6>
   <p>Web Development</p>
   </div>
-</div>
 </div>
 
 ### Timeframe
