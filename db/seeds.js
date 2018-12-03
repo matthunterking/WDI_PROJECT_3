@@ -15,29 +15,29 @@ Job.collection.drop();
 
 User
   .create([{
-    firstname: 'Li-zhen',
-    surname: 'Su',
-    email: 'su@email.com',
-    password: 'a',
-    passwordConfirmation: 'a',
+    firstname: 'Derrick',
+    surname: 'Sanders',
+    email: 'derrick@neighbourgood.com',
+    password: 'd',
+    passwordConfirmation: 'd',
     bio: 'I enjoy reading, walking, chatting and having a cup of tea.',
-    image: '../../assets/images/sulizhen.jpg'
+    image: '../../assets/images/derrick.jpg'
   },{
-    firstname: 'Mo-wan',
-    surname: 'Chow',
-    email: 'chow@email.com',
-    password: 'a',
-    passwordConfirmation: 'a',
+    firstname: 'Liz',
+    surname: 'Smith',
+    email: 'liz@neighbourgood.com',
+    password: 'l',
+    passwordConfirmation: 'l',
     bio: 'I\'m a journalist and work long hours, but am always happy to help on the weekends with removals or gardening.',
-    image: '../../assets/images/chowmowan.jpg'
+    image: '../../assets/images/liz.jpeg'
   },{
-    firstname: 'Qiwu',
-    surname: 'He',
-    email: 'he@email.com',
-    password: 'a',
-    passwordConfirmation: 'a',
+    firstname: 'Hannah',
+    surname: 'Murray',
+    email: 'hannah@neighbourgood.com',
+    password: 'h',
+    passwordConfirmation: 'h',
     bio: 'I love dogs and cats, and would love any opportunity to pet-sit!',
-    image: '../../assets/images/heqiwu.jpg'
+    image: '../../assets/images/hannah.jpg'
   },{
     firstname: 'Jingwen',
     surname: 'Wang',
@@ -47,13 +47,13 @@ User
     bio: 'I love cooking, shopping and playing with cats!',
     image: '../../assets/images/wangjingwen.jpg'
   },{
-    firstname: 'Blondie',
+    firstname: 'Nisha',
     surname: 'Mok',
-    email: 'blondie@email.com',
-    password: 'a',
-    passwordConfirmation: 'a',
+    email: 'nisha@neighbourgood.com',
+    password: 'n',
+    passwordConfirmation: 'n',
     bio: 'I like tinkering with things and can fix anything from an armchair to a zipper.',
-    image: '../../assets/images/blondiemok.jpg'
+    image: '../../assets/images/nisha.jpg'
   },{
     firstname: 'Alan',
     surname: 'Marsh',

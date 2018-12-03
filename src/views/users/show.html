@@ -61,7 +61,7 @@
     <div ng-controller='JobsIndexCtrl as jobsIndex'>
       <div ng-repeat='job in jobsIndex.all' >
         <div ng-repeat='applicant in job.applicants'>
-          <div ng-if="applicant.who === usersShow.user._id">
+          <div ng-if="applicant.applicant === usersShow.user._id">
             <div ng-if="applicant.status === 'accepted'">
               <p><a ui-sref='jobsShow({ id: job._id })'>{{job.category}} for {{job.createdBy.firstname}} {{job.createdBy.surname}}</a></p>
             </div>

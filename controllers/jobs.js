@@ -30,7 +30,7 @@ function jobsIndexFilter(req, res, next) {
 function jobsShow(req, res, next) {
   Job
     .findById(req.params.id)
-    .populate('createdBy messages.createdBy applicants.who')
+    .populate('createdBy messages.createdBy applicants.applicant')
     .exec()
     .then(job => {
       if(!job) return res.sendStatus(404);
@@ -77,7 +77,7 @@ function jobsMessageCreate(req, res, next) {
   req.body.createdBy = req.currentUser;
   Job
     .findById(req.params.id)
-    .populate('createdBy messages.createdBy applicants.who')
+    .populate('createdBy messages.createdBy applicants.applicant')
     .exec()
     .then(job => {
       job.messages.push(req.body);
@@ -91,7 +91,7 @@ function jobsMessageCreate(req, res, next) {
 function jobsMessageDelete(req, res, next) {
   Job
     .findById(req.params.id)
-    .populate('createdBy messages.createdBy applicants.who')
+    .populate('createdBy messages.createdBy applicants.applicant')
     .exec()
     .then(job => {
       const message = job.messages.id(req.params.messageId);
@@ -107,10 +107,10 @@ function jobsMessageDelete(req, res, next) {
 
 //jobs applicant creation
 function jobsApplicantCreate(req, res, next) {
-  req.body.who = req.currentUser;
+  req.body.applicant = req.currentUser;
   Job
     .findById(req.params.id)
-    .populate('createdBy messages.createdBy applicants.who')
+    .populate('createdBy messages.createdBy applicants.applicant')
     .exec()
     .then(job => {
       job.applicants.push(req.body);
@@ -126,7 +126,7 @@ function jobsApplicantCreate(req, res, next) {
 function jobsApplicantDelete(req, res, next) {
   Job
     .findById(req.params.id)
-    .populate('createdBy messages.createdBy applicants.who')
+    .populate('createdBy messages.createdBy applicants.applicant')
     .exec()
     .then(job => {
       const applicant = job.applicants.id(req.params.applicantId);
@@ -142,7 +142,7 @@ function jobsApplicantDelete(req, res, next) {
 function jobsApplicantAccept(req, res, next) {
   Job
     .findById(req.params.id)
-    .populate('createdBy messages.createdBy applicants.who')
+    .populate('createdBy messages.createdBy applicants.applicant')
     .exec()
     .then(job => {
       const applicant = job.applicants.id(req.params.applicantId);
@@ -158,7 +158,7 @@ function jobsApplicantAccept(req, res, next) {
 function jobsApplicantReject(req, res, next) {
   Job
     .findById(req.params.id)
-    .populate('createdBy messages.createdBy applicants.who')
+    .populate('createdBy messages.createdBy applicants.applicant')
     .exec()
     .then(job => {
       const applicant = job.applicants.id(req.params.applicantId);
@@ -175,7 +175,7 @@ function jobsApplicantReject(req, res, next) {
 function jobsStatusProgress(req, res, next) {
   Job
     .findById(req.params.id)
-    .populate('createdBy messages.createdBy applicants.who')
+    .populate('createdBy messages.createdBy applicants.applicant')
     .exec()
     .then(job => {
       job.status = 'in progress';
@@ -190,7 +190,7 @@ function jobsStatusProgress(req, res, next) {
 function jobsStatusFinish(req, res, next) {
   Job
     .findById(req.params.id)
-    .populate('createdBy messages.createdBy applicants.who')
+    .populate('createdBy messages.createdBy applicants.applicant')
     .exec()
     .then(job => {
       job.status = 'finished';
@@ -205,7 +205,7 @@ function jobsStatusFinish(req, res, next) {
 function jobsStatusReview(req, res, next) {
   Job
     .findById(req.params.id)
-    .populate('createdBy messages.createdBy applicants.who')
+    .populate('createdBy messages.createdBy applicants.applicant')
     .exec()
     .then(job => {
       job.status = 'reviewed';

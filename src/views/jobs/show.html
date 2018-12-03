@@ -60,20 +60,20 @@
     <div ng-controller="UsersProfileCtrl as usersProfile">
       <div class="columns is-mobile" ng-repeat="applicant in jobsShow.job.applicants" ng-if="applicant.status === 'accepted'">
         <div class="column is-one-third">
-          <img class="profile-image image is-256x256 centered" src='{{applicant.who.image}}' />
+          <img class="profile-image image is-256x256 centered" src='{{applicant.applicant.image}}' />
         </div>
         <div class="column is-two-thirds">
-          <p ng-if="applicant.who._id !== usersProfile.user._id" class="bodyText">This job was done by <a ui-sref='usersShow({ id: applicant.who._id })'>{{ applicant.who.firstname }} {{ applicant.who.surname }}</a></p>
-          <p ng-if="applicant.who._id === usersProfile.user._id" class="bodyText">This job was done by <a ui-sref='usersProfile({ id: applicant.who._id })'>you</a>!</p>
+          <p ng-if="applicant.applicant._id !== usersProfile.user._id" class="bodyText">This job was done by <a ui-sref='usersShow({ id: applicant.applicant._id })'>{{ applicant.applicant.firstname }} {{ applicant.applicant.surname }}</a></p>
+          <p ng-if="applicant.applicant._id === usersProfile.user._id" class="bodyText">This job was done by <a ui-sref='usersProfile({ id: applicant.applicant._id })'>you</a>!</p>
           <!-- only seen by job poster -->
           <div ng-if="jobsShow.job.createdBy._id === usersProfile.user._id">
-            <p class="bodyText">Did you like {{applicant.who.firstname}}'s help?</p>
-                <a ui-sref= "usersShow({ id: applicant.who._id })"><button class="button orangebutton">Give a rating!</button></a>
+            <p class="bodyText">Did you like {{applicant.applicant.firstname}}'s help?</p>
+                <a ui-sref= "usersShow({ id: applicant.applicant._id })"><button class="button orangebutton">Give a rating!</button></a>
           </div>
           <!-- end of job-poster-only -->
 
           <!-- only seen by person who did job -->
-          <div ng-if="applicant.who._id === usersProfile.user._id" ng-controller='JobsEditCtrl as jobsEdit'>
+          <div ng-if="applicant.applicant._id === usersProfile.user._id" ng-controller='JobsEditCtrl as jobsEdit'>
             <section ng-if="jobsShow.job.status !== 'reviewed'">
               <p class="bodyText">What was it like helping {{jobsShow.job.createdBy.firstname}}? Give a rating!</p>
               <form name="jobsEdit.form" ng-submit="jobsEdit.handleUpdate()" novalidate>
@@ -117,17 +117,17 @@
     <section ng-controller="UsersProfileCtrl as usersProfile">
       <div class="columns is-mobile" ng-repeat="applicant in jobsShow.job.applicants" ng-if="applicant.status === 'accepted'">
         <div class="column is-one-third">
-          <img class="profile-image image is-256x256 centered" src='{{applicant.who.image}}' />
+          <img class="profile-image image is-256x256 centered" src='{{applicant.applicant.image}}' />
         </div>
         <div class="column is-two-thirds">
-          <p ng-if="applicant.who._id !== usersProfile.user._id" class="title is-4">This job is in progress, and is being done by <a ui-sref='usersShow({ id: applicant.who._id })'>{{ applicant.who.firstname }} {{ applicant.who.surname }}</a></p>
+          <p ng-if="applicant.applicant._id !== usersProfile.user._id" class="title is-4">This job is in progress, and is being done by <a ui-sref='usersShow({ id: applicant.applicant._id })'>{{ applicant.applicant.firstname }} {{ applicant.applicant.surname }}</a></p>
           <!-- only seen by person doing job -->
-          <div ng-if="applicant.who._id === usersProfile.user._id">
-            <p class="title is-4">This job is in progress, and is being done by <a ui-sref='usersProfile({ id: applicant.who._id })'>you</a>!</p>
+          <div ng-if="applicant.applicant._id === usersProfile.user._id">
+            <p class="title is-4">This job is in progress, and is being done by <a ui-sref='usersProfile({ id: applicant.applicant._id })'>you</a>!</p>
           </div>
           <!-- end only-person-doing-job -->
           <!-- seen only by job helper and job asker -->
-          <div ng-if="applicant.who._id === usersProfile.user._id || jobsShow.job.createdBy._id === usersProfile.user._id">
+          <div ng-if="applicant.applicant._id === usersProfile.user._id || jobsShow.job.createdBy._id === usersProfile.user._id">
             <button class="button greenbutton" ng-click='jobsShow.handleStatusFinish()'>Mark this job as finished</button>
           </div>
           <!-- end seen-only-by-job-helper-and-asker -->
@@ -175,13 +175,13 @@
           <div class="box" ng-repeat="applicant in jobsShow.job.applicants">
             <article class="media">
               <div class="media-left">
-                <div class="profile-image-small" style="background-image: url({{ applicant.who.image }})"></div>
+                <div class="profile-image-small" style="background-image: url({{ applicant.applicant.image }})"></div>
               </div>
               <div class="media-content">
                 <div class="content">
-                  <p class="bodyText"><a ui-sref='usersShow({ id: applicant.applicant._id })'>{{ applicant.who.firstname }} {{ applicant.who.surname }}</a></p>
-                  <p class="subText" ng-if="applicant.who.avgRating">{{'⭐ '.repeat(applicant.who.avgRating)}}</p>
-                  <p class="subText" ng-if="!applicant.who.avgRating">{{ applicant.who.firstname }} doesn't have a rating...yet</p>
+                  <p class="bodyText"><a ui-sref='usersShow({ id: applicant.applicant._id })'>{{ applicant.applicant.firstname }} {{ applicant.applicant.surname }}</a></p>
+                  <p class="subText" ng-if="applicant.applicant.avgRating">{{'⭐ '.repeat(applicant.applicant.avgRating)}}</p>
+                  <p class="subText" ng-if="!applicant.applicant.avgRating">{{ applicant.applicant.firstname }} doesn't have a rating...yet</p>
                   <p class="subText">Status: {{ applicant.status }}</p>
                 </div>
                 <!-- only seen by job poster -->
@@ -193,7 +193,7 @@
                 <!-- end of job-poster-only -->
                 <!-- this div only seen by applicant -->
                 <section ng-controller="UsersProfileCtrl as usersProfile">
-                  <button ng-click="jobsShow.handleApplicantDelete(applicant)" class="button redbutton" ng-if="applicant.who._id === usersProfile.user._id">Withdraw your application</button>
+                  <button ng-click="jobsShow.handleApplicantDelete(applicant)" class="button redbutton" ng-if="applicant.applicant._id === usersProfile.user._id">Withdraw your application</button>
                 </section>
                 <!-- end of div-only-seen-by-applicant -->
               </div>

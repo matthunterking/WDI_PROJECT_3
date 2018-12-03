@@ -27,7 +27,7 @@
     <p class="title is-3">You are helping with:</p>
     <div class="columns" ng-controller='JobsIndexCtrl as jobsIndex'>
       <div ng-repeat='job in jobsIndex.all'>
-        <div ng-repeat='applicant in job.applicants' ng-if="applicant.who === usersProfile.user._id" ng-if="applicant.status === 'accepted'">
+        <div ng-repeat='applicant in job.applicants' ng-if="applicant.applicant === usersProfile.user._id" ng-if="applicant.status === 'accepted'">
           <div class='column'>
           <p class="title is-4 bump">
             <a ui-sref='jobsShow({ id: job._id })'>{{job.category}} for {{job.createdBy.firstname}} {{job.createdBy.surname}}</a></p>
